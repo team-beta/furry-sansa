@@ -5,7 +5,11 @@ requirejs.config({
     }
 });
 
-require(['Phaser', 'game'],
-function(Phaser, game) {
-    game.phaser = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: game.preload, create: game.create, update: game.update });
+require(['Phaser', 'Game'],
+function(Phaser, Game) {
+    gm = new Phaser.Game("100%", "100%", Phaser.AUTO, '');
+    
+    gm.state.add('Boot', Game.Boot);
+    
+    gm.state.start('Boot');
 });
