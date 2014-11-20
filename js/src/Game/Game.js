@@ -6,7 +6,7 @@ define([], function () {
         },
         create: function() {
             for (var i = 0; i < 10; i++) {
-                this.add.sprite(i * 32, 32, 'grass_block');
+                this.add.sprite(i * 31, 32, 'grass_block');
             }
         }
     };
