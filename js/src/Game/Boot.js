@@ -9,8 +9,11 @@ define([], function () {
             this.scale.scaleMode = Phaser.ScaleManager.RESIZE;
         },
         preload: function() {
+            this.load.image('preload_empty', 'assets/loader_empty.png');
+            this.load.image('preload_full', 'assets/loader_full.png');
         },
         create: function() {
+            this.state.start('Preload');
         }
     };
 });
