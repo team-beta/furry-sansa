@@ -1,8 +1,7 @@
-define(['Game/Boot', 'Game/Preload', 'Game/MainMenu', 'Game/Game'], function (boot, preload, mainmenu, game) {
+define(['Game/Boot', 'Game/Preload', 'Game/Game'], function (boot, preload, game) {
     return {
         Boot: boot,
         Preload: preload,
-        MainMenu: mainmenu,
         Game: game
     };
 });

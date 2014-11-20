@@ -11,7 +11,6 @@ function(Phaser, Game) {
 
     gm.state.add('Boot', Game.Boot);
     gm.state.add('Preload', Game.Preload);
-    gm.state.add('MainMenu', Game.MainMenu);
     gm.state.add('Game', Game.Game);
 
     gm.state.start('Boot');
