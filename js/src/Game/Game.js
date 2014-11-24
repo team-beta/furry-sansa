@@ -17,7 +17,9 @@ define(['jquery', 'jquery-terminal'], function ($) {
                 pos = ev.position;
                 document.getElementById('main').innerHTML += '<div style="position: absolute; margin-top: ' + pos.y + 'px; margin-left: ' + pos.x + 'px; z-index: 10; background: orange;" id="term"></div>';
                 $('#term').terminal(function(command, term) {
-                    if (command !== '') {
+                    if (command == 'q' || command == 'quit') {
+                        $('div').remove('.terminal');
+                    } else if (command !== '') {
                         try {
                             var result = window.eval(command);
                             if (result !== undefined) {
