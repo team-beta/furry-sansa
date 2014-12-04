@@ -11,6 +11,7 @@ define([], function () {
             this.load.setPreloadSprite(this.preloadBar);
 
             this.load.image('grass_block', 'assets/grass_block.png');
+            this.load.image('robot', 'assets/robot.png');
         },
         create: function() {
             this.state.start('Game');

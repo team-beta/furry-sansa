@@ -5,13 +5,16 @@ define(['Terminal'], function (Terminal) {
         preload: function() {
         },
         create: function() {
-            this.add.tileSprite(64, 2*64, 10*64, 64, 'grass_block');
+            var term = new Terminal();
 
-            var spr = this.add.sprite(256, 256, 'grass_block');
+            this.add.tileSprite(32, 2*32, 10*32, 32, 'grass_block');
+
+            var spr = this.add.sprite(128, 128, 'grass_block');
             spr.inputEnabled = true;
             spr.input.useHandCursor = true;
 
-            var term = new Terminal();
+            var robot = this.add.sprite(128, 0, 'robot');
+
             spr.events.onInputDown.add(term.open, term);
         }
     };
