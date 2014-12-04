@@ -13,9 +13,18 @@
                 position: absolute;
                 margin: 0;
             }
+            #term {
+                position: absolute;
+                z-index: 10;
+                background: orange;
+                width: 320px;
+                height: 200px;
+            }
         </style>
     </head>
     <body>
-        <div style="position: absolute; margin-left: 0px; margin-top: 0;" id="main"></div>
+        <div style="position: absolute; margin-left: 0px; margin-top: 0;" id="main">
+            <div id="term" style="display: hidden;"></div>
+        </div>
     </body>
 </html>
