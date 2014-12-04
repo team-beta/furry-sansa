@@ -11,9 +11,6 @@ define(['jquery', 'jquery-terminal'], function ($) {
             spr.inputEnabled = true;
             spr.input.useHandCursor = true;
             spr.events.onInputDown.add(function(ev) {
-                console.log("Clicked!");
-                console.log(this);
-                console.log(ev);
                 pos = ev.position;
                 document.getElementById('main').innerHTML += '<div style="position: absolute; margin-top: ' + pos.y + 'px; margin-left: ' + pos.x + 'px; z-index: 10; background: orange;" id="term"></div>';
                 $('#term').terminal(function(command, term) {
