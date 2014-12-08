@@ -22,6 +22,9 @@ define([], function () {
         ledge.body.immovable = true;
         // TODO: load this from a file instead
 
+        // solid/unsolid block
+        this.block = this.game.add.sprite(8* 32, 22*32, 'solid_block', null, this.platforms);
+        this.block.body.immovable = true;
     }
 
     Level.prototype.update = function() {
@@ -34,8 +37,10 @@ define([], function () {
 
         // Determine whether the robot is in air.
         if (this.robot.body.touching.down) {
+            this.block.frame = 1;
             this.inAir = false;
         } else {
+            this.block.frame = 0;
             this.inAir = true;
         }
     }

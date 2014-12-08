@@ -18,6 +18,7 @@ define([], function () {
             this.load.image('robot', 'assets/robot.png');
             this.load.image('background', 'assets/sky-1600.png');
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);
+            this.load.spritesheet('solid_block', 'assets/blocks.png', 32, 32);
         },
         create: function() {
             this.state.start('Game');
