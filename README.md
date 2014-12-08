@@ -1,8 +1,4 @@
-furry-sansa
+Furry Sansa
 ===========
 
-Furry Sansa (DZC21 Project)
-
-World decisions
----------------
-All sprites will be 64x64.
+Furry Sansa. Just a working title.
