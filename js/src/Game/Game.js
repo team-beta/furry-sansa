@@ -31,8 +31,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this.robot.animations.add('left', [0, 1, 2, 3], 10, true);
             this.robot.animations.add('right', [5, 6, 7, 8], 10, true);
             this.robot.animations.add('up', [9], 10, true);
-            this.robot.animations.add('left_jump', [1], 10, true);
-            this.robot.animations.add('right_jump', [6], 10, true);
+            this.robot.animations.add('left_jump', [10], 10, true);
+            this.robot.animations.add('right_jump', [11], 10, true);
 
             this._level = new Level(this, this.robot);
 
