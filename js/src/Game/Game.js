@@ -12,6 +12,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
         preload: function() {
         },
         create: function() {
+            // draw the background
+            this.game.add.sprite(0, 0, 'background');
 
             // Set sounds
             this.sound_jump = this.add.audio('sound_jump');
