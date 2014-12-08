@@ -30,13 +30,14 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this.robot.frame = 4;
             this.robot.animations.add('left', [0, 1, 2, 3], 10, true);
             this.robot.animations.add('right', [5, 6, 7, 8], 10, true);
+            this.robot.animations.add('up', [9], 10, true);
 
             this._level = new Level(this, this.robot);
 
             this.physics.arcade.enable(this.robot);
 
-            this.robot.body.bounce.y = 0.2;
-            this.robot.body.gravity.y = 500;
+            //this.robot.body.bounce.y = 0.2;
+            this.robot.body.gravity.y = 1500;
             this.robot.body.collideWorldBounds = true;
 
             this._level.create();
@@ -59,13 +60,15 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             } else if (cursors.right.isDown) {
                 this.robot.body.velocity.x = 320;
                 this.robot.animations.play('right');
+            } else if (cursors.up.isDown || !this.robot.body.touching.down) {
+                this.robot.animations.play('up');
             } else {
                 this.robot.animations.stop();
                 this.robot.frame = 4;
             }
 
             if (cursors.up.isDown && this.robot.body.touching.down) {
-                this.robot.body.velocity.y = -320;
+                this.robot.body.velocity.y = -500;
                 this.sound_jump.play();
             }
         }
