@@ -24,7 +24,7 @@ define([], function () {
 
         // solid/unsolid block
         this.block = this.game.add.sprite(8* 32, 22*32, 'solid_block', null, this.platforms);
-        this.block.body.immovable = true;
+        this.block.body.immovable = false;
     }
 
     Level.prototype.update = function() {

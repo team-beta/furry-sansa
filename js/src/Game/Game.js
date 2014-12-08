@@ -31,6 +31,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this.robot.animations.add('left', [0, 1, 2, 3], 10, true);
             this.robot.animations.add('right', [5, 6, 7, 8], 10, true);
             this.robot.animations.add('up', [9], 10, true);
+            this.robot.animations.add('left_jump', [1], 10, true);
+            this.robot.animations.add('right_jump', [6], 10, true);
 
             this._level = new Level(this, this.robot);
 
@@ -56,10 +58,18 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
 
             if (cursors.left.isDown) {
                 this.robot.body.velocity.x = -320;
-                this.robot.animations.play('left');
+                if(!this.robot.body.touching.down){
+                    this.robot.animations.play('left_jump');
+                }else{
+                    this.robot.animations.play('left');
+                }
             } else if (cursors.right.isDown) {
                 this.robot.body.velocity.x = 320;
-                this.robot.animations.play('right');
+                if(!this.robot.body.touching.down){
+                    this.robot.animations.play('right_jump');
+                }else{
+                    this.robot.animations.play('right');
+                }
             } else if (cursors.up.isDown || !this.robot.body.touching.down) {
                 this.robot.animations.play('up');
             } else {
