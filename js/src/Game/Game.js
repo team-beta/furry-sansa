@@ -2,11 +2,20 @@ define(['Terminal', 'Phaser'], function (Terminal, Phaser) {
     return {
         platforms: null,
         robot: null,
+        sound_jump: null,
+        sound_walk: null,
+        sound_land: null,
+        inAir: null,
         init: function() {
         },
         preload: function() {
         },
         create: function() {
+
+            // Set sounds
+            this.sound_jump = this.add.audio('sound_jump');
+            this.sound_land = this.add.audio('sound_land');
+            this.sound_walk = this.add.audio('sound_walk');
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -40,9 +49,29 @@ define(['Terminal', 'Phaser'], function (Terminal, Phaser) {
             this.robot.body.bounce.y = 0.2;
             this.robot.body.gravity.y = 300;
             this.robot.body.collideWorldBounds = true;
+
+            // Starting point in the air
+            this.inAir = true;
         },
         update: function() {
-            this.physics.arcade.collide(this.robot, this.platforms);
+            //  Collide the player and the stars with the platforms
+            this.physics.arcade.collide(this.robot, this.platforms, function(){
+              // The player is landing
+              if(this.inAir){
+                this.sound_land.play('', 0, 5, false, false);
+              }
+            }, null, this);
+
+            // Determine whether the robot is in air.
+            if (this.robot.body.touching.down) {
+              this.inAir = false;
+            } else {
+              this.inAir = true;
+            }
+
+            if (Math.abs(this.robot.body.velocity.x) > 0 && this.robot.body.touching.down) {
+              this.sound_walk.play('', 0, 5, false, false);
+            }
 
             var cursors = this.input.keyboard.createCursorKeys();
 
@@ -59,6 +88,11 @@ define(['Terminal', 'Phaser'], function (Terminal, Phaser) {
                 this.robot.animations.stop();
                 this.robot.frame = 4;
                 // stand still
+            }
+
+            if (cursors.up.isDown && this.robot.body.touching.down) {
+                this.robot.body.velocity.y = -150;
+                this.sound_jump.play();
             }
         }
     };
