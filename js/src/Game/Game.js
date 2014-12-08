@@ -1,4 +1,4 @@
-define(['Terminal', 'Phaser'], function (Terminal, Phaser) {
+define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) {
     return {
         platforms: null,
         robot: null,
@@ -24,56 +24,26 @@ define(['Terminal', 'Phaser'], function (Terminal, Phaser) {
 
             var term = new Terminal();
 
-            this.platforms = this.add.group();
-
-            // enable physics
-            this.platforms.enableBody = true;
-
-            var ground = this.add.tileSprite(0, this.world.height - 32, this.world.width, 32, 'grass_block', null, this.platforms);
-
-            ground.body.immovable = true;
-
-            var ledge = this.add.tileSprite(32, 12*32, 10*32, 32, 'grass_block', null, this.platforms);
-
-            ledge.body.immovable = true;
-
-            //var spr = this.add.sprite(128, 128, 'grass_block');
-            //spr.inputEnabled = true;
-            //spr.input.useHandCursor = true;
-            //spr.events.onInputDown.add(term.open, term);
-
             this.robot = this.add.sprite(128, 0, 'robots');
             this.robot.frame = 4;
             this.robot.animations.add('left', [0, 1, 2, 3], 10, true);
             this.robot.animations.add('right', [5, 6, 7, 8], 10, true);
 
+            this._level = new Level(this, this.robot);
+
             this.physics.arcade.enable(this.robot);
 
             this.robot.body.bounce.y = 0.2;
-            this.robot.body.gravity.y = 300;
+            this.robot.body.gravity.y = 500;
             this.robot.body.collideWorldBounds = true;
 
-            // Starting point in the air
-            this.inAir = true;
+            this._level.create();
         },
         update: function() {
-            //  Collide the player and the stars with the platforms
-            this.physics.arcade.collide(this.robot, this.platforms, function(){
-              // The player is landing
-              if(this.inAir){
-                this.sound_land.play('', 0, 5, false, false);
-              }
-            }, null, this);
-
-            // Determine whether the robot is in air.
-            if (this.robot.body.touching.down) {
-              this.inAir = false;
-            } else {
-              this.inAir = true;
-            }
+            this._level.update();
 
             if (Math.abs(this.robot.body.velocity.x) > 0 && this.robot.body.touching.down) {
-              this.sound_walk.play('', 0, 5, false, false);
+                this.sound_walk.play('', 0, 5, false, false);
             }
 
             var cursors = this.input.keyboard.createCursorKeys();
@@ -90,11 +60,10 @@ define(['Terminal', 'Phaser'], function (Terminal, Phaser) {
             } else {
                 this.robot.animations.stop();
                 this.robot.frame = 4;
-                // stand still
             }
 
             if (cursors.up.isDown && this.robot.body.touching.down) {
-                this.robot.body.velocity.y = -150;
+                this.robot.body.velocity.y = -320;
                 this.sound_jump.play();
             }
         }
