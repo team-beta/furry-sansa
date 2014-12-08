@@ -16,6 +16,7 @@ define([], function () {
             this.load.audio('music_dododo', 'sound/dododo.ogg');
             this.load.image('grass_block', 'assets/grass_block-32.png');
             this.load.image('robot', 'assets/robot.png');
+            this.load.image('background', 'assets/sky-1600.png');
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);
         },
         create: function() {
