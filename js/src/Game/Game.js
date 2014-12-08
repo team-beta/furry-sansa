@@ -6,6 +6,7 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
         sound_walk: null,
         sound_land: null,
         inAir: null,
+        music_dododo: null,
         init: function() {
         },
         preload: function() {
@@ -16,6 +17,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this.sound_jump = this.add.audio('sound_jump');
             this.sound_land = this.add.audio('sound_land');
             this.sound_walk = this.add.audio('sound_walk');
+            this.music_dododo = this.add.audio('music_dododo');
+            this.music_dododo.play('', 0, 1, true, true);
 
             this.physics.startSystem(Phaser.Physics.ARCADE);
 
