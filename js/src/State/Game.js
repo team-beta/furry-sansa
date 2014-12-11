@@ -7,6 +7,7 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
         sound_land: null,
         inAir: null,
         music_dododo: null,
+        main: null,
         init: function() {
         },
         preload: function() {
@@ -65,6 +66,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this._level.create();
         },
         update: function() {
+            // basically, call the update on the true game object
+            this.main.update();
             // Update the levle
             this._level.update();
 
