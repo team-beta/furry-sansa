@@ -45,7 +45,7 @@ function (Terminal, Phaser, Robot, Level) {
             // Initiate terminal
             var term = new Terminal();
 
-            this.robot = new Robot(this.game);
+            this.robot = new Robot(this);
 
             // Create the level
             this._level = new Level(this, this.robot);

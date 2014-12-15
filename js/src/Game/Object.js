@@ -1,6 +1,7 @@
 define([], function () {
-    var GameObject = function(game, sprite) {
-        this.game = game;
+    var GameObject = function(main, sprite) {
+        this.main = main;
+        this.game = main.game;
         this.sprite = sprite || null;
     }
 

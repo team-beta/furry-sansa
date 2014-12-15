@@ -1,7 +1,7 @@
 define(['Game/Object'], function (GameObject) {
-    var Robot = function(game) {
+    var Robot = function(main) {
         this._base = GameObject;
-        this._base(game);
+        this._base(main);
 
         this.sprite = this.game.add.sprite(128, 0, 'robots');
         this.sprite.frame = 4;
@@ -63,7 +63,7 @@ define(['Game/Object'], function (GameObject) {
         // If the sprite is on the ground, allow to jump
         if (cursors.up.isDown && this.sprite.body.touching.down) {
             this.sprite.body.velocity.y = -500;
-            this.sound_jump.play();
+            this.main.sound_jump.play();
         }
     }
 
