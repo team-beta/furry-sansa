@@ -8,6 +8,7 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
         sound_land_metal: null,
         inAir: null,
         music_dododo: null,
+        main: null,
         init: function() {
         },
         preload: function() {
@@ -18,6 +19,7 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
 
             // Add sounds
             this.sound_jump = this.add.audio('sound_jump');
+            this.sound_land = this.add.audio('sound_land');
             this.sound_walk = this.add.audio('sound_walk');
             this.sound_land_dirt = this.add.audio('sound_land_dirt');
             this.sound_land_metal = this.add.audio('sound_land_metal');
@@ -67,6 +69,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this._level.create();
         },
         update: function() {
+            // basically, call the update on the true game object
+            this.main.update();
             // Update the levle
             this._level.update();
 
