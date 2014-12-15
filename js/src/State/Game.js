@@ -18,7 +18,7 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
 
             // Add sounds
             this.sound_jump = this.add.audio('sound_jump');
-            this.sound_land = this.add.audio('sound_land');
+            this.sound_land = this.add.audio('sound_land_metal');
             this.sound_walk = this.add.audio('sound_walk');
 
             // Add music

@@ -9,7 +9,8 @@ define([], function () {
             this.loaderEmpty = this.add.sprite(this.camera.width/2 - (365/2), this.camera.height/2 - (49/2), 'preload_empty');
             this.preloadBar = this.add.sprite(this.camera.width/2 - (365/2), this.camera.height/2 - (49/2), 'preload_full');
             this.load.setPreloadSprite(this.preloadBar);
-            this.load.audio('sound_land', 'sound/land.ogg');
+			this.load.audio('sound_land_dirt', 'sound/land_dirt.ogg');
+            this.load.audio('sound_land_metal', 'sound/land_metal.ogg');
             this.load.audio('sound_walk', 'sound/walk.ogg');
             this.load.audio('sound_coin', 'sound/coin.ogg');
             this.load.audio('sound_jump', 'sound/jump.ogg');
