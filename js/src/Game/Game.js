@@ -4,7 +4,8 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
         robot: null,
         sound_jump: null,
         sound_walk: null,
-        sound_land: null,
+        sound_land_dirt: null,
+        sound_land_metal: null,
         inAir: null,
         music_dododo: null,
         init: function() {
@@ -17,8 +18,9 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
 
             // Add sounds
             this.sound_jump = this.add.audio('sound_jump');
-            this.sound_land = this.add.audio('sound_land');
             this.sound_walk = this.add.audio('sound_walk');
+            this.sound_land_dirt = this.add.audio('sound_land_dirt');
+            this.sound_land_metal = this.add.audio('sound_land_metal');
 
             // Add music
             this.music_dododo = this.add.audio('music_dododo');

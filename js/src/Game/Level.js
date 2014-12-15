@@ -31,7 +31,7 @@ define([], function () {
         this.game.physics.arcade.collide(this.robot, this.platforms, function() {
             // The player is landing
             if (this.inAir){
-                this.game.sound_land.play('', 0, 5, false, false);
+                this.game.sound_land_dirt.play('', 0, 5, false, false);
             }
         }, null, this)
 
