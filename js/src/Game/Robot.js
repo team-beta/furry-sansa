@@ -22,6 +22,10 @@ define(['Game/Object'], function (GameObject) {
     // extend GameObject
     Robot.prototype = GameObject;
 
+    Robot.prototype.collide = function(obj2, collideCallback, processCallback, callbackContext) {
+        this.game.physics.arcade.collide(this.sprite, obj2, collideCallback, processCallback, callbackContext);
+    }
+
     Robot.prototype.update = function() {
         // Create the cursor keys
         var cursors = this.game.input.keyboard.createCursorKeys();

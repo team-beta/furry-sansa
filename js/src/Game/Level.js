@@ -28,7 +28,7 @@ define([], function () {
     }
 
     Level.prototype.update = function() {
-        this.game.physics.arcade.collide(this.robot.sprite, this.platforms, function() {
+        this.robot.collide(this.platforms, function() {
             // The player is landing
             if (this.inAir){
                 this.game.sound_land_dirt.play('', 0, 5, false, false);
