@@ -1,4 +1,5 @@
-define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) {
+define(['Terminal', 'Phaser', 'Game/Robot', 'Game/Level'],
+function (Terminal, Phaser, Robot, Level) {
     return {
         platforms: null,
         robot: null,
@@ -41,26 +42,10 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             // Initiate terminal
             var term = new Terminal();
 
-            // Create the robot and its animations
-            this.robot = this.add.sprite(128, 0, 'robots');
-            this.robot.frame = 4;
-            this.robot.animations.add('left', [0, 1, 2, 3], 10, true);
-            this.robot.animations.add('right', [5, 6, 7, 8], 10, true);
-            this.robot.animations.add('up', [9], 10, true);
-            this.robot.animations.add('left_jump', [10], 10, true);
-            this.robot.animations.add('right_jump', [11], 10, true);
+            this.robot = new Robot(this.game);
 
             // Create the level
             this._level = new Level(this, this.robot);
-
-            // Allow physics for the robot
-            this.physics.arcade.enable(this.robot);
-
-            // Set gravity
-            this.robot.body.gravity.y = 1500;
-
-            // Make the screen the border
-            this.robot.body.collideWorldBounds = true;
 
             // Create the level
             this._level.create();
@@ -72,49 +57,12 @@ define(['Terminal', 'Phaser', 'Game/Level'], function (Terminal, Phaser, Level) 
             this._level.update();
 
             // Play the walk-sound sound if the robot is moving on the ground
-            if (Math.abs(this.robot.body.velocity.x) > 0 && this.robot.body.touching.down) {
+            if (Math.abs(this.robot.sprite.body.velocity.x) > 0 && this.robot.sprite.body.touching.down) {
                 this.sound_walk.play('', 0, 5, false, false);
             }
 
-            // Create the cursor keys
-            var cursors = this.input.keyboard.createCursorKeys();
+            this.robot.update();
 
-            // First, reset velocity
-            this.robot.body.velocity.x = 0;
-
-            // Key left
-            if (cursors.left.isDown) {
-                this.robot.body.velocity.x = -320;
-                if(!this.robot.body.touching.down){
-                    this.robot.animations.play('left_jump');
-                }else{
-                    this.robot.animations.play('left');
-                }
-
-            // Key right
-            } else if (cursors.right.isDown) {
-                this.robot.body.velocity.x = 320;
-                if(!this.robot.body.touching.down){
-                    this.robot.animations.play('right_jump');
-                }else{
-                    this.robot.animations.play('right');
-                }
-
-            // Key down
-            } else if (cursors.up.isDown || !this.robot.body.touching.down) {
-                this.robot.animations.play('up');
-
-            // No key
-            } else {
-                this.robot.animations.stop();
-                this.robot.frame = 4;
-            }
-
-            // If the robot is on the ground, allow to jump
-            if (cursors.up.isDown && this.robot.body.touching.down) {
-                this.robot.body.velocity.y = -500;
-                this.sound_jump.play();
-            }
         }
     };
 });
