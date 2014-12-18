@@ -1,7 +1,8 @@
 define([], function () {
-    var Level = function(game, robot) {
-        this.game = game;
-        this.robot = robot;
+    var Level = function(main) {
+        this.main = main;
+        this.game = main.game;
+        this.robot = main.robot;
 
         // Starting point in the air
         this.inAir = true;
@@ -31,7 +32,7 @@ define([], function () {
         this.robot.collide(this.platforms, function() {
             // The player is landing
             if (this.inAir){
-                this.game.sound_land_dirt.play('', 0, 5, false, false);
+                this.main.sound_land_dirt.play('', 0, 5, false, false);
             }
         }, null, this)
 
