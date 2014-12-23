@@ -11,29 +11,40 @@ define([], function () {
         }
     }
 
+    Level.prototype.createBlock = function (
+        platform, x, y, width, height, spriteName) {
+
+            // Create block
+            var block = this.game.add.tileSprite(
+                x, y, width, height, spriteName, null, platform
+            );
+
+            // Make block immovable
+            block.body.immovable = true;
+        }
+
+    Level.prototype.createPlatform = function(x, y, width, height, spriteName) {
+        // Create a group
+        var result = this.game.add.group();
+
+        // Make block solid
+        result.enableBody = true;
+
+        // Create the block
+        this.createBlock(
+            result, x, y, width, height, spriteName
+        )
+
+        // Return the result :D
+        return result;
+    }
+
     Level.prototype.create = function() {
-        // this.platforms = this.game.add.group();
-        //
-        // // load platforms
-        // this.platforms.enableBody = true;
-
-        // create the ground
-        this.metalPlatform = this.game.add.group();
-        this.metalPlatform.enableBody = true;
-        var metal = this.game.add.tileSprite(0, this.game.world.height - 32, this.game.world.width, 32, this.main.metalBlock.spriteName, null, this.metalPlatform);
-        metal.body.immovable = true;
-
-        // create other platforms
-        this.dirtPlatform = this.game.add.group();
-        this.dirtPlatform.enableBody = true;
-        var dirt = this.game.add.tileSprite(0, this.game.world.height - 400, this.game.world.width - 400, 32, this.main.grassBlock.spriteName, null, this.dirtPlatform);
-        dirt.body.immovable = true;
-
-        // TODO: load this from a file instead
-
-        // solid/unsolid block
-        // this.block = this.game.add.sprite(8* 32, 22*32, 'solid_block', null, this.platforms);
-        // this.block.body.immovable = false;
+        // Create platforms
+        this.dirtPlatform = this.createPlatform(0, this.game.world.height - 32,
+            this.game.world.width, 32, this.main.grassBlock.spriteName);
+        this.metalPlatform = this.createPlatform(0, this.game.world.height - 400,
+            this.game.world.width - 400, 32, this.main.metalBlock.spriteName);
     }
 
     Level.prototype.setAirStatus = function(position) {
@@ -46,6 +57,7 @@ define([], function () {
             }
         })
     }
+
 
     Level.prototype.update = function() {
         this.robot.collide(this.metalPlatform, function() {
