@@ -27,7 +27,7 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
             land : this.game.add.audio('sound_land_dirt'),
             walk : this.game.add.audio('sound_walk_dirt'),
             sprite : this.game.add.sprite('grass_block'),
-            spriteName : "grass_block",
+            blockName : "grass_block",
         }
 
         // Creating a metal block
@@ -35,7 +35,7 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
             land : this.game.add.audio('sound_land_metal'),
             walk : this.game.add.audio('sound_walk_metal'),
             sprite : this.game.add.sprite('metal_block'),
-            spriteName : "metal_block",
+            blockName : "metal_block",
         }
 
         // Add music
@@ -73,13 +73,8 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
 
         // Play the walk-sound sound if the robot is moving on the ground
         if (Math.abs(this.robot.sprite.body.velocity.x) > 0 && this.robot.sprite.body.touching.down) {
-            // this.sound_walk.play('', 0, 5, false, false);
-            if (this.level.airStatus.onDirt) {
-                this.grassBlock['walk'].play('', 0, 5, false, false);
-            }
-            if (this.level.airStatus.onMetal) {
-                this.metalBlock['walk'].play('', 0, 5, false, false);
-            }
+            this.level.metalPlatform.walk();
+            this.level.dirtPlatform.walk();
         }
 
         this.robot.update();
