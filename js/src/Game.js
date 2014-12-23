@@ -1,5 +1,6 @@
 define(['Terminal', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/Level'],
 function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
+
     var Game = function(phgame) {
         this.game = phgame;
 
@@ -20,10 +21,22 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
 
         // Add sounds
         this.sound_jump = this.game.add.audio('sound_jump');
-        this.sound_land = this.game.add.audio('sound_land');
-        this.sound_walk = this.game.add.audio('sound_walk');
-        this.sound_land_dirt = this.game.add.audio('sound_land_dirt');
-        this.sound_land_metal = this.game.add.audio('sound_land_metal');
+
+        // Creating a grass block
+        this.grassBlock = {
+            land : this.game.add.audio('sound_land_dirt'),
+            walk : this.game.add.audio('sound_walk_dirt'),
+            sprite : this.game.add.sprite('grass_block'),
+            spriteName : "grass_block",
+        }
+
+        // Creating a metal block
+        this.metalBlock = {
+            land : this.game.add.audio('sound_land_metal'),
+            walk : this.game.add.audio('sound_walk_metal'),
+            sprite : this.game.add.sprite('metal_block'),
+            spriteName : "metal_block",
+        }
 
         // Add music
         this.music_dododo = this.game.add.audio('music_dododo');
@@ -60,7 +73,13 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
 
         // Play the walk-sound sound if the robot is moving on the ground
         if (Math.abs(this.robot.sprite.body.velocity.x) > 0 && this.robot.sprite.body.touching.down) {
-            this.sound_walk.play('', 0, 5, false, false);
+            // this.sound_walk.play('', 0, 5, false, false);
+            if (this.level.airStatus.onDirt) {
+                this.grassBlock['walk'].play('', 0, 5, false, false);
+            }
+            if (this.level.airStatus.onMetal) {
+                this.metalBlock['walk'].play('', 0, 5, false, false);
+            }
         }
 
         this.robot.update();
