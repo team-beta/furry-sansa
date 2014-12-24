@@ -7,6 +7,8 @@ define([], function () {
         this.airStatus = {
             'inAir': true,
         }
+
+        this.collisionBlocks = []
     }
 
     Level.prototype.createBlock = function (
@@ -45,20 +47,52 @@ define([], function () {
 
         // Add walking sound
         result.walk = function() {
-            if (level.airStatus[block.blockName]) {
+            if (level.airStatus[block.blockName] && Math.abs(level.robot.sprite.body.velocity.x) > 0) {
                 block.walk.play('', 0, 5, false, false);
             }
         }
+
+        this.collisionBlocks.push(result);
 
         return result;
     }
 
     Level.prototype.create = function() {
+        var tile = 32;
+        var height = this.game.world.height;
+        var width = this.game.world.width;
+
         // Create platforms
-        this.dirtPlatform = this.createPlatform(0, this.game.world.height - 32,
-            this.game.world.width, 32, this.main.grassBlock);
-        this.metalPlatform = this.createPlatform(0, this.game.world.height - 400,
-            this.game.world.width - 400, 32, this.main.metalBlock);
+        this.createPlatform(0, height - tile, width, tile, this.main.grassBlock);
+        this.createPlatform(width - 16*tile, height - 14*tile, 2*tile, tile, this.main.grassBlock);
+
+        // Path down
+        this.createPlatform(width - 12*tile, height - 12*tile, 2*tile, tile, this.main.grassBlock);
+        this.createPlatform(width - 14*tile, height - 10*tile, 2*tile, tile, this.main.metalBlock);
+        this.createPlatform(width - 18*tile, height - 8*tile, 2*tile, tile, this.main.metalBlock);
+
+        this.createPlatform(width - 14*tile, height - 6*tile, 2*tile, tile, this.main.grassBlock);
+        this.createPlatform(width - 12*tile, height - 4*tile, 2*tile, tile, this.main.metalBlock);
+        this.createPlatform(width - 8*tile, height - 2*tile, 2*tile, tile, this.main.grassBlock);
+
+        this.createPlatform(0, height - 16*tile, width - 16*tile, tile, this.main.metalBlock);
+
+        // Add sprites
+        this.game.add.sprite(0, height - 20*tile, 'crane');
+        this.game.add.sprite(5*tile, height - 5*tile, 'tree');
+        this.game.add.sprite(5*tile, height - 20*tile, 'tree');
+        this.game.add.sprite(8*tile, height - 20*tile, 'tree');
+        this.game.add.sprite(11*tile, height - 20*tile, 'tree');
+        this.game.add.sprite(22*tile, height - 5*tile, 'rainbow')
+        // Add solid objects
+        this.walls = this.game.add.group();
+        this.walls.enableBody = true;
+        this.game.add.sprite(width - 4*tile, height - 5*tile, 'building_1', 0, this.walls);
+        this.game.add.sprite(4*tile, height - 5*tile, 'building_1', 0, this.walls)
+        this.game.add.sprite(8*tile, height - 9*tile, 'building_2', 0, this.walls)
+        this.game.add.sprite(8*tile, height - 5*tile, 'building_3', 0, this.walls)
+        this.game.add.sprite(25*tile, height - 5*tile, 'building_3', 0, this.walls)
+        this.walls.setAll('body.immovable', true);
     }
 
     Level.prototype.setAirStatus = function(position) {
@@ -80,12 +114,17 @@ define([], function () {
 
 
     Level.prototype.update = function() {
-        this.robot.collide(this.metalPlatform, function() {
-            this.metalPlatform.land()
-        }, null, this)
+        // Determine collision for all platforms.
+        var level = this;
+        this.collisionBlocks.forEach(function(elem){
+            level.robot.collide(elem, function() {
+                elem.land();
+                elem.walk();
+            }, null, this)
+        })
 
-        this.robot.collide(this.dirtPlatform, function() {
-            this.dirtPlatform.land()
+        level.robot.collide(this.walls, function() {
+            console.log("collision!")
         }, null, this)
 
         // Determine whether the robot is in air.

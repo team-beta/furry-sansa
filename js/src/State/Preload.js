@@ -20,10 +20,17 @@ define([], function () {
             this.load.audio('music_dododo', 'sound/dododo.ogg');
 
             // Images
-            this.load.image('grass_block', 'assets/grass_block.png');
+            this.load.image('grass_block', 'assets/src/block_grass.png');
             this.load.image('robot', 'assets/robot.png');
-            this.load.image('background', 'assets/sky-1600.png');
-            this.load.image('metal_block', 'assets/factory_block.png')
+            this.load.image('background', 'assets/src/sky.png');
+            this.load.image('metal_block', 'assets/src/block_metal.png')
+            this.load.image('crane', 'assets/src/crane.png')
+            this.load.image('tree', 'assets/src/tree.png')
+            this.load.image('rainbow', 'assets/src/rainbow.png')
+            this.load.image('building_1', 'assets/src/building_1.png')
+            this.load.image('building_2', 'assets/src/building_2.png')
+            this.load.image('building_3', 'assets/src/building_3.png')
+            this.load.image('tower', 'assets/src/tower.png')
 
             // Spritesheets
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);

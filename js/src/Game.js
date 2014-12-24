@@ -17,7 +17,7 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
 
     Game.prototype.create = function() {
         // Draw the background
-        this.game.add.sprite(0, 0, 'background');
+        this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'background');
 
         // Add sounds
         this.sound_jump = this.game.add.audio('sound_jump');
@@ -37,6 +37,7 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
             sprite : this.game.add.sprite('metal_block'),
             blockName : "metal_block",
         }
+
 
         // Add music
         this.music_dododo = this.game.add.audio('music_dododo');
@@ -70,13 +71,6 @@ function (Terminal, Phaser, boot, preload, gm, Robot, Level) {
     Game.prototype.update = function() {
         // Update the level
         this.level.update();
-
-        // Play the walk-sound sound if the robot is moving on the ground
-        if (Math.abs(this.robot.sprite.body.velocity.x) > 0 && this.robot.sprite.body.touching.down) {
-            this.level.metalPlatform.walk();
-            this.level.dirtPlatform.walk();
-        }
-
         this.robot.update();
     }
 
