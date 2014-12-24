@@ -79,7 +79,7 @@ define([], function () {
 
         // Add sprites
         this.game.add.sprite(0, height - 20*tile, 'crane');
-        this.game.add.sprite(5*tile, height - 5*tile, 'tree');
+        this.game.add.sprite(6*tile, height - 5*tile, 'tree');
         this.game.add.sprite(5*tile, height - 20*tile, 'tree');
         this.game.add.sprite(8*tile, height - 20*tile, 'tree');
         this.game.add.sprite(11*tile, height - 20*tile, 'tree');
@@ -89,8 +89,8 @@ define([], function () {
         this.walls.enableBody = true;
         this.game.add.sprite(width - 4*tile, height - 5*tile, 'building_1', 0, this.walls);
         this.game.add.sprite(4*tile, height - 5*tile, 'building_1', 0, this.walls)
-        this.game.add.sprite(8*tile, height - 9*tile, 'building_2', 0, this.walls)
-        this.game.add.sprite(8*tile, height - 5*tile, 'building_3', 0, this.walls)
+        this.game.add.sprite(10*tile, height - 5*tile, 'building_3', 0, this.walls)
+        this.game.add.sprite(9*tile, height - 9*tile, 'building_2', 0, this.walls)
         this.game.add.sprite(25*tile, height - 5*tile, 'building_3', 0, this.walls)
         this.walls.setAll('body.immovable', true);
     }
