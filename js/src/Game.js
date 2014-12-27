@@ -54,6 +54,9 @@ function ($, Terminal, Phaser, boot, preload, gm, Robot, API, L11, L12) {
             blockName : "metal_block",
         }
 
+        this.sound_walk_concrete = this.game.add.audio('sound_walk_concrete')
+        this.sound_land_concrete = this.game.add.audio('sound_land_concrete')
+
         // Add music
         this.music_dododo = this.game.add.audio('music_dododo');
         this.music_dododo.play('', 0, 1, true, true);

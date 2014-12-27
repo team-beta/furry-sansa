@@ -106,7 +106,15 @@ define([], function () {
         })
 
         api.robot.collide(this.solid, function() {
+            if (api.airStatus.inAir){
+                this.main.sound_land_concrete.play('', 0, 5, false, false);
+                api.screenshake("canvas", 0.1);
+            }
+            api.setAirStatus("solid");
 
+            if (api.airStatus['solid'] && Math.abs(api.robot.sprite.body.velocity.x) > 0) {
+                this.main.sound_walk_concrete.play('', 0, 5, false, false);
+            }
         }, null, this)
 
         // Determine whether the robot is in air.
