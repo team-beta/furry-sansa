@@ -13,6 +13,16 @@ define([], function () {
         this.collisionBlocks = []
     }
 
+    API.prototype.screenshake = function(target, shakes) {
+        var shake = 200;
+
+        $(target).removeClass("shake");
+        $(target).addClass("shake");
+        setTimeout(function(){
+            $(target).removeClass("shake");
+        }, shake * shakes);
+    }
+
     API.prototype.addSolid = function (width, height, sprite) {
         this.game.add.sprite(width, height, sprite, 5, this.solid);
         this.solid.setAll('body.immovable', true);
@@ -48,6 +58,7 @@ define([], function () {
         result.land = function() {
             if (API.airStatus.inAir){
                 block.land.play('', 0, 5, false, false);
+                API.screenshake("canvas", 0.1);
             }
             API.setAirStatus(block.blockName);
         }

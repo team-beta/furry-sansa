@@ -7,7 +7,19 @@ define(['jquery', 'jquery-terminal'], function ($) {
             prompt: '>> ',
             self: this
         });
+
+        this.terminal = this;
         $('#term').show();
+    }
+
+    Terminal.prototype.screenshake = function(target, shakes) {
+        var shake = 200;
+
+        $(target).removeClass("shake");
+        $(target).addClass("shake");
+        setTimeout(function(){
+            $(target).removeClass("shake");
+        }, shake * shakes);
     }
 
     Terminal.prototype.open = function(sprite) {
@@ -32,6 +44,10 @@ define(['jquery', 'jquery-terminal'], function ($) {
                     term.echo(new String(result));
                 }
             } catch(e) {
+
+
+                Terminal.prototype.screenshake("#term", 1)
+
                 term.error(new String(e));
             }
         } else {
