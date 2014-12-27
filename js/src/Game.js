@@ -83,6 +83,7 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
 
         this.robot = new Robot(this);
         this.api.robot = this.robot;
+        this.library.robot = this.robot;
 
         // Foreground layer
         this.fgLayer = new L12(this)

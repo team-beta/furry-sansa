@@ -18,12 +18,43 @@ define(['Game/Object'], function (GameObject) {
         this.sprite.body.gravity.y = 1500;
         this.sprite.body.collideWorldBounds = true;
 
+        this.dancing = false;
+
     }
     // extend GameObject
     Robot.prototype = GameObject;
 
     Robot.prototype.collide = function(obj2, collideCallback, processCallback, callbackContext) {
         this.game.physics.arcade.collide(this.sprite, obj2, collideCallback, processCallback, callbackContext);
+    }
+
+    Robot.prototype.dance = function() {
+        this.sprite.destroy();
+        this.dancing = true;
+        var x = this.sprite.position.x;
+        var y = this.sprite.position.y;
+        this.sprite = this.game.add.sprite(x, y, 'dancer');
+        this.sprite.frame = 2;
+        this.sprite.animations.add('dance', [0,1,2,3,4,3,2,1], 10, true);
+        this.game.physics.arcade.enable(this.sprite);
+        this.sprite.body.gravity.y = 1500;
+        this.sprite.body.collideWorldBounds = true;
+    }
+    Robot.prototype.stopDancing = function() {
+        this.sprite.destroy();
+        this.dancing = false;
+        var x = this.sprite.position.x;
+        var y = this.sprite.position.y;
+        this.sprite = this.game.add.sprite(x, y, 'robots');
+        this.sprite.frame = 4;
+        this.sprite.animations.add('left', [0, 1, 2, 3], 10, true);
+        this.sprite.animations.add('right', [5, 6, 7, 8], 10, true);
+        this.sprite.animations.add('up', [9], 10, true);
+        this.sprite.animations.add('left_jump', [10], 10, true);
+        this.sprite.animations.add('right_jump', [11], 10, true);
+        this.game.physics.arcade.enable(this.sprite);
+        this.sprite.body.gravity.y = 1500;
+        this.sprite.body.collideWorldBounds = true;
     }
 
     Robot.prototype.update = function() {
@@ -56,8 +87,12 @@ define(['Game/Object'], function (GameObject) {
 
             // No key
         } else {
-            this.sprite.animations.stop();
-            this.sprite.frame = 4;
+            if (!this.dancing) {
+                this.sprite.animations.stop();
+                this.sprite.frame = 4;
+            } else {
+                this.sprite.animations.play('dance');
+            }
         }
 
         // If the sprite is on the ground, allow to jump
