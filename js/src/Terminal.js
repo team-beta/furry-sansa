@@ -36,7 +36,9 @@ define(['jquery', 'jquery-terminal'], function ($) {
         $('#term').hide();
     }
 
+
     Terminal.prototype.handleCommand = function(command, term) {
+
         if (command !== '') {
             try {
                 var result = window.eval(command);

@@ -1,5 +1,5 @@
-define(['jquery', 'Terminal', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2'],
-function ($, Terminal, Phaser, boot, preload, gm, Robot, API, L11, L12) {
+define(['jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2'],
+function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
 
     var Game = function(phgame) {
 
@@ -10,20 +10,19 @@ function ($, Terminal, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         this.game.state.add('Preload', preload);
         this.game.state.add('Game', gm);
         this.game.state.start('Boot');
+
+        // The library is accessible by the player
+        this.library = new Code(this);
     }
 
-    Game.prototype.screenShake = function(shakes) {
-        if(this.game.time.now - this.shakedAt < 200) {
-            return;
-        }
-        this.shakedAt = this.game.time.now;
-        this.screenShakes = shakes;
+    Game.prototype.mute = function() {
 
-        // console.log(window)
-        if (window.navigator && window.navigator.vibrate) {
-            navigator.vibrate(shakes*10);
+        if (this.music_dododo.isPlaying) {
+            this.music_dododo.pause();
+        } else {
+            this.music_dododo.resume();
         }
-    };
+    }
 
     Game.prototype.create = function() {
         // Set bounds

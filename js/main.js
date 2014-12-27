@@ -10,10 +10,16 @@ requirejs.config({
     }
 });
 
+// The object that will be accessible
+var world = null;
+
 require(['Phaser', 'Game'],
 function(Phaser, Game) {
     var parent = document.getElementById('game');
     var gm = new Game(
         new Phaser.Game("100%", "100%", Phaser.AUTO, parent)
     );
+
+    // Make the object accessible from outside.
+    world = gm.library;
 });
