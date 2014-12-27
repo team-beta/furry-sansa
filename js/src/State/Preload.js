@@ -38,6 +38,7 @@ define([], function () {
             this.load.image('tree_bg', 'assets/src/tree_bg.png')
 
             // Spritesheets
+            this.load.spritesheet('dancer', 'assets/robot_dancer.png', 55, 64);
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);
             this.load.spritesheet('solid_block', 'assets/blocks.png', 32, 32);
         },
