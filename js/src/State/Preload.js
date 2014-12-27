@@ -31,6 +31,7 @@ define([], function () {
             this.load.image('building_2', 'assets/src/building_2.png')
             this.load.image('building_3', 'assets/src/building_3.png')
             this.load.image('tower', 'assets/src/tower.png')
+            this.load.image('tree_bg', 'assets/src/tree_bg.png')
 
             // Spritesheets
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);
