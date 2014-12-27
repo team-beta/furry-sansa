@@ -13,6 +13,9 @@ function (Terminal, Phaser, boot, preload, gm, Robot, API, L11, L12) {
     }
 
     Game.prototype.create = function() {
+        // Set bounds
+        this.game.world.setBounds(0, 0, 1600, 900);
+
         // Draw the background
         this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'background');
 
@@ -68,13 +71,14 @@ function (Terminal, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         // Foreground layer
         this.fgLayer = new L12(this)
         this.fgLayer.create();
+
+        // Follow the robot
+        this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
+
     }
 
     Game.prototype.update = function() {
         // Update the level
-        // console.log(this.api);
-        // throw new Error("Something went badly wrong!");
-
         this.api.update(this.api);
         this.robot.update();
     }

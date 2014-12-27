@@ -35,7 +35,7 @@ define([], function () {
         this.API.addSolid(0, height - 20 * tile, 'crane');
         this.API.addSolid(4 * tile, height - 5 * tile, 'building_1');
         this.API.addSolid(10 * tile, height - 5 * tile, 'building_3');
-        this.API.addSolid(9 * tile, height - 5 * tile, 'building_2');
+        this.API.addSolid(9 * tile, height - 9 * tile, 'building_2');
         this.API.addSolid(25 * tile, height - 5*tile, 'building_3');
     }
 

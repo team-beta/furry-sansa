@@ -12,7 +12,8 @@ requirejs.config({
 
 require(['Phaser', 'Game'],
 function(Phaser, Game) {
+    var parent = document.getElementById('game');
     var gm = new Game(
-        new Phaser.Game("100%", "100%", Phaser.AUTO, '')
+        new Phaser.Game("100%", "100%", Phaser.AUTO, parent)
     );
 });

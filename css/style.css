@@ -1,0 +1,45 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+canvas {
+    position: absolute;
+    margin: 0;
+}
+
+.main {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 20%;
+    background-color: #333;
+}
+
+#game {
+    width: 100%;
+    height: 80%;
+    background-color: #000;
+}
+
+#term {
+    background-color: #222;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+#term .cmd {
+    background-color: #333;
+    width: 100% !important;
+    margin-left: 0px;
+}
+
+#term .cmd .prompt {
+
+}

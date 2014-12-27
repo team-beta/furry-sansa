@@ -3,29 +3,17 @@
     <head>
         <meta charset="utf-8"/>
         <title>Furry Sansa</title>
-        <script data-main="js/main" src="js/vendor/require.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/jquery.terminal.css">
-        <style>
-            html, body {
-                margin: 0;
-                padding: 0;
-            }
-            canvas {
-                position: absolute;
-                margin: 0;
-            }
-            #term {
-                position: absolute;
-                z-index: 10;
-                background: orange;
-                width: 320px;
-                height: 200px;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="css/jquery.terminal.css"/>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
-        <div style="position: absolute; margin-left: 0px; margin-top: 0;" id="main">
-            <div id="term" style="display: none;"></div>
+        <div id="game">
+
         </div>
+        <div class="main">
+            <div id="term">
+            </div>
+        </div>
+        <script data-main="js/main" src="js/vendor/require.js"></script>
     </body>
 </html>
