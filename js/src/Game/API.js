@@ -6,6 +6,14 @@ define([], function () {
         this.solid = this.game.add.group();
         this.solid.enableBody = true;
 
+        this.emitter = this.game.add.emitter(0, 0, 50);
+        this.emitter.setAlpha(0.3, 0.8)
+
+        // this.particle_dust = this.game.sprite.add('particle_dust')
+        this.emitter.makeParticles('particle_dust');
+        this.emitter.gravity = 500;
+
+
         this.airStatus = {
             'inAir': true,
         }
@@ -40,6 +48,19 @@ define([], function () {
             block.body.immovable = true;
         }
 
+    API.prototype.makeDust = function () {
+        var API = this;
+
+        API.emitter.x = API.main.robot.sprite.x;
+        if (API.main.robot.sprite.body.touching.down) {
+            API.emitter.y = API.main.robot.sprite.y + API.main.robot.sprite.height;
+            API.emitter.start(true, 2000, null, 5);
+        } else if (API.main.robot.sprite.body.touching.up) {
+            API.emitter.y = API.main.robot.sprite.y;
+            API.emitter.start(true, 2000, null, 5);
+        }
+    }
+
     API.prototype.createPlatform = function(x, y, width, height, block) {
         var API = this;
 
@@ -59,6 +80,7 @@ define([], function () {
             if (API.airStatus.inAir){
                 block.land.play('', 0, 5, false, false);
                 API.screenshake("canvas", 0.1);
+                API.makeDust();
             }
             API.setAirStatus(block.blockName);
         }
@@ -109,6 +131,7 @@ define([], function () {
             if (api.airStatus.inAir){
                 this.main.sound_land_concrete.play('', 0, 5, false, false);
                 api.screenshake("canvas", 0.1);
+                api.makeDust();
             }
             api.setAirStatus("solid");
 
@@ -116,6 +139,7 @@ define([], function () {
                 this.main.sound_walk_concrete.play('', 0, 5, false, false);
             }
         }, null, this)
+
 
         // Determine whether the robot is in air.
         if (!api.robot.sprite.body.touching.down) {
