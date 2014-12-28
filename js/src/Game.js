@@ -60,17 +60,6 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         this.music_dododo = this.game.add.audio('music_dododo');
         this.music_dododo.play('', 0, 1, true, true);
 
-        // Creating hotkeys blocks the terminal from using these characters.
-        // Create hotkey to mute sound
-        // this.key_m = this.game.input.keyboard.addKey(Phaser.Keyboard.M);
-        // this.key_m.onDown.add(function(){
-        //     if (this.music_dododo.isPlaying) {
-        //         this.music_dododo.pause();
-        //     } else {
-        //         this.music_dododo.resume();
-        //     }
-        // }, this);
-
         // Start physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -91,7 +80,6 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
 
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
-
 
     }
 

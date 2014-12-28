@@ -37,6 +37,19 @@ define(['Game/Object'], function (GameObject) {
         this.dancing = false;
     }
 
+    // Works in Chrome, but not in Firefox.
+    Robot.prototype.speak = function(sentence) {
+        try {
+            var toSpeak = new SpeechSynthesisUtterance(sentence);
+            var voices = window.speechSynthesis.getVoices();
+            toSpeak.voice = voices[1];
+            toSpeak.lang = "en-UK";
+            window.speechSynthesis.speak(toSpeak);
+        } catch(e) {
+            return "Sorry, your browser does not support the speach API.";
+        }
+    }
+
     Robot.prototype.update = function() {
         // Create the cursor keys
         var cursors = this.game.input.keyboard.createCursorKeys();
