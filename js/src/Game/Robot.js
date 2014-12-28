@@ -12,6 +12,8 @@ define(['Game/Object'], function (GameObject) {
         this.sprite.animations.add('up', [9], 10, true);
         this.sprite.animations.add('left_jump', [10], 10, true);
         this.sprite.animations.add('right_jump', [11], 10, true);
+        this.sprite.animations.add('dance', [10,10,4,4,11,11,4,4], 10, true);
+
 
         // enable physics
         this.game.physics.arcade.enable(this.sprite);
@@ -29,32 +31,10 @@ define(['Game/Object'], function (GameObject) {
     }
 
     Robot.prototype.dance = function() {
-        this.sprite.destroy();
         this.dancing = true;
-        var x = this.sprite.position.x;
-        var y = this.sprite.position.y;
-        this.sprite = this.game.add.sprite(x, y, 'dancer');
-        this.sprite.frame = 2;
-        this.sprite.animations.add('dance', [0,1,2,3,4,3,2,1], 10, true);
-        this.game.physics.arcade.enable(this.sprite);
-        this.sprite.body.gravity.y = 1500;
-        this.sprite.body.collideWorldBounds = true;
     }
     Robot.prototype.stopDancing = function() {
-        this.sprite.destroy();
         this.dancing = false;
-        var x = this.sprite.position.x;
-        var y = this.sprite.position.y;
-        this.sprite = this.game.add.sprite(x, y, 'robots');
-        this.sprite.frame = 4;
-        this.sprite.animations.add('left', [0, 1, 2, 3], 10, true);
-        this.sprite.animations.add('right', [5, 6, 7, 8], 10, true);
-        this.sprite.animations.add('up', [9], 10, true);
-        this.sprite.animations.add('left_jump', [10], 10, true);
-        this.sprite.animations.add('right_jump', [11], 10, true);
-        this.game.physics.arcade.enable(this.sprite);
-        this.sprite.body.gravity.y = 1500;
-        this.sprite.body.collideWorldBounds = true;
     }
 
     Robot.prototype.update = function() {
