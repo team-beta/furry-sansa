@@ -18,7 +18,7 @@ define([], function () {
             this.load.audio('sound_walk_dirt', 'sound/walk.ogg');
             this.load.audio('sound_walk_metal', 'sound/walk_metal.ogg');
             this.load.audio('sound_walk_concrete', 'sound/walk_concrete.ogg');
-            
+
             this.load.audio('sound_coin', 'sound/coin.ogg');
             this.load.audio('sound_jump', 'sound/jump.ogg');
             this.load.audio('music_dododo', 'sound/dododo.ogg');
@@ -38,7 +38,10 @@ define([], function () {
             this.load.image('tree_bg', 'assets/src/tree_bg.png')
 
             // Spritesheets
-            this.load.spritesheet('dancer', 'assets/robot_dancer.png', 55, 64);
+            this.load.spritesheet('dancer_red', 'assets/robot_dancer_red.png', 55, 64);
+            this.load.spritesheet('dancer_blue', 'assets/robot_dancer_blue.png', 55, 64);
+            this.load.spritesheet('dancer_green', 'assets/robot_dancer_green.png', 55, 64);
+            this.load.spritesheet('dancer_orange', 'assets/robot_dancer_orange.png', 55, 64);
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);
             this.load.spritesheet('solid_block', 'assets/blocks.png', 32, 32);
         },
