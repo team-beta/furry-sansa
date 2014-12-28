@@ -38,6 +38,10 @@ define([], function () {
             this.load.image('tree_bg', 'assets/src/tree_bg.png')
             this.load.image('particle_dust', 'assets/src/particle_dust.png')
 
+            // Snowflakes
+            this.game.load.spritesheet('snowflakes', 'assets/premade/snowflakes.png', 17, 17);
+            this.game.load.spritesheet('snowflakes_large', 'assets/premade/snowflakes_large.png', 64, 64);
+
             // Spritesheets
             this.load.spritesheet('dancer_red', 'assets/robot_dancer_red.png', 55, 64);
             this.load.spritesheet('dancer_blue', 'assets/robot_dancer_blue.png', 55, 64);
