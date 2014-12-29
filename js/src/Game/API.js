@@ -15,7 +15,7 @@ define([], function () {
         this.emitter.gravity = 200;
         this.emitter.width = 32;
         // this.emitter.setScale(0.1,1,0.1,1,0,Phaser.Easing.Linear.None,false);
-
+        this.intensity = 0;
 
         this.airStatus = {
             'inAir': true,
@@ -154,10 +154,12 @@ define([], function () {
         )
 
         // Add landing sound
-        result.land = function() {
+        result.land = function(intensity) {
             if (API.airStatus.inAir){
                 block.land.play('', 0, 5, false, false);
-                API.screenshake("canvas", 0.1);
+                var factor = Math.pow(intensity/500, 3);
+                console.log(factor)
+                API.screenshake("canvas", 0.1 * factor);
                 API.makeDust();
             }
             API.setAirStatus(block.blockName);
@@ -200,7 +202,7 @@ define([], function () {
         // Determine collision for all platforms.
         api.collisionBlocks.forEach(function(elem){
             api.robot.collide(elem, function() {
-                elem.land();
+                elem.land(api.intensity);
                 elem.walk();
             }, null, this)
         })
@@ -235,6 +237,8 @@ define([], function () {
         if (!api.robot.sprite.body.touching.down) {
             api.setAirStatus("inAir");
         }
+
+        api.intensity = api.robot.sprite.body.velocity.y;
     }
 
     return API;
