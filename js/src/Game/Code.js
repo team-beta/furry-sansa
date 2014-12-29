@@ -1,6 +1,7 @@
 define([], function() {
     var Code = function(main) {
         this.main = main;
+        this.blocks;
     }
 
     Code.prototype.mute = function() {

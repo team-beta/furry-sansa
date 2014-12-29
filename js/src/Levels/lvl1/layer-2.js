@@ -1,9 +1,10 @@
-define([], function () {
+define(["Game/iBlock"], function (iBlock) {
     var Layer = function(main) {
         this.main = main;
         this.game = main.game;
         this.robot = main.robot;
         this.API = main.api;
+        this.library = main.library;
     }
 
     Layer.prototype.create = function() {
@@ -37,6 +38,15 @@ define([], function () {
         this.API.addSolid(10 * tile, height - 5 * tile, 'building_3');
         this.API.addSolid(9 * tile, height - 9 * tile, 'building_2');
         this.API.addSolid(25 * tile, height - 5*tile, 'building_3');
+
+        // Add interactable blocks
+        this.block = new iBlock(this.main);
+        this.block.make("block", 30*tile, height - 19*tile, 3, 3, "block_1");
+        this.block.make("block", 15*tile, height - 17*tile, 1, 1, "block_2");
+    }
+
+    Layer.prototype.update = function() {
+        this.block.update();
     }
 
     return Layer;

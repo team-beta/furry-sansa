@@ -86,6 +86,7 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
     Game.prototype.update = function() {
         // this.screenShake(10);
         // Update the level
+        this.fgLayer.update();
         this.api.update(this.api);
         this.robot.update();
     }

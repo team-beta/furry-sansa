@@ -38,7 +38,6 @@ define([], function () {
             this.load.image('tree_bg', 'assets/src/tree_bg.png')
 
             this.load.spritesheet('particle_dust', 'assets/src/particle_dust.png', 32, 32);
-            // this.load.image('particle_dust', 'assets/src/particle_dust.png')
 
             // Snowflakes
             this.game.load.spritesheet('snowflakes', 'assets/premade/snowflakes.png', 17, 17);
@@ -50,7 +49,7 @@ define([], function () {
             this.load.spritesheet('dancer_green', 'assets/robot_dancer_green.png', 55, 64);
             this.load.spritesheet('dancer_orange', 'assets/robot_dancer_orange.png', 55, 64);
             this.load.spritesheet('robots', 'assets/robots.png', 32, 64);
-            this.load.spritesheet('solid_block', 'assets/blocks.png', 32, 32);
+            this.load.image('solid_block', 'assets/src/block.png');
         },
         create: function() {
             this.state.start('Game');

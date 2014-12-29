@@ -3,26 +3,28 @@ define([], function () {
         this.main = main;
         this.game = main.game;
 
+        // A group to add building and stuff to.
         this.solid = this.game.add.group();
         this.solid.enableBody = true;
 
+        // Dust particle
         this.emitter = this.game.add.emitter(0, 0, 1500);
-        // this.emitter.setAlpha(0.3, 0.8)
-
-        // this.particle_dust = this.game.sprite.add('particle_dust')
-        // this.emitter.makeParticles('particle_dust');
         this.emitter.makeParticles('particle_dust', [0,1,2,3], 1500, true, true);
         this.emitter.gravity = 200;
         this.emitter.width = 32;
-        // this.emitter.setScale(0.1,1,0.1,1,0,Phaser.Easing.Linear.None,false);
+
+        // Intensity for screenshake
         this.intensity = 0;
 
+        // Dictionary for air status
         this.airStatus = {
             'inAir': true,
         }
 
+        // List of collision blocks
         this.collisionBlocks = []
 
+        // Snowflake settings
         this.max = 0;
         this.front_emitter;
         this.mid_emitter;
@@ -158,7 +160,6 @@ define([], function () {
             if (API.airStatus.inAir){
                 block.land.play('', 0, 5, false, false);
                 var factor = Math.pow(intensity/500, 3);
-                console.log(factor)
                 API.screenshake("canvas", 0.1 * factor);
                 API.makeDust();
             }
@@ -226,6 +227,7 @@ define([], function () {
             }
         }, null, this)
 
+        // Emit some dust particles when walking.
         if (Math.abs(api.robot.sprite.body.velocity.x) > 0 && api.robot.sprite.body.touching.down) {
             api.emitter.x = api.main.robot.sprite.x + api.main.robot.sprite.width /2;
             api.emitter.y = api.main.robot.sprite.y + api.main.robot.sprite.height;
