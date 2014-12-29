@@ -7,11 +7,14 @@ define([], function () {
         this.solid.enableBody = true;
 
         this.emitter = this.game.add.emitter(0, 0, 50);
-        this.emitter.setAlpha(0.3, 0.8)
+        // this.emitter.setAlpha(0.3, 0.8)
 
         // this.particle_dust = this.game.sprite.add('particle_dust')
-        this.emitter.makeParticles('particle_dust');
-        this.emitter.gravity = 500;
+        // this.emitter.makeParticles('particle_dust');
+        this.emitter.makeParticles('particle_dust', [0,1,2,3], 200, true, true);
+        this.emitter.gravity = 200;
+        this.emitter.width = 32;
+        // this.emitter.setScale(0.1,1,0.1,1,0,Phaser.Easing.Linear.None,false);
 
 
         this.airStatus = {
@@ -85,8 +88,8 @@ define([], function () {
 
     API.prototype.setXSpeed = function(emitter, max) {
 
-        this.emitter.setXSpeed(this.max - 20, this.max);
-        this.emitter.forEachAlive(this.setParticleXSpeed, this, this.max);
+        emitter.setXSpeed(this.max - 20, this.max);
+        emitter.forEachAlive(this.setParticleXSpeed, this, this.max);
 
     }
 
@@ -126,13 +129,13 @@ define([], function () {
     API.prototype.makeDust = function () {
         var API = this;
 
-        API.emitter.x = API.main.robot.sprite.x;
+        API.emitter.x = API.main.robot.sprite.x + API.main.robot.sprite.width /2;
         if (API.main.robot.sprite.body.touching.down) {
             API.emitter.y = API.main.robot.sprite.y + API.main.robot.sprite.height;
-            API.emitter.start(true, 2000, null, 5);
+            API.emitter.start(true, 2000, null, 15);
         } else if (API.main.robot.sprite.body.touching.up) {
             API.emitter.y = API.main.robot.sprite.y;
-            API.emitter.start(true, 2000, null, 5);
+            API.emitter.start(true, 2000, null, 15);
         }
     }
 
@@ -202,6 +205,12 @@ define([], function () {
             }, null, this)
         })
 
+        // Fade out particles
+        api.emitter.forEachAlive(function(p){
+            p.alpha= p.lifespan / api.emitter.lifespan;
+        });
+
+        // Collision with solid objects
         api.robot.collide(this.solid, function() {
             if (api.airStatus.inAir){
                 this.main.sound_land_concrete.play('', 0, 5, false, false);
