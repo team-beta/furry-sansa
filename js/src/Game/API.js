@@ -6,12 +6,12 @@ define([], function () {
         this.solid = this.game.add.group();
         this.solid.enableBody = true;
 
-        this.emitter = this.game.add.emitter(0, 0, 50);
+        this.emitter = this.game.add.emitter(0, 0, 1500);
         // this.emitter.setAlpha(0.3, 0.8)
 
         // this.particle_dust = this.game.sprite.add('particle_dust')
         // this.emitter.makeParticles('particle_dust');
-        this.emitter.makeParticles('particle_dust', [0,1,2,3], 200, true, true);
+        this.emitter.makeParticles('particle_dust', [0,1,2,3], 1500, true, true);
         this.emitter.gravity = 200;
         this.emitter.width = 32;
         // this.emitter.setScale(0.1,1,0.1,1,0,Phaser.Easing.Linear.None,false);
@@ -132,10 +132,10 @@ define([], function () {
         API.emitter.x = API.main.robot.sprite.x + API.main.robot.sprite.width /2;
         if (API.main.robot.sprite.body.touching.down) {
             API.emitter.y = API.main.robot.sprite.y + API.main.robot.sprite.height;
-            API.emitter.start(true, 2000, null, 15);
+            API.emitter.start(true, 500, null, 15);
         } else if (API.main.robot.sprite.body.touching.up) {
             API.emitter.y = API.main.robot.sprite.y;
-            API.emitter.start(true, 2000, null, 15);
+            API.emitter.start(true, 500, null, 15);
         }
     }
 
@@ -176,7 +176,7 @@ define([], function () {
     }
 
     API.prototype.create = function() {
-
+        API.emitter.start(true, 2000, null, 15);
     }
 
     API.prototype.setAirStatus = function(position) {
@@ -223,6 +223,12 @@ define([], function () {
                 this.main.sound_walk_concrete.play('', 0, 5, false, false);
             }
         }, null, this)
+
+        if (Math.abs(api.robot.sprite.body.velocity.x) > 0 && api.robot.sprite.body.touching.down) {
+            api.emitter.x = api.main.robot.sprite.x + api.main.robot.sprite.width /2;
+            api.emitter.y = api.main.robot.sprite.y + api.main.robot.sprite.height;
+            api.emitter.start(true, 500, null, 15);
+        }
 
 
         // Determine whether the robot is in air.
