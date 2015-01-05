@@ -20,6 +20,7 @@ function(Phaser, Game) {
         new Phaser.Game("100%", "100%", Phaser.AUTO, parent)
     );
 
+
     // Make the object accessible from outside.
     world = gm.library;
 });

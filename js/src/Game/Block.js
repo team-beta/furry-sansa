@@ -4,6 +4,7 @@ define([], function () {
     this.game = main.game;
     this.blocks = this.game.add.group();
     this.blocks.enableBody = true;
+    this.graphics = this.main.graphics;
     this.library = main.library;
     this.name = name;
     this.object = null;
@@ -27,6 +28,14 @@ define([], function () {
     tileSprite.name = name;
     tileSprite.body.immovable = true;
     tileSprite.solid = true;
+
+    tileSprite.inputEnabled = true;
+    tileSprite.input.useHandCursor = true;
+    tileSprite.events.onInputOver.add(function(){
+            console.log("Selected: " + this.name);
+            this.select();
+    }, this);
+
     this.object = tileSprite;
   }
 
@@ -40,6 +49,12 @@ define([], function () {
         }, null, this)
       }
     })
+  }
+
+  Block.prototype.select = function(){
+      this.graphics.clear();
+      this.graphics.lineStyle(2, 0xFFFFFF, 1);
+      this.graphics.drawRect(this.object.x, this.object.y, this.object.width, this.object.height);
   }
 
   Block.prototype.setSolidity = function(bool) {

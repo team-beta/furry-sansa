@@ -28,6 +28,7 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         // Set bounds
         this.game.world.setBounds(0, 0, 1620, 920);
 
+
         // Draw the background
         this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'background');
 
@@ -74,12 +75,16 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         this.api.robot = this.robot;
         this.library.robot = this.robot;
 
+        //Add graphics
+        this.graphics = this.game.add.graphics(0,0);
+
         // Foreground layer
         this.fgLayer = new L12(this)
         this.fgLayer.create();
 
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
+
 
     }
 
