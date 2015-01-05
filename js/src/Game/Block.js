@@ -6,6 +6,7 @@ define([], function () {
     this.blocks.enableBody = true;
     this.library = main.library;
     this.name = name;
+    this.object = null;
 
     if(typeof this.main.library.blocks[name] === 'undefined'){
       console.log("Pushing: " + name);
@@ -14,8 +15,6 @@ define([], function () {
       console.log("Pushing: " + name);
       this.main.library.blocks[name + '_' + this.main.library.blocks.length] = this;
     }
-
-    console.log(this.main.library.blocks);
   }
 
   Block.prototype.create = function (x, y, width, height) {
@@ -28,6 +27,7 @@ define([], function () {
     tileSprite.name = name;
     tileSprite.body.immovable = true;
     tileSprite.solid = true;
+    this.object = tileSprite;
   }
 
 
@@ -52,6 +52,30 @@ define([], function () {
         elem.solid = false;
       }
     })
+  }
+
+  Block.prototype.moveRight = function(x){
+      this.move(x, 0);
+  }
+
+  Block.prototype.moveLeft = function(x){
+      this.move(-x, 0);
+  }
+
+  Block.prototype.moveDown = function(y){
+      this.move(0, y);
+  }
+
+  Block.prototype.moveUp = function(y){
+      this.move(0, -y);
+  }
+
+  Block.prototype.move = function(x, y) {
+    x = x * 32;
+    y = y * 32;
+
+    this.object.x += x;
+    this.object.y += y;
   }
 
   return Block;
