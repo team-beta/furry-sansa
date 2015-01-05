@@ -53,7 +53,7 @@ define(["Game/Block"], function (Block) {
     }
 
     Layer.prototype.update = function() {
-        //this.block.update();
+        
     }
 
     return Layer;

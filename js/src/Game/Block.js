@@ -2,6 +2,7 @@ define([], function () {
   var Block = function(main, name){
     this.main = main;
     this.game = main.game;
+    this.api = this.main.api;
     this.blocks = this.game.add.group();
     this.blocks.enableBody = true;
     this.graphics = this.main.graphics;
@@ -39,11 +40,10 @@ define([], function () {
 
 
   Block.prototype.update = function(){
-    var blockGroup = this;
+    var robot = this.main.robot;
     this.blocks.forEach(function(elem){
       if (elem.solid == true) {
-        blockGroup.main.robot.collide(elem, function() {
-          console.log("coliding");
+        robot.collide(elem, function() {
         }, null, this)
       }
     })
