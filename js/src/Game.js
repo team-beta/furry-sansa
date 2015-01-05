@@ -89,6 +89,7 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         this.fgLayer.update();
         this.api.update(this.api);
         this.robot.update();
+        this.library.update();
     }
 
     return Game;

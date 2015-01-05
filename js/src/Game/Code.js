@@ -1,7 +1,7 @@
 define([], function() {
     var Code = function(main) {
         this.main = main;
-        this.blocks;
+        this.blocks = {};
     }
 
     Code.prototype.mute = function() {
@@ -14,6 +14,23 @@ define([], function() {
 
     Code.prototype.hello = function() {
         return "Hello world!";
+    }
+
+    Code.prototype.listBlocks = function() {
+      var result = [];
+
+      for(var k in this.blocks){
+        result.push(this.blocks[k]);
+      }
+
+      return result;
+    }
+
+
+    Code.prototype.update = function() {
+      for(var k in this.blocks){
+        this.blocks[k].update();
+      }
     }
 
     return Code;

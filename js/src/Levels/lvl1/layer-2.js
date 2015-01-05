@@ -1,4 +1,4 @@
-define(["Game/iBlock"], function (iBlock) {
+define(["Game/Block"], function (Block) {
     var Layer = function(main) {
         this.main = main;
         this.game = main.game;
@@ -40,13 +40,20 @@ define(["Game/iBlock"], function (iBlock) {
         this.API.addSolid(25 * tile, height - 5*tile, 'building_3');
 
         // Add interactable blocks
-        this.block = new iBlock(this.main);
-        this.block.make("block", 30*tile, height - 19*tile, 3, 3, "block_1");
-        this.block.make("block", 15*tile, height - 17*tile, 1, 1, "block_2");
+        //this.block = new iBlock(this.main);
+
+        //this.block.make("block", 30*tile, height - 19*tile, 3, 3, "block_1");
+        //this.block.make("block", 15*tile, height - 17*tile, 1, 1, "block_2");
+
+        this.block_1 = new Block(this.main, "block_1");
+        this.block_1.create(15*tile, height - 17*tile, 1, 1, "block_1");
+
+        this.block_2 = new Block(this.main, "block_2");
+        this.block_2.create(30*tile, height - 19*tile, 3, 3, "block_2");
     }
 
     Layer.prototype.update = function() {
-        this.block.update();
+        //this.block.update();
     }
 
     return Layer;

@@ -13,6 +13,7 @@ define([], function () {
             case "block":
                 // Create a group
                 this.createBlock(width, height, x, y, name);
+
                 break;
         }
 
@@ -46,11 +47,23 @@ define([], function () {
         })
     }
 
+    iBlock.prototype.move = function(name, x, y) {
+      x = x * 32;
+      y = y * 32;
+
+      this.blocks.forEach(function(elem){
+        if (elem.name == name) {
+          elem.x += x;
+          elem.y += y;
+        }
+      })
+    }
+
     iBlock.prototype.listBlocks = function() {
         var result = []
 
         this.blocks.forEach(function(elem){
-            result.push(elem.name)
+            result.push(elem.name);
         })
 
         return result
