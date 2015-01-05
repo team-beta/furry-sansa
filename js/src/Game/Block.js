@@ -7,7 +7,6 @@ define([], function () {
     this.graphics = this.main.graphics;
     this.library = main.library;
     this.name = name;
-    this.object = null;
 
     if(typeof this.main.library.blocks[name] === 'undefined'){
       console.log("Pushing: " + name);
@@ -21,22 +20,21 @@ define([], function () {
   Block.prototype.create = function (x, y, width, height) {
     var tile = 32;
 
-    var tileSprite = this.game.add.tileSprite(
+    this.tileSprite = this.game.add.tileSprite(
       x, y, width * 32, height * 32, "solid_block", null, this.blocks
     );
 
-    tileSprite.name = name;
-    tileSprite.body.immovable = true;
-    tileSprite.solid = true;
+    this.tileSprite.name = name;
+    this.tileSprite.body.immovable = true;
+    this.tileSprite.solid = true;
 
-    tileSprite.inputEnabled = true;
-    tileSprite.input.useHandCursor = true;
-    tileSprite.events.onInputOver.add(function(){
+    this.tileSprite.inputEnabled = true;
+    this.tileSprite.input.useHandCursor = true;
+    this.tileSprite.events.onInputOver.add(function(){
             console.log("Selected: " + this.name);
             this.select();
     }, this);
 
-    this.object = tileSprite;
   }
 
 
@@ -54,7 +52,7 @@ define([], function () {
   Block.prototype.select = function(){
       this.graphics.clear();
       this.graphics.lineStyle(2, 0xFFFFFF, 1);
-      this.graphics.drawRect(this.object.x, this.object.y, this.object.width, this.object.height);
+      this.graphics.drawRect(this.tileSprite.x, this.tileSprite.y, this.tileSprite.width, this.tileSprite.height);
   }
 
   Block.prototype.setSolidity = function(bool) {
@@ -89,8 +87,8 @@ define([], function () {
     x = x * 32;
     y = y * 32;
 
-    this.object.x += x;
-    this.object.y += y;
+    this.tileSprite.x += x;
+    this.tileSprite.y += y;
   }
 
   return Block;

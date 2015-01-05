@@ -47,17 +47,6 @@ define([], function () {
         })
     }
 
-    iBlock.prototype.move = function(name, x, y) {
-      x = x * 32;
-      y = y * 32;
-
-      this.blocks.forEach(function(elem){
-        if (elem.name == name) {
-          elem.x += x;
-          elem.y += y;
-        }
-      })
-    }
 
     iBlock.prototype.listBlocks = function() {
         var result = []
