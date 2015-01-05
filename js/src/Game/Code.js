@@ -20,7 +20,7 @@ define([], function() {
       var result = [];
 
       for(var k in this.blocks){
-        result.push(this.blocks[k]);
+        result.push(this.blocks[k].name);
       }
 
       return result;
