@@ -14,7 +14,7 @@ define([], function () {
         // Background music.
         this.music_dododo = this.main.game.add.audio('music_dododo');
         this.music_dododo.play('', 0, 1, true, true);
-        this.main.bg_msuic = this.music_dododo;
+        this.main.bg_music = this.music_dododo;
     }
 
     return Settings;

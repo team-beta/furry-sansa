@@ -5,11 +5,11 @@ define([], function() {
     }
 
     Code.prototype.mute = function() {
-        this.main.music_dododo.pause();
+        this.main.bg_music.pause();
     }
 
     Code.prototype.play = function() {
-        this.main.music_dododo.play();
+        this.main.bg_music.play();
     }
 
     Code.prototype.hello = function() {
