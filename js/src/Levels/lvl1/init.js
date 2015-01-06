@@ -18,7 +18,7 @@ define(['Game/API', "Levels/lvl1/settings", "Levels/lvl1/layer-1", "Levels/lvl1/
         this.main.api = new API(this.main);
 
         //Add graphics
-        this.graphics = this.game.add.graphics(0,0);
+        this.main.graphics = this.game.add.graphics(0,0);
 
         // Foreground layer
         this.fgLayer = new layer2(this.main)
