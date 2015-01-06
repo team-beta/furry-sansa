@@ -58,7 +58,7 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Level0, Leve
         var term = new Terminal();
 
         // Create level 1
-        this.level1 = new Level1(this);
+        this.level = new Level0(this);
 
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
@@ -72,7 +72,7 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Level0, Leve
         this.library.update();
         this.api.update(this.api);
         this.robot.update();
-        this.level1.update();
+        this.level.update();
 
     }
 

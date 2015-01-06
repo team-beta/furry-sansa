@@ -1,9 +1,9 @@
 define(['Game/Object'], function (GameObject) {
-    var Robot = function(main) {
+    var Robot = function(main, x, y) {
         this._base = GameObject;
         this._base(main);
 
-        this.sprite = this.game.add.sprite(128, 0, 'robots');
+        this.sprite = this.game.add.sprite(x, y, 'robots');
         this.sprite.frame = 4;
 
         // add the animations

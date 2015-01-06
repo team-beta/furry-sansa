@@ -7,6 +7,7 @@ define(['Game/API', "Levels/lvl1/settings", "Levels/lvl1/layer-1", "Levels/lvl1/
 
         // Apply settings.
         this.settings = new Settings(this.main);
+        this.main.settings = this.settings;
 
         // Background layer
         this.bgLayer = new layer1(this.main);

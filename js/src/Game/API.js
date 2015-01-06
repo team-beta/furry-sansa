@@ -31,7 +31,9 @@ define([], function () {
         this.back_emitter;
         this.update_interval = 4 * 60;
         this.i = 0;
-        this.snowflake()
+        if (this.main.settings.snowflake) {
+            this.snowflake()
+        }
     }
 
     API.prototype.snowflake = function() {
