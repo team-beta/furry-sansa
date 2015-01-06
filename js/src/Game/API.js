@@ -168,7 +168,7 @@ define([], function () {
 
         // Add walking sound
         result.walk = function() {
-            if (API.airStatus[block.blockName] && Math.abs(API.robot.sprite.body.velocity.x) > 0) {
+            if (API.airStatus[block.blockName] && Math.abs(API.main.robot.sprite.body.velocity.x) > 0) {
                 block.walk.play('', 0, 5, false, false);
             }
         }
@@ -199,10 +199,12 @@ define([], function () {
         })
     }
 
-    API.prototype.update = function(api) {
+    API.prototype.update = function() {
+        var api = this;
+
         // Determine collision for all platforms.
         api.collisionBlocks.forEach(function(elem){
-            api.robot.collide(elem, function() {
+            api.main.robot.collide(elem, function() {
                 elem.land(api.intensity);
                 elem.walk();
             }, null, this)
@@ -214,7 +216,7 @@ define([], function () {
         });
 
         // Collision with solid objects
-        api.robot.collide(this.solid, function() {
+        api.main.robot.collide(this.solid, function() {
             if (api.airStatus.inAir){
                 this.main.sound_land_concrete.play('', 0, 5, false, false);
                 api.screenshake("canvas", 0.1);
@@ -222,13 +224,13 @@ define([], function () {
             }
             api.setAirStatus("solid");
 
-            if (api.airStatus['solid'] && Math.abs(api.robot.sprite.body.velocity.x) > 0) {
+            if (api.airStatus['solid'] && Math.abs(api.main.robot.sprite.body.velocity.x) > 0) {
                 this.main.sound_walk_concrete.play('', 0, 5, false, false);
             }
         }, null, this)
 
         // Emit some dust particles when walking.
-        if (Math.abs(api.robot.sprite.body.velocity.x) > 0 && api.robot.sprite.body.touching.down) {
+        if (Math.abs(api.main.robot.sprite.body.velocity.x) > 0 && api.main.robot.sprite.body.touching.down) {
             api.emitter.x = api.main.robot.sprite.x + api.main.robot.sprite.width /2;
             api.emitter.y = api.main.robot.sprite.y + api.main.robot.sprite.height;
             api.emitter.start(true, 500, null, 15);
@@ -236,11 +238,11 @@ define([], function () {
 
 
         // Determine whether the robot is in air.
-        if (!api.robot.sprite.body.touching.down) {
+        if (!api.main.robot.sprite.body.touching.down) {
             api.setAirStatus("inAir");
         }
 
-        api.intensity = api.robot.sprite.body.velocity.y;
+        api.intensity = api.main.robot.sprite.body.velocity.y;
     }
 
     return API;

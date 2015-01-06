@@ -1,5 +1,5 @@
-define(['jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2'],
-function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
+define(['jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl0/init', 'Levels/lvl1/init'],
+function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Level0, Level1) {
 
     var Game = function(phgame) {
 
@@ -11,29 +11,23 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         this.game.state.add('Game', gm);
         this.game.state.start('Boot');
 
+        this.robot = null;
+        this.bg_music = null;
+
         // The library is accessible by the player
         this.library = new Code(this);
     }
 
     Game.prototype.mute = function() {
 
-        if (this.music_dododo.isPlaying) {
-            this.music_dododo.pause();
+        if (this.bg_music.isPlaying) {
+            this.bg_music.pause();
         } else {
-            this.music_dododo.resume();
+            this.bg_music.resume();
         }
     }
 
     Game.prototype.create = function() {
-        // Set bounds
-        this.game.world.setBounds(0, 0, 1620, 920);
-
-
-        // Draw the background
-        this.game.add.tileSprite(0, 0, this.game.world.width, this.game.world.height, 'background');
-
-        // Use the API (should be called after drawing the background)
-        this.api = new API(this);
 
         // Add sounds
         this.sound_jump = this.game.add.audio('sound_jump');
@@ -57,30 +51,14 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         this.sound_walk_concrete = this.game.add.audio('sound_walk_concrete')
         this.sound_land_concrete = this.game.add.audio('sound_land_concrete')
 
-        // Add music
-        this.music_dododo = this.game.add.audio('music_dododo');
-        this.music_dododo.play('', 0, 1, true, true);
-
         // Start physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
         // Initiate terminal
         var term = new Terminal();
 
-        // Background layer
-        this.bgLayer = new L11(this);
-        this.bgLayer.create();
-
-        this.robot = new Robot(this);
-        this.api.robot = this.robot;
-        this.library.robot = this.robot;
-
-        //Add graphics
-        this.graphics = this.game.add.graphics(0,0);
-
-        // Foreground layer
-        this.fgLayer = new L12(this)
-        this.fgLayer.create();
+        // Create level 1
+        this.level1 = new Level1(this);
 
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
@@ -92,10 +70,10 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, L11, L12) {
         // this.screenShake(10);
         // Update the level
         this.library.update();
-        this.fgLayer.update();
         this.api.update(this.api);
         this.robot.update();
-        
+        this.level1.update();
+
     }
 
     return Game;
