@@ -36,11 +36,10 @@ define(['jquery', 'jquery-terminal'], function ($) {
         $('#term').hide();
     }
 
-
     Terminal.prototype.handleCommand = function(command, term) {
-        if (command == "help" || command == "help()") {
-            term.echo("Test test... :D")
-        } else {
+        // if (command == "help" || command == "help()") {
+        //     term.echo(this.help()
+        // } else {
 
 
             if (command !== '') {
@@ -59,7 +58,7 @@ define(['jquery', 'jquery-terminal'], function ($) {
             } else {
                 term.echo('');
             }
-        }
+        // }
     }
 
     return Terminal;

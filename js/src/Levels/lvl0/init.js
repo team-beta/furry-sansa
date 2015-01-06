@@ -25,6 +25,9 @@ define(['Game/API', "Levels/lvl0/settings", "Levels/lvl0/layer-1", "Levels/lvl0/
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
 
+        // Add robot to library
+        this.main.library.robot = this.main.robot;
+
     }
 
     Init.prototype.update = function() {

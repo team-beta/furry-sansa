@@ -98,5 +98,9 @@ define(['Game/Object'], function (GameObject) {
         }
     }
 
+    Robot.prototype.toString = function() {
+        return "This is the robot object. Use help('robot') to learn more about yourself."
+    }
+
     return Robot;
 });

@@ -3,6 +3,10 @@ define([], function() {
         this.main = main;
         this.blocks = {};
     }
+        
+    Code.prototype.toString = function() {
+        return "This is the world object. Use help('world') to learn more about the world."
+    }
 
     Code.prototype.mute = function() {
         this.main.bg_music.pause();
