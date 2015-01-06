@@ -38,22 +38,27 @@ define(['jquery', 'jquery-terminal'], function ($) {
 
 
     Terminal.prototype.handleCommand = function(command, term) {
-
-        if (command !== '') {
-            try {
-                var result = window.eval(command);
-                if (result !== undefined) {
-                    term.echo(new String(result));
-                }
-            } catch(e) {
-
-
-                Terminal.prototype.screenshake("#term", 1)
-
-                term.error(new String(e));
-            }
+        if (command == "help" || command == "help()") {
+            term.echo("Test test... :D")
         } else {
-            term.echo('');
+
+
+            if (command !== '') {
+                try {
+                    var result = window.eval(command);
+                    if (result !== undefined) {
+                        term.echo(new String(result));
+                    }
+                } catch(e) {
+
+
+                    Terminal.prototype.screenshake("#term", 1)
+
+                    term.error(new String(e));
+                }
+            } else {
+                term.echo('');
+            }
         }
     }
 

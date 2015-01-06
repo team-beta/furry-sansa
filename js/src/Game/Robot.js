@@ -21,6 +21,7 @@ define(['Game/Object'], function (GameObject) {
         this.sprite.body.collideWorldBounds = true;
 
         this.dancing = false;
+        this.conveyorBelt = false;
 
     }
     // extend GameObject
@@ -80,11 +81,13 @@ define(['Game/Object'], function (GameObject) {
 
             // No key
         } else {
-            if (!this.dancing) {
+            if (this.dancing) {
+                this.sprite.animations.play('dance');
+            } else if (this.conveyorBelt) {
+                this.sprite.animations.play('right');
+            } else {
                 this.sprite.animations.stop();
                 this.sprite.frame = 4;
-            } else {
-                this.sprite.animations.play('dance');
             }
         }
 
