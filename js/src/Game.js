@@ -48,6 +48,13 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Level0, Leve
             blockName : "metal_block",
         }
 
+        this.specialBlock = {
+            land : this.game.add.audio('sound_land_concrete'),
+            walk : this.game.add.audio('sound_walk_concrete'),
+            sprite : this.game.add.sprite('invisible'),
+            blockName : "invisible",
+        }
+
         this.sound_walk_concrete = this.game.add.audio('sound_walk_concrete')
         this.sound_land_concrete = this.game.add.audio('sound_land_concrete')
 
@@ -71,8 +78,8 @@ function ($, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Level0, Leve
         // Update the level
         this.library.update();
         this.api.update(this.api);
-        this.robot.update();
         this.level.update();
+        this.robot.update();
 
     }
 
