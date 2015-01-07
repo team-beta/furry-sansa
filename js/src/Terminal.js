@@ -7,6 +7,7 @@ define(['jquery', 'jquery-terminal'], function ($) {
             prompt: '>> ',
             self: this
         });
+        document.terminal = this.term;
 
         this.terminal = this;
         $('#term').show();

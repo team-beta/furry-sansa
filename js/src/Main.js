@@ -78,13 +78,10 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
     }
 
     Main.prototype.update = function() {
-        // this.screenShake(10);
-        // Update the level
         this.library.update();
         this.api.update(this.api);
         this.level.update();
         this.robot.update();
-
     }
 
     return Main;

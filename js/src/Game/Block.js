@@ -1,4 +1,4 @@
-define([], function () {
+define(['jquery-terminal'], function () {
   var Block = function(main, name){
     this.main = main;
     this.game = main.game;
@@ -8,6 +8,7 @@ define([], function () {
     this.graphics = this.main.graphics;
     this.library = main.library;
     this.name = name;
+    this.selected = false;
 
     if(typeof this.main.library.blocks[name] === 'undefined'){
       console.log("Pushing: " + name);
@@ -30,9 +31,11 @@ define([], function () {
     this.tileSprite.solid = true;
 
     this.tileSprite.inputEnabled = true;
+    this.tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
     this.tileSprite.input.useHandCursor = true;
     this.tileSprite.events.onInputDown.add(function(){
             console.log("Selected: " + this.name);
+            document.terminal.echo('world.blocks.' + this.name);
             this.select();
     }, this);
 
@@ -51,6 +54,7 @@ define([], function () {
 
   Block.prototype.select = function(){
       this.graphics.clear();
+      this.selected = true;
       this.graphics.lineStyle(2, 0xFFFFFF, 1);
       this.graphics.drawRect(this.tileSprite.x, this.tileSprite.y, this.tileSprite.width, this.tileSprite.height);
   }
