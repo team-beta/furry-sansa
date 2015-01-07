@@ -65,6 +65,9 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         var term = new Terminal();
 
         this.loadLevel(0);
+
+        // Follow the robot
+        this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
     }
 
     Game.prototype.loadLevel = function(level) {
@@ -72,9 +75,6 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         Level = require('Levels/lvl' + level + '/init');
         // Create level
         this.level = new Level(this);
-
-        // Follow the robot
-        this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
     }
 
     Game.prototype.update = function() {
