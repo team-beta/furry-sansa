@@ -1,4 +1,4 @@
-define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl0/init', 'Levels/lvl0/init'],
+define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl0/init', 'Levels/lvl1/init'],
 function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     var Game = function(phgame) {
@@ -64,16 +64,17 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         // Initiate terminal
         var term = new Terminal();
 
-        this.aaaaaaa = false;
+        this.loadLevel(0);
+    }
 
+    Game.prototype.loadLevel = function(level) {
         // load the first level
-        Level = require('Levels/lvl0/init');
+        Level = require('Levels/lvl' + level + '/init');
         // Create level
         this.level = new Level(this);
 
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
-        this.aaaaaaa = true;
     }
 
     Game.prototype.update = function() {
