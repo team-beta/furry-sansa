@@ -31,7 +31,7 @@ define([], function () {
 
     this.tileSprite.inputEnabled = true;
     this.tileSprite.input.useHandCursor = true;
-    this.tileSprite.events.onInputOver.add(function(){
+    this.tileSprite.events.onInputDown.add(function(){
             console.log("Selected: " + this.name);
             this.select();
     }, this);

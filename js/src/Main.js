@@ -1,7 +1,7 @@
 define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl0/init', 'Levels/lvl1/init'],
 function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
-    var Game = function(phgame) {
+    var Main = function(phgame) {
 
         // Start up the game.
         this.game = phgame;
@@ -18,7 +18,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         this.library = new Code(this);
     }
 
-    Game.prototype.mute = function() {
+    Main.prototype.mute = function() {
 
         if (this.bg_music.isPlaying) {
             this.bg_music.pause();
@@ -27,7 +27,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         }
     }
 
-    Game.prototype.create = function() {
+    Main.prototype.create = function() {
 
         // Add sounds
         this.sound_jump = this.game.add.audio('sound_jump');
@@ -64,10 +64,10 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         // Initiate terminal
         var term = new Terminal();
 
-        this.loadLevel(0);
+        this.loadLevel(1);
     }
 
-    Game.prototype.loadLevel = function(level) {
+    Main.prototype.loadLevel = function(level) {
         // load the first level
         Level = require('Levels/lvl' + level + '/init');
         // Create level
@@ -77,7 +77,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
     }
 
-    Game.prototype.update = function() {
+    Main.prototype.update = function() {
         // this.screenShake(10);
         // Update the level
         this.library.update();
@@ -87,5 +87,5 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     }
 
-    return Game;
+    return Main;
 });
