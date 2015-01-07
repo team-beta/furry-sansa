@@ -4,13 +4,14 @@ define(['Game/API', "Levels/lvl0/settings", "Levels/lvl0/layer-1", "Levels/lvl0/
         this.api = main.api;
         this.library = main.library;
         this.game = main.game;
+        this.bg = null;
 
         // Apply settings.
         this.settings = new Settings(this.main);
         this.main.settings = this.settings;
 
         // Background layer
-        this.bgLayer = new layer1(this.main);
+        this.bgLayer = new layer1(this.main, this);
         this.bgLayer.create();
 
         this.main.robot = new Robot(this.main, 17*32, this.game.world.height - 128);

@@ -39,11 +39,12 @@ define([], function () {
             this.load.image('tree_bg', 'assets/src/tree_bg.png')
             this.load.image('lamp', 'assets/src/lamp.png')
             this.load.image('matras', 'assets/matras.png')
-            this.load.image('factory_room', 'assets/src/factory_room.png')
+
             this.load.image('invisible', 'assets/src/invisible.png')
 
             this.load.spritesheet('particle_dust', 'assets/src/particle_dust.png', 32, 32);
             this.load.spritesheet('mattress', 'assets/src/matress.png', 128, 32);
+            this.load.spritesheet('factory_room', 'assets/src/factory_room.png', 640, 640);
 
             // Snowflakes
             this.game.load.spritesheet('snowflakes', 'assets/premade/snowflakes.png', 17, 17);
