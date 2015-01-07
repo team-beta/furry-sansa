@@ -13,10 +13,10 @@ requirejs.config({
 // The object that will be accessible
 var world = null;
 
-require(['Phaser', 'Game'],
-function(Phaser, Game) {
+require(['Phaser', 'Main'],
+function(Phaser, Main) {
     var parent = document.getElementById('game');
-    var gm = new Game(
+    var gm = new Main(
         new Phaser.Game("100%", "100%", Phaser.AUTO, parent)
     );
 
