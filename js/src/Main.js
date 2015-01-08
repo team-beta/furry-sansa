@@ -1,4 +1,5 @@
-define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/Level0', 'Levels/lvl1/init', 'Levels/lvl2/init'],
+define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API',
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2'],
 function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     var Main = function(phgame) {

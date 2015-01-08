@@ -1,5 +1,6 @@
 define(['Game/API'], function(API) {
-    var BaseLevel = function(main) {
+    var BaseLevel = function() {}
+    BaseLevel.prototype.init = function(main) {
         this.main = main;
         this.api = main.api;
         this.library = main.library;
