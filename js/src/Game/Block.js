@@ -35,7 +35,7 @@ define(['jquery-terminal'], function () {
     this.tileSprite.input.useHandCursor = true;
     this.tileSprite.events.onInputDown.add(function(){
             console.log("Selected: " + this.name);
-            document.terminal.echo('world.blocks.' + this.name);
+            document.terminal.insert('world.blocks.' + this.name);
             this.select();
     }, this);
 
