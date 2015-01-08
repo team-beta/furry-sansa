@@ -31,6 +31,10 @@ define(['Game/API', "Levels/lvl0/settings", "Levels/lvl0/layer-1", "Levels/lvl0/
 
     }
 
+    Init.prototype.destroy = function() {
+        this.settings.destroy();
+    }
+
     Init.prototype.update = function() {
         this.fgLayer.update();
     }

@@ -15,5 +15,9 @@ define([], function () {
         this.main.bg_music = this.music;
     }
 
+    Settings.prototype.destroy = function() {
+        this.music.destroy();
+    }
+
     return Settings;
 });

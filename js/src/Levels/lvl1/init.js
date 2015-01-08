@@ -29,6 +29,10 @@ define(['Game/API', "Levels/lvl1/settings", "Levels/lvl1/layer-1", "Levels/lvl1/
         this.main.library.robot = this.main.robot;
     }
 
+    Init.prototype.destroy = function() {
+        this.settings.destroy();
+    }
+
     Init.prototype.update = function() {
         this.fgLayer.update();
     }

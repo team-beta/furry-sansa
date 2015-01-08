@@ -10,10 +10,13 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         this.game.state.add('Preload', preload);
         this.game.state.add('Game', gm);
         this.game.state.start('Boot');
+        this.levelNum = 0;
 
         this.robot = null;
         this.bg_music = null;
 
+
+        console.log(this.levelNum);
         // The library is accessible by the player
         this.library = new Code(this);
     }
@@ -64,7 +67,16 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         // Initiate terminal
         var term = new Terminal();
 
-        this.loadLevel(1);
+        console.log(this.levelNum);
+        if (this.levelNum == undefined) {
+            this.levelNum = 0;
+        }
+        this.loadLevel(this.levelNum);
+    }
+
+    Main.prototype.changeLevel = function(level) {
+        this.level.destroy();
+        this.game.state.restart(true, false, level);
     }
 
     Main.prototype.loadLevel = function(level) {

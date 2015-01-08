@@ -1,7 +1,8 @@
 define([],
 function () {
     return {
-        init: function() {
+        init: function(level) {
+            this.main.levelNum = level;
         },
         preload: function() {
         },
