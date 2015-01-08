@@ -1,13 +1,13 @@
-define(['Levels/BaseLevel', 'Levels/lvl0/settings', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/Robot'],
-        function(BaseLevel, Settings, layer1, layer2, Robot) {
+define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/Robot'],
+        function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
     }
     Level.prototype = new BaseLevel();
 
     Level.prototype.loadSettings = function() {
-        this.settings = new Settings(this.main);
-        this.main.settings = this.settings;
+        this.settings.setWorldBounds(0, 0, 1620, 920);
+        this.settings.playMusic('music_thinking-back');
     }
 
     Level.prototype.createBackgroundLayer = function() {
@@ -23,10 +23,6 @@ define(['Levels/BaseLevel', 'Levels/lvl0/settings', 'Levels/lvl0/layer-1', 'Leve
     Level.prototype.createForegroundLayer = function() {
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
-    }
-
-    Level.prototype.destroy = function() {
-        this.settings.destroy();
     }
 
     Level.prototype.update = function() {

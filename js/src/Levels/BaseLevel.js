@@ -3,6 +3,7 @@ define(['Game/API'], function(API) {
     BaseLevel.prototype.init = function(main) {
         this.main = main;
         this.api = main.api;
+        this.settings = main.settings;
         this.library = main.library;
         this.game = main.game;
         this.bg = null;
@@ -39,7 +40,7 @@ define(['Game/API'], function(API) {
     }
 
     BaseLevel.prototype.destroy = function() {
-        console.log('Implement the BaseLevel.destroy() method');
+        this.settings.destroy();
     }
 
     BaseLevel.prototype.update = function() {

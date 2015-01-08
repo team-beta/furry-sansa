@@ -6,8 +6,8 @@ define(['Levels/BaseLevel', 'Levels/lvl2/settings', 'Levels/lvl2/layer-1', 'Leve
     Level.prototype = new BaseLevel();
 
     Level.prototype.loadSettings = function() {
-        this.settings = new Settings(this.main);
-        this.main.settings = this.settings;
+        this.settings.setWorldBounds(0, 0, 1620, 920);
+        this.settings.playMusic('music_dododo');
     }
 
     Level.prototype.createBackgroundLayer = function() {
