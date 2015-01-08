@@ -41,6 +41,10 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(14*tile, height - 19*tile, tile, 18*tile, this.main.specialBlock);
         this.API.createPlatform(35*tile, height - 19*tile, tile, 18*tile, this.main.specialBlock);
         this.main.robot.conveyorBelt = true;
+
+        // should be 42*tile
+        this.end = this.game.add.sprite(2*tile, height-4*tile, 'end_level');
+        this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
     }
 
     Layer.prototype.displayNext = function() {
@@ -97,12 +101,16 @@ define(["Game/Block"], function (Block) {
             this.resetMattress();
         }
 
+        this.robot.collide(this.end, function() {
+            this.main.changeLevel(1);
+        }, null, this);
+
         this.robot.collide(this.matras, function() {
             this.robot.sprite.body.velocity.y = -800;
             this.main.sound_jump.play();
             this.matras.animations.play('jump');
             this.continue();
-        }, null, this)
+        }, null, this);
     }
 
     return Layer;
