@@ -1,4 +1,4 @@
-define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl0/init', 'Levels/lvl1/init', 'Levels/lvl2/init'],
+define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/Level0', 'Levels/lvl1/init', 'Levels/lvl2/init'],
 function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     var Main = function(phgame) {
@@ -67,7 +67,6 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         // Initiate terminal
         var term = new Terminal();
 
-        console.log(this.levelNum);
         if (this.levelNum == undefined) {
             this.levelNum = 0;
         }
@@ -82,7 +81,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     Main.prototype.loadLevel = function(level) {
         // load the first level
-        Level = require('Levels/lvl' + level + '/init');
+        Level = require('Levels/Level' + level);
         // Create level
         this.level = new Level(this);
 
