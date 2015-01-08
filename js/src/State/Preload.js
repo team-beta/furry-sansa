@@ -28,21 +28,25 @@ define([], function () {
             this.load.image('grass_block', 'assets/src/block_grass.png');
             this.load.image('robot', 'assets/robot.png');
             this.load.image('background', 'assets/src/sky.png');
-            this.load.image('metal_block', 'assets/src/block_metal.png')
-            this.load.image('fullMetalBlock', 'assets/src/block_metal_full.png')
-            this.load.image('crane', 'assets/src/crane.png')
-            this.load.image('tree', 'assets/src/tree.png')
-            this.load.image('rainbow', 'assets/src/rainbow.png')
-            this.load.image('building_1', 'assets/src/building_1.png')
-            this.load.image('building_2', 'assets/src/building_2.png')
-            this.load.image('building_3', 'assets/src/building_3.png')
-            this.load.image('tower', 'assets/src/tower.png')
-            this.load.image('tree_bg', 'assets/src/tree_bg.png')
-            this.load.image('lamp', 'assets/src/lamp.png')
-            this.load.image('matras', 'assets/matras.png')
+            this.load.image('metal_block', 'assets/src/block_metal.png');
+            this.load.image('fullMetalBlock', 'assets/src/block_metal_full.png');
+            this.load.image('crane', 'assets/src/crane.png');
+            this.load.image('tree', 'assets/src/tree.png');
+            this.load.image('rainbow', 'assets/src/rainbow.png');
+            this.load.image('building_1', 'assets/src/building_1.png');
+            this.load.image('building_2', 'assets/src/building_2.png');
+            this.load.image('building_3', 'assets/src/building_3.png');
+            this.load.image('tower', 'assets/src/tower.png');
+            this.load.image('tree_bg', 'assets/src/tree_bg.png');
+            this.load.image('lamp', 'assets/src/lamp.png');
+            this.load.image('matras', 'assets/matras.png');
+            this.load.image('end_level', 'assets/tue_signpost.png');
+
 
             this.load.image('invisible', 'assets/src/invisible.png')
 
+
+            this.load.spritesheet('glitch','assets/glitchy_wall.png', 128, 64);
             this.load.spritesheet('particle_dust', 'assets/src/particle_dust.png', 32, 32);
             this.load.spritesheet('mattress', 'assets/src/matress.png', 128, 32);
             this.load.spritesheet('factory_room', 'assets/src/factory_room.png', 640, 640);

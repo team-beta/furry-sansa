@@ -1,5 +1,8 @@
-define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser', 'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot', 'Game/API', 'Levels/lvl0/init', 'Levels/lvl1/init', 'Levels/lvl2/init'],
-function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
+define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser',
+        'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot',
+        'Game/API', 'Game/Settings',
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2'],
+function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings) {
 
     var Main = function(phgame) {
 
@@ -15,8 +18,6 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         this.robot = null;
         this.bg_music = null;
 
-
-        console.log(this.levelNum);
         // The library is accessible by the player
         this.library = new Code(this);
     }
@@ -72,10 +73,12 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         // Start physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
+        // initiate settings
+        this.settings = new Settings(this);
+
         // Initiate terminal
         var term = new Terminal();
 
-        console.log(this.levelNum);
         if (this.levelNum == undefined) {
             this.levelNum = 0;
         }
@@ -90,7 +93,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     Main.prototype.loadLevel = function(level) {
         // load the first level
-        Level = require('Levels/lvl' + level + '/init');
+        Level = require('Levels/Level' + level);
         // Create level
         this.level = new Level(this);
 
