@@ -1,4 +1,4 @@
-define(['Game/API', "Levels/lvl1/settings", "Levels/lvl1/layer-1", "Levels/lvl1/layer-2", "Game/Robot"], function (API, Settings, layer1, layer2, Robot) {
+define(['Game/API', "Levels/lvl2/settings", "Levels/lvl2/layer-1", "Levels/lvl2/layer-2", "Game/Robot"], function (API, Settings, layer1, layer2, Robot) {
     var Init = function(main) {
         this.main = main;
         this.api = main.api;
