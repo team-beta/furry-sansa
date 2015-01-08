@@ -43,7 +43,7 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(9*tile, 6*tile, 3*tile, tile, this.main.metalBlock);
         this.API.createPlatform(15*tile, 6*tile, 3*tile, tile, this.main.metalBlock);
         this.API.createPlatform(22*tile, 7*tile, 2*tile, tile, this.main.metalBlock);
-        this.API.createPlatform(21*tile, 14*tile, 3*tile, tile, this.main.metalBlock);
+        this.API.createPlatform(21*tile, 15*tile, 3*tile, tile, this.main.metalBlock);
 
 
         // Add interactable blocks
@@ -51,7 +51,7 @@ define(["Game/Block"], function (Block) {
 
 
         new Block(this.main, "block_1").create(8*tile, 24*tile, 2, 2);
-        new Block(this.main, "block_2").create(28*tile, 4*tile, 4, 4);
+        new Block(this.main, "block_2").create(37*tile, 4*tile, 4, 4);
     }
 
     Layer.prototype.update = function() {

@@ -55,8 +55,8 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
         this.fullMetalBlock = {
           land : this.game.add.audio('sound_land_metal'),
           walk : this.game.add.audio('sound_walk_metal'),
-          sprite : this.game.add.sprite('block_metal_full'),
-          blockName : "metal_block",
+          sprite : this.game.add.sprite('fullMetalBlock'),
+          blockName : "fullMetalBlock",
         }
 
         this.specialBlock = {
