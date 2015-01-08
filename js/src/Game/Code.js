@@ -37,5 +37,13 @@ define([], function() {
       }
     }
 
+    Code.prototype.clearBlocks = function() {
+        this.blocks = {};
+    }
+
+    Code.prototype.clear = function() {
+        this.clearBlocks();
+    }
+
     return Code;
 });

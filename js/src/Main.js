@@ -84,6 +84,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API) {
 
     Main.prototype.changeLevel = function(level) {
         this.level.destroy();
+        this.library.clear();
         this.game.state.restart(true, false, level);
     }
 
