@@ -8,12 +8,12 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
     Level.prototype.loadSettings = function() {
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_thinking-back');
+        this.settings.setSnowflake(false);
     }
 
     Level.prototype.createBackgroundLayer = function() {
         this.bgLayer = new layer1(this.main, this);
         this.bgLayer.create();
-        console.log('test');
     }
 
     Level.prototype.createRobot = function() {

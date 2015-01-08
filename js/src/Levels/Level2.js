@@ -1,4 +1,4 @@
-define(['Levels/BaseLevel', 'Levels/lvl2/settings', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/Robot'],
+define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/Robot'],
         function(BaseLevel, Settings, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
@@ -8,6 +8,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/settings', 'Levels/lvl2/layer-1', 'Leve
     Level.prototype.loadSettings = function() {
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_dododo');
+        this.settings.setSnowflake(false);
     }
 
     Level.prototype.createBackgroundLayer = function() {

@@ -18,6 +18,10 @@ define([], function() {
         this.main.bg_music = this.music;
     }
 
+    Settings.prototype.setSnowflake = function(snowflake) {
+        this.snowflake = snowflake;
+    }
+
     Settings.prototype.destroy = function() {
         this.music.destroy();
     }
