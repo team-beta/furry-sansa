@@ -33,7 +33,9 @@ define(['Game/API', "Levels/lvl2/settings", "Levels/lvl2/layer-1", "Levels/lvl2/
         this.fgLayer.update();
     }
 
-
+    Init.prototype.destroy = function() {
+        this.settings.destroy();
+    }
 
     return Init;
 });
