@@ -18,7 +18,7 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(0,26*tile, width, 3*tile, this.main.fullMetalBlock);
 
         // Create weird wall on the left
-        this.API.createPlatform(3*tile, 8*tile, tile, 13*tile, this.main.fullMetalBlock);
+        this.API.createPlatform(3*tile, 8*tile, tile, 12*tile, this.main.fullMetalBlock);
         this.API.createPlatform(4*tile, 8*tile, tile, 11*tile, this.main.fullMetalBlock);
         this.API.createPlatform(5*tile, 8*tile, tile, 10*tile, this.main.fullMetalBlock);
         this.API.createPlatform(6*tile, 9*tile, tile, 8*tile, this.main.fullMetalBlock);
@@ -56,7 +56,12 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(27*tile, 8*tile, 5*tile, tile, this.main.metalBlock);
         this.API.createPlatform(35*tile, 8*tile, 8*tile, tile, this.main.metalBlock);
         this.API.createPlatform(46*tile, 8*tile, 5*tile, tile, this.main.metalBlock);
-
+        this.API.createPlatform(3*tile, 8*tile, 3*tile, tile, this.main.metalBlock);
+        this.API.createPlatform(6*tile, 9*tile, tile, tile, this.main.metalBlock);
+        this.API.createPlatform(7*tile, 10*tile, tile, tile, this.main.metalBlock);
+        this.API.createPlatform(8*tile, 11*tile, tile, tile, this.main.metalBlock);
+        this.API.createPlatform(9*tile, 12*tile, tile, tile, this.main.metalBlock);
+        this.API.createPlatform(10*tile, 13*tile, 8*tile, tile, this.main.metalBlock);
 
 
         // Add interactable blocks
