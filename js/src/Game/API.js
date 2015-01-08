@@ -177,6 +177,9 @@ define([], function () {
 
         this.collisionBlocks.push(result);
 
+        // Add result group to the platform group
+        this.main.platformGroup.add(result);
+
         return result;
     }
 
