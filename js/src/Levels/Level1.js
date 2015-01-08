@@ -1,5 +1,5 @@
 define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/Robot'],
-        function(BaseLevel, Settings, layer1, layer2, Robot) {
+        function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
     }

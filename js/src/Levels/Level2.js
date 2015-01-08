@@ -1,5 +1,5 @@
 define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/Robot'],
-        function(BaseLevel, Settings, layer1, layer2, Robot) {
+        function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
     }
@@ -23,10 +23,6 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     Level.prototype.createForegroundLayer = function() {
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
-    }
-
-    Level.prototype.destroy = function() {
-        this.settings.destroy();
     }
 
     Level.prototype.update = function() {
