@@ -42,8 +42,11 @@ define([], function () {
             this.load.image('matras', 'assets/matras.png');
             this.load.image('end_level', 'assets/tue_signpost.png');
 
+
             this.load.image('invisible', 'assets/src/invisible.png')
 
+
+            this.load.spritesheet('glitch','assets/glitchy_wall.png', 128, 64);
             this.load.spritesheet('particle_dust', 'assets/src/particle_dust.png', 32, 32);
             this.load.spritesheet('mattress', 'assets/src/matress.png', 128, 32);
             this.load.spritesheet('factory_room', 'assets/src/factory_room.png', 640, 640);
