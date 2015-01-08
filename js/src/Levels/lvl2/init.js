@@ -13,7 +13,7 @@ define(['Game/API', "Levels/lvl2/settings", "Levels/lvl2/layer-1", "Levels/lvl2/
         this.bgLayer = new layer1(this.main);
         this.bgLayer.create();
 
-        this.main.robot = new Robot(this.main, 128, 0);
+        this.main.robot = new Robot(this.main, 32, 24*32);
 
         // Use the API (should be called after drawing the background)
         this.main.api = new API(this.main);
