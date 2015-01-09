@@ -52,17 +52,9 @@ define(["Game/Block"], function (Block) {
         // Create roof of house
         this.API.createPlatform(50*tile, 7*tile, 31*tile, tile, this.main.woodBlock);
 
-
-
-
         // Add interactable blocks
-        //this.block = new iBlock(this.main);
-
-        //this.block.make("block", 30*tile, height - 19*tile, 3, 3, "block_1");
-        //this.block.make("block", 15*tile, height - 17*tile, 1, 1, "block_2");
-
-        new Block(this.main, "block_1").create(15*tile, height - 17*tile, 1, 1);
-        new Block(this.main, "block_2").create(30*tile, height - 19*tile, 3, 3);
+        this.main.manager.create(15*tile, height - 17*tile, 1, 1, "block_1");
+        this.main.manager.create(30*tile, height - 19*tile, 3, 3, "block_2");
     }
 
     Layer.prototype.update = function() {

@@ -1,8 +1,8 @@
 define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser',
         'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot',
-        'Game/API', 'Game/Settings',
-        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Game/BlockManager'],
-function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, l0, l1, l2, BlockManager) {
+        'Game/API', 'Game/Settings', 'Game/BlockManager',
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Levels/Level3'],
+function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, BlockManager) {
 
     var Main = function(phgame) {
 
@@ -67,6 +67,13 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             walk : this.game.add.audio('sound_walk_concrete'),
             sprite : this.game.add.sprite('invisible'),
             blockName : "invisible",
+        }
+
+        this.woodBlock = {
+            land : this.game.add.audio('sound_land_metal'),
+            walk : this.game.add.audio('sound_walk_metal'),
+            sprite : this.game.add.sprite('placeholder'),
+            blockName : "placeholder",            
         }
 
         this.sound_walk_concrete = this.game.add.audio('sound_walk_concrete')

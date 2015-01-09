@@ -63,13 +63,10 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(9*tile, 12*tile, tile, tile, this.main.metalBlock);
         this.API.createPlatform(10*tile, 13*tile, 8*tile, tile, this.main.metalBlock);
 
-
         // Add interactable blocks
-        //this.block = new iBlock(this.main);
+        this.main.manager.create(8*tile, 24*tile, 2, 2, "block_1");
+        this.main.manager.create(37*tile, 4*tile, 4, 4, "block_2");
 
-
-        new Block(this.main, "block_1").create(8*tile, 24*tile, 2, 2);
-        new Block(this.main, "block_2").create(37*tile, 4*tile, 4, 4);
     }
 
     Layer.prototype.update = function() {
