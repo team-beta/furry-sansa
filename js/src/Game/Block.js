@@ -83,9 +83,11 @@ define(['jquery-terminal'], function () {
       parent.tileSprite.body.immovable = true;
 
       // Detect collisions between this block and the robot.
-      parent.main.robot.collide(parent.tileSprite, function() {
+      if (parent.tileSprite.solid) {
+          parent.main.robot.collide(parent.tileSprite, function() {
 
-      }, null, this)
+          }, null, this)
+      }
 
       //  Set body to movable, so that collision with platform works.
       parent.tileSprite.body.immovable = false;
