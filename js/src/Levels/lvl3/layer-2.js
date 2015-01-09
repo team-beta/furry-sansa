@@ -49,6 +49,10 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(68*tile, 15*tile, 10*tile, tile, this.main.woodBlock);
         this.API.createPlatform(69*tile, 16*tile, 9*tile, tile, this.main.woodBlock);
 
+        // Create roof of house
+        this.API.createPlatform(50*tile, 7*tile, 31*tile, tile, this.main.woodBlock);
+
+
 
 
         // Add interactable blocks
