@@ -70,10 +70,10 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         }
 
         this.woodBlock = {
-            land : this.game.add.audio('sound_land_metal'),
-            walk : this.game.add.audio('sound_walk_metal'),
-            sprite : this.game.add.sprite('placeholder'),
-            blockName : "placeholder",            
+            land : this.game.add.audio('sound_land_wood'),
+            walk : this.game.add.audio('sound_walk_wood'),
+            sprite : this.game.add.sprite('wood_block'),
+            blockName : "wood_block",
         }
 
         this.sound_walk_concrete = this.game.add.audio('sound_walk_concrete')

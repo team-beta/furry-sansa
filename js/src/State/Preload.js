@@ -14,10 +14,12 @@ define([], function () {
             this.load.audio('sound_land_dirt', 'sound/land_dirt.ogg');
             this.load.audio('sound_land_metal', 'sound/land_metal.ogg');
             this.load.audio('sound_land_concrete', 'sound/land_concrete.ogg');
+            this.load.audio('sound_land_wood', 'sound/land_wood.ogg');
 
             this.load.audio('sound_walk_dirt', 'sound/walk.ogg');
             this.load.audio('sound_walk_metal', 'sound/walk_metal.ogg');
             this.load.audio('sound_walk_concrete', 'sound/walk_concrete.ogg');
+            this.load.audio('sound_walk_wood', 'sound/walk_wood.ogg');
 
             this.load.audio('sound_coin', 'sound/coin.ogg');
             this.load.audio('sound_jump', 'sound/jump.ogg');
@@ -29,6 +31,7 @@ define([], function () {
             this.load.image('robot', 'assets/robot.png');
             this.load.image('background', 'assets/src/sky.png');
             this.load.image('metal_block', 'assets/src/block_metal.png');
+            this.load.image('wood_block', 'assets/src/block_wood.png');
             this.load.image('fullMetalBlock', 'assets/src/block_metal_full.png');
             this.load.image('crane', 'assets/src/crane.png');
             this.load.image('tree', 'assets/src/tree.png');
