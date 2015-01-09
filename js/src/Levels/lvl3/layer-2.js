@@ -55,6 +55,16 @@ define(["Game/Block"], function (Block) {
         // Add interactable blocks
         this.main.manager.create(15*tile, height - 17*tile, 1, 1, "block_1");
         this.main.manager.create(30*tile, height - 19*tile, 3, 3, "block_2");
+
+        // Lower two layers dirt fill up
+        this.API.createPlatform(6*tile, 27*tile, 96*tile, 2*tile, this.main.dirtBlock);
+        this.API.createPlatform(10*tile, 26*tile, 17*tile, tile, this.main.dirtBlock);
+        this.API.createPlatform(11*tile, 25*tile, 15*tile, tile, this.main.dirtBlock);
+        this.API.createPlatform(12*tile, 24*tile, 13*tile, tile, this.main.dirtBlock);
+        this.API.createPlatform(16*tile, 23*tile, 5*tile, tile, this.main.dirtBlock);
+
+
+;
     }
 
     Layer.prototype.update = function() {

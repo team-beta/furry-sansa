@@ -46,6 +46,13 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             blockName : "grass_block",
         }
 
+        this.dirtBlock = {
+            land : this.game.add.audio('sound_land_dirt'),
+            walk : this.game.add.audio('sound_walk_dirt'),
+            sprite : this.game.add.sprite('dirt_block'),
+            blockName : "dirt_block",
+        }
+
         // Creating a metal block
         this.metalBlock = {
             land : this.game.add.audio('sound_land_metal'),
