@@ -206,9 +206,6 @@ define([], function () {
 
         // Determine collision for all platforms.
         api.collisionBlocks.forEach(function(elem){
-            api.game.physics.arcade.collide(api.main.controlBlocks, elem, function() {
-
-            }, null, this)
             api.main.robot.collide(elem, function() {
                 elem.land(api.intensity);
                 elem.walk();

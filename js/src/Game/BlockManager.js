@@ -15,6 +15,7 @@ define(['Game/Block'], function (Block) {
         // Create new block.
         var block = new Block(this.main, name, x, y, width, height, this.blocks);
 
+
         // Push block to library so that the player has access to it.
         if(typeof this.main.library.blocks[name] === 'undefined'){
             this.main.library.blocks[name] = block;
@@ -25,21 +26,12 @@ define(['Game/Block'], function (Block) {
 
     Manager.prototype.update = function(){
         var manager = this;
-        this.blocks.forEach(function(block) {
-            if (block.solid) {
-                // Detect collisions between each block and each platform
-                manager.api.collisionBlocks.forEach(function(platform){
-                    manager.game.physics.arcade.collide(block, platform, function(){
-                        // Does not work.
-                    }, null, this);
-                });
 
-                // Detect collisions between each block and the robot
-                manager.main.robot.collide(block, function() {
-                    // Works.
-                }, null, this)
-            }
-        })
+        for (k in manager.main.library.blocks) {
+            manager.main.library.blocks[k].update()
+        }
+
+
 
     }
 

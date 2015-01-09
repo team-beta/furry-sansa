@@ -20,9 +20,10 @@ define(['jquery-terminal'], function () {
       this.tileSprite = this.game.add.tileSprite(x, y, width*tile, height*tile, "solid_block", null, group);
 
       // Set properties
-    //   tileSprite.body.gravity.y = 500;
+      this.tileSprite.body.gravity.y = 500;
+      this.game.physics.enable(this.tileSprite, Phaser.Physics.ARCADE);
+
       this.tileSprite.name = name;
-      this.tileSprite.body.immovable = true;
       this.tileSprite.solid = true;
       this.tileSprite.body.collideWorldBounds = true;
 
@@ -73,6 +74,29 @@ define(['jquery-terminal'], function () {
   Block.prototype.move = function(x, y) {
       this.tileSprite.body.velocity.x += x;
       this.tileSprite.body.velocity.y += y;
+  }
+
+  Block.prototype.update = function() {
+      var parent = this;
+
+      // Set body to immovable, so that the robot can't move it.
+      parent.tileSprite.body.immovable = true;
+
+      // Detect collisions between this block and the robot.
+      parent.main.robot.collide(parent.tileSprite, function() {
+
+      }, null, this)
+
+      //  Set body to movable, so that collision with platform works.
+      parent.tileSprite.body.immovable = false;
+
+      // Detect collision between the block and all the platforms.
+      parent.api.collisionBlocks.forEach(function(platform){
+          parent.game.physics.arcade.collide(parent.tileSprite, platform, function(){
+          }, null, this);
+      });
+
+
   }
 
   return Block;
