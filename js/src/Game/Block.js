@@ -1,5 +1,5 @@
 define(['jquery-terminal'], function () {
-  var Block = function(main, name){
+  var Block = function(main, name, x, y, width, height, group){
 
     // Quick references
     this.main = main;
@@ -11,24 +11,26 @@ define(['jquery-terminal'], function () {
     // Initialize variables
     this.name = name;
     this.selected = false;
+
+    this.create(x, y, width, height, group)
   }
 
   Block.prototype.create = function (x, y, width, height, group) {
       var tile = 32;
-      var tileSprite = this.game.add.tileSprite(x, y, width*tile, height*tile, "solid_block", null, group);
+      this.tileSprite = this.game.add.tileSprite(x, y, width*tile, height*tile, "solid_block", null, group);
 
       // Set properties
     //   tileSprite.body.gravity.y = 500;
-      tileSprite.name = name;
-      tileSprite.body.immovable = true;
-      tileSprite.solid = true;
-      tileSprite.body.collideWorldBounds = true;
+      this.tileSprite.name = name;
+      this.tileSprite.body.immovable = true;
+      this.tileSprite.solid = true;
+      this.tileSprite.body.collideWorldBounds = true;
 
       // Selection
-      tileSprite.inputEnabled = true;
-      tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
-      tileSprite.input.useHandCursor = true;
-      tileSprite.events.onInputDown.add(function(){
+      this.tileSprite.inputEnabled = true;
+      this.tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
+      this.tileSprite.input.useHandCursor = true;
+      this.tileSprite.events.onInputDown.add(function(){
           document.terminal.insert('world.blocks.' + this.name);
           this.select();
       }, this);
@@ -43,15 +45,13 @@ define(['jquery-terminal'], function () {
   }
 
   Block.prototype.setSolidity = function(bool) {
-    this.blocks.forEach(function(elem){
-      if(bool){
-        elem.alpha = 1;
-        elem.solid = true;
-      } else {
-        elem.alpha = 0.5;
-        elem.solid = false;
-      }
-    })
+    if(bool){
+        this.tileSprite.alpha = 1;
+        this.tileSprite.solid = true;
+    } else {
+        this.tileSprite.alpha = 0.5;
+        this.tileSprite.solid = false;
+    }
   }
 
   Block.prototype.moveRight = function(x){
