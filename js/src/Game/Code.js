@@ -3,7 +3,7 @@ define([], function() {
         this.main = main;
         this.blocks = {};
     }
-        
+
     Code.prototype.toString = function() {
         return "This is the world object. Use help('world') to learn more about the world."
     }
@@ -28,13 +28,6 @@ define([], function() {
       }
 
       return result;
-    }
-
-
-    Code.prototype.update = function() {
-      for(var k in this.blocks){
-        this.blocks[k].update();
-      }
     }
 
     Code.prototype.clearBlocks = function() {
