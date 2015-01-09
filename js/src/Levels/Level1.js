@@ -22,6 +22,10 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
     }
 
     Level.prototype.createForegroundLayer = function() {
+        // Make a group for all platforms.
+        this.main.platformGroup = this.game.add.group();
+        this.main.platformGroup.enableBody = true;
+
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
     }

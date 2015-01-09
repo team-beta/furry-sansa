@@ -1,56 +1,41 @@
 define(['jquery-terminal'], function () {
-  var Block = function(main, name){
+  var Block = function(main, name, x, y, width, height, group){
+
+    // Quick references
     this.main = main;
     this.game = main.game;
     this.api = this.main.api;
-    this.blocks = this.game.add.group();
-    this.blocks.enableBody = true;
     this.graphics = this.main.graphics;
     this.library = main.library;
+
+    // Initialize variables
     this.name = name;
     this.selected = false;
 
-    if(typeof this.main.library.blocks[name] === 'undefined'){
-      console.log("Pushing: " + name);
-      this.main.library.blocks[name] = this;
-    }else{
-      console.log("Pushing: " + name);
-      this.main.library.blocks[name + '_' + this.main.library.blocks.length] = this;
-    }
+    this.create(x, y, width, height, group)
   }
 
-  Block.prototype.create = function (x, y, width, height) {
-    var tile = 32;
+  Block.prototype.create = function (x, y, width, height, group) {
+      var tile = 32;
+      this.tileSprite = this.game.add.tileSprite(x, y, width*tile, height*tile, "solid_block", null, group);
 
-    this.tileSprite = this.game.add.tileSprite(
-      x, y, width * 32, height * 32, "solid_block", null, this.blocks
-    );
+      // Set properties
+    //   tileSprite.body.gravity.y = 500;
+      this.tileSprite.name = name;
+      this.tileSprite.body.immovable = true;
+      this.tileSprite.solid = true;
+      this.tileSprite.body.collideWorldBounds = true;
 
-    this.tileSprite.name = name;
-    this.tileSprite.body.immovable = true;
-    this.tileSprite.solid = true;
-
-    this.tileSprite.inputEnabled = true;
-    this.tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
-    this.tileSprite.input.useHandCursor = true;
-    this.tileSprite.events.onInputDown.add(function(){
-            console.log("Selected: " + this.name);
-            document.terminal.insert('world.blocks.' + this.name);
-            this.select();
-    }, this);
-
+      // Selection
+      this.tileSprite.inputEnabled = true;
+      this.tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
+      this.tileSprite.input.useHandCursor = true;
+      this.tileSprite.events.onInputDown.add(function(){
+          document.terminal.insert('world.blocks.' + this.name);
+          this.select();
+      }, this);
   }
 
-
-  Block.prototype.update = function(){
-    var robot = this.main.robot;
-    this.blocks.forEach(function(elem){
-      if (elem.solid == true) {
-        robot.collide(elem, function() {
-        }, null, this)
-      }
-    })
-  }
 
   Block.prototype.select = function(){
       this.graphics.clear();
@@ -60,15 +45,13 @@ define(['jquery-terminal'], function () {
   }
 
   Block.prototype.setSolidity = function(bool) {
-    this.blocks.forEach(function(elem){
-      if(bool){
-        elem.alpha = 1;
-        elem.solid = true;
-      } else {
-        elem.alpha = 0.5;
-        elem.solid = false;
-      }
-    })
+    if(bool){
+        this.tileSprite.alpha = 1;
+        this.tileSprite.solid = true;
+    } else {
+        this.tileSprite.alpha = 0.5;
+        this.tileSprite.solid = false;
+    }
   }
 
   Block.prototype.moveRight = function(x){
@@ -88,11 +71,8 @@ define(['jquery-terminal'], function () {
   }
 
   Block.prototype.move = function(x, y) {
-    x = x * 32;
-    y = y * 32;
-
-    this.tileSprite.x += x;
-    this.tileSprite.y += y;
+      this.tileSprite.body.velocity.x += x;
+      this.tileSprite.body.velocity.y += y;
   }
 
   return Block;

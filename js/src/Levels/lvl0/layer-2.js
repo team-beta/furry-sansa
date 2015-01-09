@@ -39,7 +39,10 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(0, height - 1*tile, width, tile, this.main.metalBlock);
         this.spawnMattress();
         this.API.createPlatform(14*tile, height - 19*tile, tile, 18*tile, this.main.specialBlock);
-        this.API.createPlatform(35*tile, height - 19*tile, tile, 18*tile, this.main.specialBlock);
+        this.API.createPlatform(35*tile, height - 19*tile, tile, 9*tile, this.main.specialBlock);
+        this.API.createPlatform(35*tile, height - 8*tile, tile, 7*tile, this.main.specialBlock);
+        this.API.createPlatform(36*tile, height - 8*tile, 15*tile, tile, this.main.specialBlock);
+        this.API.createPlatform(36*tile, height - 11*tile, 15*tile, tile, this.main.specialBlock);
         this.main.robot.conveyorBelt = true;
 
         // should be 42*tile

@@ -1,4 +1,4 @@
-define(['Game/API'], function(API) {
+define(['Game/API', 'Game/BlockManager'], function(API, BlockManager) {
     var BaseLevel = function() {}
     BaseLevel.prototype.init = function(main) {
         this.main = main;
@@ -13,7 +13,11 @@ define(['Game/API'], function(API) {
         this.createBackgroundLayer();
         this.createRobot();
 
+        // Start the API
         this.main.api = new API(this.main);
+
+        // Start the BlockManager
+        this.main.manager = new BlockManager(this.main);
 
         this.main.graphics = this.game.add.graphics(0, 0);
 

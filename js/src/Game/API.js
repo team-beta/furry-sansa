@@ -177,6 +177,9 @@ define([], function () {
 
         this.collisionBlocks.push(result);
 
+        // Add result group to the platform group
+        this.main.platformGroup.add(result);
+
         return result;
     }
 
@@ -206,6 +209,9 @@ define([], function () {
 
         // Determine collision for all platforms.
         api.collisionBlocks.forEach(function(elem){
+            api.game.physics.arcade.collide(api.main.controlBlocks, elem, function() {
+
+            }, null, this)
             api.main.robot.collide(elem, function() {
                 elem.land(api.intensity);
                 elem.walk();
@@ -231,13 +237,15 @@ define([], function () {
             }
         }, null, this)
 
+        // Collision with controllable blocks
+        this.main.manager.update()
+
         // Emit some dust particles when walking.
         if (Math.abs(api.main.robot.sprite.body.velocity.x) > 0 && api.main.robot.sprite.body.touching.down) {
             api.emitter.x = api.main.robot.sprite.x + api.main.robot.sprite.width /2;
             api.emitter.y = api.main.robot.sprite.y + api.main.robot.sprite.height;
             api.emitter.start(true, 500, null, 15);
         }
-
 
         // Determine whether the robot is in air.
         if (!api.main.robot.sprite.body.touching.down) {

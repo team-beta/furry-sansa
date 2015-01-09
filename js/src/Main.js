@@ -1,8 +1,8 @@
 define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser',
         'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot',
         'Game/API', 'Game/Settings',
-        'Levels/Level0', 'Levels/Level1', 'Levels/Level2'],
-function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings) {
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Game/BlockManager'],
+function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, l0, l1, l2, BlockManager) {
 
     var Main = function(phgame) {
 
@@ -20,6 +20,8 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
 
         // The library is accessible by the player
         this.library = new Code(this);
+
+
     }
 
     Main.prototype.mute = function() {
@@ -102,8 +104,8 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
     }
 
     Main.prototype.update = function() {
-        this.library.update();
-        this.api.update(this.api);
+        // this.library.update();
+        this.api.update();
         this.level.update();
         this.robot.update();
     }
