@@ -9,7 +9,7 @@ define([], function() {
     }
 
     Settings.prototype.drawBackground = function(background) {
-        this.main.game.add.tileSprite(0, 0, this.main.game.world.width, this.main.game.world.height, background);
+        this.main.bg = this.main.game.add.tileSprite(0, 0, this.main.game.world.width, this.main.game.world.height, background);
     }
 
     Settings.prototype.playMusic = function(music) {

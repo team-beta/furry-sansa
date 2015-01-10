@@ -118,6 +118,12 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
     }
 
     Main.prototype.update = function() {
+        // Parallax
+        if (typeof this.bg !== "undefined") {
+            this.bg.position.x = this.game.camera.x/2
+            this.bg.position.y = this.game.camera.y/2
+        }
+
         // this.library.update();
         this.api.update();
         this.level.update();
