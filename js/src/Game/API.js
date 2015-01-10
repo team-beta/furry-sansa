@@ -226,11 +226,15 @@ define([], function () {
 
                 // Check air status
                 if (api.airStatus.inAir){
-                    api.main.sound_land_concrete.play('', 0, 5, false, false);
+                    api.main.sound_land_conveyor.play('', 0, 5, false, false);
                     api.screenshake("canvas", 0.1);
                     api.makeDust();
                 }
                 api.setAirStatus('tracks');
+
+                if (api.airStatus['tracks'] && Math.abs(api.main.robot.sprite.body.velocity.x) > 0) {
+                    api.main.sound_walk_conveyor.play('', 0, 5, false, false);
+                }
             }, null, this);
         })
 

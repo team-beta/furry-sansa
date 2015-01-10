@@ -15,11 +15,13 @@ define([], function () {
             this.load.audio('sound_land_metal', 'sound/land_metal.ogg');
             this.load.audio('sound_land_concrete', 'sound/land_concrete.ogg');
             this.load.audio('sound_land_wood', 'sound/land_wood.ogg');
+            this.load.audio('sound_land_conveyor', 'sound/land_conveyor.ogg');
 
             this.load.audio('sound_walk_dirt', 'sound/walk.ogg');
             this.load.audio('sound_walk_metal', 'sound/walk_metal.ogg');
             this.load.audio('sound_walk_concrete', 'sound/walk_concrete.ogg');
             this.load.audio('sound_walk_wood', 'sound/walk_wood.ogg');
+            this.load.audio('sound_walk_conveyor', 'sound/walk_conveyor.ogg');
 
             this.load.audio('sound_coin', 'sound/coin.ogg');
             this.load.audio('sound_jump', 'sound/jump.ogg');

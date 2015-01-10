@@ -47,6 +47,10 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(36*tile, height - 8*tile, 15*tile, tile, this.main.specialBlock);
         this.API.createPlatform(36*tile, height - 11*tile, 15*tile, tile, this.main.specialBlock);
 
+        // Mattress hiders.
+        this.game.add.tileSprite(35*tile, height - 3*tile, 16*tile, 3*tile, "metal_block_dark");
+        this.game.add.tileSprite(0*tile, height - 3*tile, 15*tile, 3*tile, "metal_block_dark");
+
         // should be 42*tile
         this.end = this.game.add.sprite(2*tile, height-4*tile, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
@@ -108,7 +112,7 @@ define(["Game/Block"], function (Block) {
         var width = this.game.world.width;
         var main = this.main;
 
-        if (this.matras.body.position.x < 12*tile) {
+        if (this.matras.body.position.x < 11*tile) {
             this.resetMattress();
         }
 
