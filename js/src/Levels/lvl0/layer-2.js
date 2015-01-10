@@ -36,18 +36,28 @@ define(["Game/Block"], function (Block) {
         var tile = 32;
         var height = this.game.world.height;
         var width = this.game.world.width;
-        this.API.createPlatform(0, height - 1*tile, width, tile, this.main.metalBlock);
+        var main = this.main;
+        // Mattess
         this.spawnMattress();
+
+        // Walls
         this.API.createPlatform(14*tile, height - 19*tile, tile, 18*tile, this.main.specialBlock);
         this.API.createPlatform(35*tile, height - 19*tile, tile, 9*tile, this.main.specialBlock);
         this.API.createPlatform(35*tile, height - 8*tile, tile, 7*tile, this.main.specialBlock);
         this.API.createPlatform(36*tile, height - 8*tile, 15*tile, tile, this.main.specialBlock);
         this.API.createPlatform(36*tile, height - 11*tile, 15*tile, tile, this.main.specialBlock);
-        this.main.robot.conveyorBelt = true;
 
         // should be 42*tile
         this.end = this.game.add.sprite(2*tile, height-4*tile, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
+
+        // Conveyor belt
+        this.API.createTracks(15*tile, height-tile, 150)
+        this.API.createTracks(19*tile, height-tile, 150)
+        this.API.createTracks(23*tile, height-tile, 150)
+        this.API.createTracks(27*tile, height-tile, 150)
+        this.API.createTracks(31*tile, height-tile, 150)
+
     }
 
     Layer.prototype.displayNext = function() {
@@ -73,18 +83,15 @@ define(["Game/Block"], function (Block) {
         this.matras.body.immovable = true;
         this.matras.animations.add('jump', [1,0], 10, false);
         this.jumped = false;
-        this.main.robot.conveyorBelt = true;
     }
 
     Layer.prototype.resetMattress = function() {
         this.matras.body.position.x = 37*32;
         this.jumped = false;
-        this.main.robot.conveyorBelt = true;
     }
 
     Layer.prototype.stopRoll = function() {
         this.matras.body.velocity.x = 0;
-        this.main.robot.conveyorBelt = false;
         this.stopped = true;
     }
 
@@ -99,10 +106,12 @@ define(["Game/Block"], function (Block) {
         var tile = 32;
         var height = this.game.world.height;
         var width = this.game.world.width;
+        var main = this.main;
 
         if (this.matras.body.position.x < 12*tile) {
             this.resetMattress();
         }
+
 
         this.robot.collide(this.end, function() {
             this.main.changeLevel(1);

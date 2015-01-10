@@ -8,7 +8,8 @@ define([], function() {
         this.main.game.world.setBounds(x, y, width, height);
     }
 
-    Settings.prototype.drawBackground = function(background) {
+    Settings.prototype.drawBackground = function(background, parallax) {
+        this.main.parallax = parallax;
         this.main.bg = this.main.game.add.tileSprite(0, 0, this.main.game.world.width, this.main.game.world.height, background);
     }
 

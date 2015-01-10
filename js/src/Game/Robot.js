@@ -22,6 +22,7 @@ define(['Game/Object'], function (GameObject) {
 
         this.dancing = false;
         this.conveyorBelt = false;
+        this.conveyorBeltSpeed = 0;
 
     }
     // extend GameObject
@@ -59,7 +60,7 @@ define(['Game/Object'], function (GameObject) {
 
         // Key left
         if (cursors.left.isDown) {
-            this.sprite.body.velocity.x = this.conveyorBelt && this.sprite.body.touching.down ? -320 - 150  : -320;
+            this.sprite.body.velocity.x = this.conveyorBelt && this.sprite.body.touching.down ? -320 - this.conveyorBeltSpeed  : -320;
             if(!this.sprite.body.touching.down){
                 this.sprite.animations.play('left_jump');
             }else{
@@ -68,7 +69,7 @@ define(['Game/Object'], function (GameObject) {
 
             // Key right
         } else if (cursors.right.isDown) {
-            this.sprite.body.velocity.x = this.conveyorBelt && this.sprite.body.touching.down ? 320 - 150  : 320;
+            this.sprite.body.velocity.x = this.conveyorBelt && this.sprite.body.touching.down ? 320 - this.conveyorBeltSpeed  : 320;
             if(!this.sprite.body.touching.down){
                 this.sprite.animations.play('right_jump');
             }else{

@@ -52,6 +52,7 @@ define([], function () {
             this.load.image('invisible', 'assets/src/invisible.png')
 
 
+            this.load.spritesheet('tracks', 'assets/tracks2.png', 128, 32);
             this.load.spritesheet('glitch','assets/glitchy_wall.png', 128, 64);
             this.load.spritesheet('particle_dust', 'assets/src/particle_dust.png', 32, 32);
             this.load.spritesheet('mattress', 'assets/src/matress.png', 128, 32);

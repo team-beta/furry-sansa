@@ -21,6 +21,9 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         // The library is accessible by the player
         this.library = new Code(this);
 
+        // Parallax default
+        this.parallax = true;
+
 
     }
 
@@ -120,8 +123,10 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
     Main.prototype.update = function() {
         // Parallax
         if (typeof this.bg !== "undefined") {
-            this.bg.position.x = this.game.camera.x/2
-            this.bg.position.y = this.game.camera.y/2
+            if (this.parallax) {
+                this.bg.position.x = this.game.camera.x/2
+                this.bg.position.y = this.game.camera.y/2
+            }
         }
 
         // this.library.update();

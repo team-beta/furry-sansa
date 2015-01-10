@@ -8,7 +8,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     Level.prototype.loadSettings = function() {
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_dododo');
-        this.settings.drawBackground('background_factory');
+        this.settings.drawBackground('background_factory', true);
         this.settings.setSnowflake(false);
     }
 

@@ -34,6 +34,20 @@ define([], function () {
         if (this.main.settings.snowflake) {
             this.snowflake()
         }
+
+        // Tracks aka conveyor belt
+        this.tracks = []
+    }
+
+    API.prototype.createTracks = function(x, y, speed) {
+        var tile = 32;
+        var sprite = this.game.add.sprite(x, y, 'tracks')
+        sprite.animations.add('move', [1, 0], 10, true);
+        sprite.animations.play('move');
+        this.main.game.physics.enable(sprite, Phaser.Physics.ARCADE);
+        sprite.body.immovable = true;
+        sprite.conveyorBeltSpeed = speed;
+        this.tracks.push(sprite)
     }
 
     API.prototype.snowflake = function() {
@@ -204,6 +218,29 @@ define([], function () {
     API.prototype.update = function() {
         var api = this;
 
+        // Do things with tracks
+        api.tracks.forEach(function(track) {
+            api.main.robot.collide(track, function(){
+                // Pass conveyorBeltSpeed to robot
+                api.main.robot.conveyorBeltSpeed = track.conveyorBeltSpeed;
+
+                // Check air status
+                if (api.airStatus.inAir){
+                    api.main.sound_land_concrete.play('', 0, 5, false, false);
+                    api.screenshake("canvas", 0.1);
+                    api.makeDust();
+                }
+                api.setAirStatus('tracks');
+            }, null, this);
+        })
+
+        // Conveyor belt walk penalty
+        if (api.airStatus.tracks) {
+            api.main.robot.conveyorBelt = true;
+        } else {
+            api.main.robot.conveyorBelt = false;
+        }
+
         // Determine collision for all platforms.
         api.collisionBlocks.forEach(function(elem){
             api.main.robot.collide(elem, function() {
@@ -247,6 +284,7 @@ define([], function () {
         }
 
         api.intensity = api.main.robot.sprite.body.velocity.y;
+
     }
 
     return API;
