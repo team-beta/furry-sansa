@@ -95,7 +95,7 @@ define(['jquery-terminal'], function () {
       // Detect collision between the block and all the platforms.
       parent.api.collisionBlocks.forEach(function(platform){
           parent.game.physics.arcade.collide(parent.tileSprite, platform, function(){
-              
+
           }, null, this);
       });
 
@@ -106,6 +106,20 @@ define(['jquery-terminal'], function () {
           }, null, this);
       })
 
+      // Detect collision between this block and mattresses
+      parent.api.mattresses.forEach(function(mattress){
+          parent.game.physics.arcade.collide(parent.tileSprite, mattress, function(){
+              parent.tileSprite.body.velocity.y = -500;
+
+          }, null, this);
+      })
+
+      // Detect collision between this block and conveyor belts
+      parent.api.tracks.forEach(function(track){
+          parent.game.physics.arcade.collide(parent.tileSprite, track, function(){
+              parent.tileSprite.body.velocity.x = -track.conveyorBeltSpeed;
+          }, null, this);
+      })
 
       // Detect collision between this block and all other blocks
       for (k in parent.library.blocks) {
@@ -118,6 +132,8 @@ define(['jquery-terminal'], function () {
           collideWith.body.immovable = false;
         }
       }
+
+
 
 
   }
