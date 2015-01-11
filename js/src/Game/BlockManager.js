@@ -31,8 +31,6 @@ define(['Game/Block'], function (Block) {
             manager.main.library.blocks[k].update()
         }
 
-
-
     }
 
     return Manager;

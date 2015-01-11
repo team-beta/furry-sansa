@@ -95,8 +95,29 @@ define(['jquery-terminal'], function () {
       // Detect collision between the block and all the platforms.
       parent.api.collisionBlocks.forEach(function(platform){
           parent.game.physics.arcade.collide(parent.tileSprite, platform, function(){
+              
           }, null, this);
       });
+
+      // Detect collision between the block and all solid objects
+      parent.api.solid.forEachAlive(function(solid){
+          parent.game.physics.arcade.collide(parent.tileSprite, solid, function(){
+
+          }, null, this);
+      })
+
+
+      // Detect collision between this block and all other blocks
+      for (k in parent.library.blocks) {
+          if (this.tileSprite != parent.library.block) {
+              var collideWith = parent.library.blocks[k].tileSprite;
+              collideWith.body.immovable = true;
+              parent.game.physics.arcade.collide(parent.tileSprite, collideWith, function(){
+
+              }, null, this)
+          collideWith.body.immovable = false;
+        }
+      }
 
 
   }
