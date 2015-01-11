@@ -62,6 +62,9 @@ define(["Game/Block"], function (Block) {
         this.API.createTracks(27*tile, height-tile, 150)
         this.API.createTracks(31*tile, height-tile, 150)
 
+        // Add interactable blocks
+        this.main.manager.create(35*tile, height - 10*tile, 1, 2, "block_1");
+
     }
 
     Layer.prototype.displayNext = function() {

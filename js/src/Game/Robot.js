@@ -24,6 +24,8 @@ define(['Game/Object'], function (GameObject) {
         this.conveyorBelt = false;
         this.conveyorBeltSpeed = 0;
 
+        this.highJump = false;
+
     }
     // extend GameObject
     Robot.prototype = GameObject;
@@ -93,9 +95,20 @@ define(['Game/Object'], function (GameObject) {
         }
 
         // If the sprite is on the ground, allow to jump
-        if (cursors.up.isDown && this.sprite.body.touching.down) {
+        if ((cursors.up.isDown || this.highJump) && this.sprite.body.touching.down) {
             this.sprite.body.velocity.y = -500;
             this.main.sound_jump.play();
+
+            if (this.highJump) {
+                this.sprite.body.velocity.y = -800;
+                this.highJump = false;
+            }
+        }
+
+        if (this.highJump) {
+            this.sprite.body.velocity.y = -800;
+            this.main.sound_jump.play();
+            this.highJump = false;
         }
     }
 

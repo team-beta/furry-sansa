@@ -276,8 +276,7 @@ define([], function () {
         // Mattress effects
         api.mattresses.forEach(function(mattress){
             api.main.robot.collide(mattress, function() {
-                api.main.robot.sprite.body.velocity.y = -800;
-                api.main.sound_jump.play();
+                api.main.robot.highJump = true;
                 mattress.animations.play('jump');
                 mattress.callback();
             }, null, this);
