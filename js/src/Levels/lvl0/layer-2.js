@@ -81,11 +81,11 @@ define(["Game/Block"], function (Block) {
     }
 
     Layer.prototype.spawnMattress = function() {
-        this.matras = this.game.add.sprite(37*32, this.game.world.height - 2*32, 'mattress');
-        this.game.physics.enable(this.matras, Phaser.Physics.ARCADE);
-        this.matras.body.velocity.x=-150;
-        this.matras.body.immovable = true;
-        this.matras.animations.add('jump', [1,0], 10, false);
+        var parent = this;
+
+        this.matras = this.API.createMattress(37*32, this.game.world.height - 2*32, function() {
+            parent.continue();
+        });
         this.jumped = false;
     }
 
@@ -116,17 +116,10 @@ define(["Game/Block"], function (Block) {
             this.resetMattress();
         }
 
-
         this.robot.collide(this.end, function() {
             this.main.changeLevel(1);
         }, null, this);
 
-        this.robot.collide(this.matras, function() {
-            this.robot.sprite.body.velocity.y = -800;
-            this.main.sound_jump.play();
-            this.matras.animations.play('jump');
-            this.continue();
-        }, null, this);
     }
 
     return Layer;

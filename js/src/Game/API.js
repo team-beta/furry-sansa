@@ -24,6 +24,9 @@ define([], function () {
         // List of collision blocks
         this.collisionBlocks = []
 
+        // List of mattresses
+        this.mattresses = []
+
         // Snowflake settings
         this.max = 0;
         this.front_emitter;
@@ -40,7 +43,6 @@ define([], function () {
     }
 
     API.prototype.createTracks = function(x, y, speed) {
-        var tile = 32;
         var sprite = this.game.add.sprite(x, y, 'tracks')
         sprite.animations.add('move', [1, 0], 10, true);
         sprite.animations.play('move');
@@ -48,6 +50,19 @@ define([], function () {
         sprite.body.immovable = true;
         sprite.conveyorBeltSpeed = speed;
         this.tracks.push(sprite)
+    }
+
+    API.prototype.createMattress = function (x, y, callback) {
+        var matras = this.game.add.sprite(x, y, 'mattress');
+        this.game.physics.enable(matras, Phaser.Physics.ARCADE);
+        matras.body.velocity.x=-150;
+        matras.body.immovable = true;
+        matras.callback = callback;
+        matras.animations.add('jump', [1,0], 10, false);
+        this.mattresses.push(matras);
+
+        // Return so that we can do extra things with it.
+        return matras;
     }
 
     API.prototype.snowflake = function() {
@@ -257,6 +272,17 @@ define([], function () {
         api.emitter.forEachAlive(function(p){
             p.alpha= p.lifespan / api.emitter.lifespan;
         });
+
+        // Mattress effects
+        api.mattresses.forEach(function(mattress){
+            api.main.robot.collide(mattress, function() {
+                api.main.robot.sprite.body.velocity.y = -800;
+                api.main.sound_jump.play();
+                mattress.animations.play('jump');
+                mattress.callback();
+            }, null, this);
+        })
+
 
         // Collision with solid objects
         api.main.robot.collide(this.solid, function() {
