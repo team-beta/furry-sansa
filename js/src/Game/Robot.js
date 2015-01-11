@@ -11,6 +11,8 @@ define(['Game/Object'], function (GameObject) {
         this.sprite.animations.add('right', [5, 6, 7, 8], 10, true);
         this.sprite.animations.add('up', [9], 10, true);
         this.sprite.animations.add('left_jump', [10], 10, true);
+        this.sprite.animations.add('left_jetpack', [12], 10, true);
+        this.sprite.animations.add('right_jetpack', [14], 10, true);
         this.sprite.animations.add('right_jump', [11], 10, true);
         this.sprite.animations.add('dance', [10,10,4,4,11,11,4,4], 10, true);
 
@@ -25,6 +27,13 @@ define(['Game/Object'], function (GameObject) {
         this.conveyorBeltSpeed = 0;
 
         this.highJump = false;
+        this.jetPack = false;
+
+        // Jetpack emitter
+        this.emitter = this.game.add.emitter(0, 0, 1500);
+        this.emitter.makeParticles('particle_fire', [0,1,2,3], 1500, true, true);
+        this.emitter.gravity = 10000;
+        this.emitter.width = 10;
 
     }
     // extend GameObject
@@ -39,6 +48,10 @@ define(['Game/Object'], function (GameObject) {
     }
     Robot.prototype.stopDancing = function() {
         this.dancing = false;
+    }
+
+    Robot.prototype.jetpack = function(bool) {
+        this.jetPack = bool;
     }
 
     // Works in Chrome, but not in Firefox.
@@ -64,7 +77,14 @@ define(['Game/Object'], function (GameObject) {
         if (cursors.left.isDown) {
             this.sprite.body.velocity.x = this.conveyorBelt && this.sprite.body.touching.down ? -320 - this.conveyorBeltSpeed  : -320;
             if(!this.sprite.body.touching.down){
-                this.sprite.animations.play('left_jump');
+                if (this.jetPack) {
+                    this.sprite.animations.play('left_jetpack');
+                    // this.emitter.x = this.main.robot.sprite.x + 25;
+                    // this.emitter.y = this.main.robot.sprite.y + 48;
+                    // this.emitter.start(true, 500, null, 15);
+                } else {
+                    this.sprite.animations.play('left_jump');
+                }
             }else{
                 this.sprite.animations.play('left');
             }
@@ -73,7 +93,15 @@ define(['Game/Object'], function (GameObject) {
         } else if (cursors.right.isDown) {
             this.sprite.body.velocity.x = this.conveyorBelt && this.sprite.body.touching.down ? 320 - this.conveyorBeltSpeed  : 320;
             if(!this.sprite.body.touching.down){
-                this.sprite.animations.play('right_jump');
+                if (this.jetPack) {
+                    this.sprite.animations.play('right_jetpack');
+                    // this.emitter.x = this.main.robot.sprite.x + 7;
+                    // this.emitter.y = this.main.robot.sprite.y + 48;
+                    // this.emitter.start(true, 500, null, 15);
+                } else {
+                    this.sprite.animations.play('right_jump');
+                }
+
             }else{
                 this.sprite.animations.play('right');
             }
@@ -95,14 +123,25 @@ define(['Game/Object'], function (GameObject) {
         }
 
         // If the sprite is on the ground, allow to jump
-        if ((cursors.up.isDown || this.highJump) && this.sprite.body.touching.down) {
+        if (((cursors.up.isDown || this.highJump) && this.sprite.body.touching.down) || (cursors.up.isDown && this.jetPack)) {
             this.sprite.body.velocity.y = -500;
-            this.main.sound_jump.play();
+            console.log(this.jetPack)
+
 
             if (this.highJump) {
                 this.sprite.body.velocity.y = -800;
                 this.highJump = false;
+                this.main.sound_jump.play();
+            } else if (this.jetPack) {
+                this.emitter.x = this.main.robot.sprite.x + 16;
+                this.emitter.y = this.main.robot.sprite.y + 40;
+                this.emitter.start(true, 500, null, 15);
+                this.main.sound_jetpack.play('', 0, 5, true, false);
+            } else {
+                this.main.sound_jump.play();
             }
+        } else {
+            this.main.sound_jetpack.stop();
         }
 
         if (this.highJump) {

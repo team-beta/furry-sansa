@@ -40,6 +40,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
 
         // Add sounds
         this.sound_jump = this.game.add.audio('sound_jump');
+        this.sound_jetpack = this.game.add.audio('sound_jetpack');
 
         // Creating a grass block
         this.grassBlock = {
