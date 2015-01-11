@@ -49,6 +49,7 @@ define([], function () {
             this.load.image('lamp', 'assets/src/lamp.png');
             this.load.image('matras', 'assets/matras.png');
             this.load.image('end_level', 'assets/tue_signpost.png');
+            this.load.image('tree_group', 'assets/src/tree_group.png');
 
 
             this.load.image('invisible', 'assets/src/invisible.png')

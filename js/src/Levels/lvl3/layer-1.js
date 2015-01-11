@@ -10,7 +10,8 @@ define([], function () {
         var height = this.game.world.height;
         var width = this.game.world.width;
 
-
+        // Treegroups
+        this.game.add.sprite(33*tile, 22*tile, 'tree_group');
 
 
     }
