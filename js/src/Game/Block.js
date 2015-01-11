@@ -109,6 +109,7 @@ define(['jquery-terminal'], function () {
       // Detect collision between this block and mattresses
       parent.api.mattresses.forEach(function(mattress){
           parent.game.physics.arcade.collide(parent.tileSprite, mattress, function(){
+              mattress.animations.play('jump');
               parent.tileSprite.body.velocity.y = -500;
 
           }, null, this);
