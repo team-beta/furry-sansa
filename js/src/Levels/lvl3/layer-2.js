@@ -51,8 +51,16 @@ define(["Game/Block"], function (Block) {
 
         // Create roof of house
         this.API.createPlatform(50*tile, 7*tile, 31*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(51*tile, 6*tile, 29*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(52*tile, 5*tile, 27*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(53*tile, 4*tile, 25*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(54*tile, 3*tile, 23*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(55*tile, 2*tile, 21*tile, tile, this.main.woodBlock);
 
-
+        // Create platforms
+        this.API.createPlatform(61*tile, 18*tile, 2*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(62*tile, 15*tile, tile, tile, this.main.woodBlock);
+        this.API.createPlatform(65*tile, 19*tile, 2*tile, tile, this.main.woodBlock);
 
 
         // Add interactable blocks
@@ -61,9 +69,13 @@ define(["Game/Block"], function (Block) {
         //this.block.make("block", 30*tile, height - 19*tile, 3, 3, "block_1");
         //this.block.make("block", 15*tile, height - 17*tile, 1, 1, "block_2");
 
-        new Block(this.main, "block_1").create(15*tile, height - 17*tile, 1, 1);
-        new Block(this.main, "block_2").create(30*tile, height - 19*tile, 3, 3);
-    }
+        new Block(this.main, "block_1").create(18*tile, 20*tile, 2, 2);
+        new Block(this.main, "block_2").create(52*tile, 11*tile, 4, 1);
+        new Block(this.main, "block_3").create(68*tile, 20*tile, 2, 5);
+        new Block(this.main, "block_4").create(69*tile, 12*tile, 3, 3);
+        new Block(this.main, "block_5").create(73*tile, 14*tile, 5, 1);
+
+          }
 
     Layer.prototype.update = function() {
 
