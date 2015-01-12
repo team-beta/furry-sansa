@@ -52,7 +52,7 @@ define(["Game/Block"], function (Block) {
         this.game.add.tileSprite(0*tile, height - 3*tile, 15*tile, 3*tile, "metal_block_dark");
 
         // should be 42*tile
-        this.end = this.game.add.sprite(2*tile, height-4*tile, 'end_level');
+        this.end = this.game.add.sprite(47*tile, height-11*tile, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
 
         // Conveyor belt
