@@ -55,7 +55,6 @@ define([], function () {
     API.prototype.createMattress = function (x, y, callback) {
         var matras = this.game.add.sprite(x, y, 'mattress');
         this.game.physics.enable(matras, Phaser.Physics.ARCADE);
-        matras.body.velocity.x=-150;
         matras.body.immovable = true;
         matras.callback = callback;
         matras.animations.add('jump', [1,0], 10, false);
