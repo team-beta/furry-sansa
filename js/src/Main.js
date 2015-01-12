@@ -1,8 +1,8 @@
 define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser',
         'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot',
-        'Game/API', 'Game/Settings',
-        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Game/BlockManager'],
-function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, l0, l1, l2, BlockManager) {
+        'Game/API', 'Game/Settings', 'Game/BlockManager',
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Levels/Level3'],
+function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, BlockManager) {
 
     var Main = function(phgame) {
 
@@ -21,6 +21,9 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         // The library is accessible by the player
         this.library = new Code(this);
 
+        // Parallax default
+        this.parallax = true;
+
 
     }
 
@@ -37,6 +40,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
 
         // Add sounds
         this.sound_jump = this.game.add.audio('sound_jump');
+        this.sound_jetpack = this.game.add.audio('sound_jetpack');
 
         // Creating a grass block
         this.grassBlock = {
@@ -44,6 +48,13 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             walk : this.game.add.audio('sound_walk_dirt'),
             sprite : this.game.add.sprite('grass_block'),
             blockName : "grass_block",
+        }
+
+        this.dirtBlock = {
+            land : this.game.add.audio('sound_land_dirt'),
+            walk : this.game.add.audio('sound_walk_dirt'),
+            sprite : this.game.add.sprite('dirt_block'),
+            blockName : "dirt_block",
         }
 
         // Creating a metal block
@@ -69,8 +80,17 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             blockName : "invisible",
         }
 
+        this.woodBlock = {
+            land : this.game.add.audio('sound_land_wood'),
+            walk : this.game.add.audio('sound_walk_wood'),
+            sprite : this.game.add.sprite('wood_block'),
+            blockName : "wood_block",
+        }
+
         this.sound_walk_concrete = this.game.add.audio('sound_walk_concrete')
         this.sound_land_concrete = this.game.add.audio('sound_land_concrete')
+        this.sound_land_conveyor = this.game.add.audio('sound_land_conveyor')
+        this.sound_walk_conveyor = this.game.add.audio('sound_walk_conveyor')
 
         // Start physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -104,6 +124,14 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
     }
 
     Main.prototype.update = function() {
+        // Parallax
+        if (typeof this.bg !== "undefined") {
+            if (this.parallax) {
+                this.bg.position.x = this.game.camera.x/2
+                this.bg.position.y = this.game.camera.y/2
+            }
+        }
+
         // this.library.update();
         this.api.update();
         this.level.update();

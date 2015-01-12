@@ -8,6 +8,7 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
     Level.prototype.loadSettings = function() {
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_thinking-back');
+        this.settings.drawBackground('metal_block_dark', false);
         this.settings.setSnowflake(false);
     }
 

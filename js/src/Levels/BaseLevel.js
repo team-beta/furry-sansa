@@ -14,10 +14,11 @@ define(['Game/API', 'Game/BlockManager'], function(API, BlockManager) {
         this.createRobot();
 
         // Start the API
-        this.main.api = new API(this.main);
+        this.main.api = new API(main);
+        console.log("API started")
 
         // Start the BlockManager
-        this.main.manager = new BlockManager(this.main);
+        this.main.manager = new BlockManager(main);
 
         this.main.graphics = this.game.add.graphics(0, 0);
 

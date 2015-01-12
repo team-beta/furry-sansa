@@ -36,18 +36,35 @@ define(["Game/Block"], function (Block) {
         var tile = 32;
         var height = this.game.world.height;
         var width = this.game.world.width;
-        this.API.createPlatform(0, height - 1*tile, width, tile, this.main.metalBlock);
+        var main = this.main;
+        // Mattess
         this.spawnMattress();
+
+        // Walls
         this.API.createPlatform(14*tile, height - 19*tile, tile, 18*tile, this.main.specialBlock);
         this.API.createPlatform(35*tile, height - 19*tile, tile, 9*tile, this.main.specialBlock);
         this.API.createPlatform(35*tile, height - 8*tile, tile, 7*tile, this.main.specialBlock);
         this.API.createPlatform(36*tile, height - 8*tile, 15*tile, tile, this.main.specialBlock);
         this.API.createPlatform(36*tile, height - 11*tile, 15*tile, tile, this.main.specialBlock);
-        this.main.robot.conveyorBelt = true;
+
+        // Mattress hiders.
+        this.game.add.tileSprite(35*tile, height - 3*tile, 16*tile, 3*tile, "metal_block_dark");
+        this.game.add.tileSprite(0*tile, height - 3*tile, 15*tile, 3*tile, "metal_block_dark");
 
         // should be 42*tile
         this.end = this.game.add.sprite(2*tile, height-4*tile, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
+
+        // Conveyor belt
+        this.API.createTracks(15*tile, height-tile, 150)
+        this.API.createTracks(19*tile, height-tile, 150)
+        this.API.createTracks(23*tile, height-tile, 150)
+        this.API.createTracks(27*tile, height-tile, 150)
+        this.API.createTracks(31*tile, height-tile, 150)
+
+        // Add interactable blocks
+        this.main.manager.create(35*tile, height - 10*tile, 1, 2, "block_1");
+
     }
 
     Layer.prototype.displayNext = function() {
@@ -67,24 +84,21 @@ define(["Game/Block"], function (Block) {
     }
 
     Layer.prototype.spawnMattress = function() {
-        this.matras = this.game.add.sprite(37*32, this.game.world.height - 2*32, 'mattress');
-        this.game.physics.enable(this.matras, Phaser.Physics.ARCADE);
-        this.matras.body.velocity.x=-150;
-        this.matras.body.immovable = true;
-        this.matras.animations.add('jump', [1,0], 10, false);
+        var parent = this;
+
+        this.matras = this.API.createMattress(37*32, this.game.world.height - 2*32, function() {
+            parent.continue();
+        });
         this.jumped = false;
-        this.main.robot.conveyorBelt = true;
     }
 
     Layer.prototype.resetMattress = function() {
         this.matras.body.position.x = 37*32;
         this.jumped = false;
-        this.main.robot.conveyorBelt = true;
     }
 
     Layer.prototype.stopRoll = function() {
         this.matras.body.velocity.x = 0;
-        this.main.robot.conveyorBelt = false;
         this.stopped = true;
     }
 
@@ -99,8 +113,9 @@ define(["Game/Block"], function (Block) {
         var tile = 32;
         var height = this.game.world.height;
         var width = this.game.world.width;
+        var main = this.main;
 
-        if (this.matras.body.position.x < 12*tile) {
+        if (this.matras.body.position.x < 11*tile) {
             this.resetMattress();
         }
 
@@ -108,12 +123,6 @@ define(["Game/Block"], function (Block) {
             this.main.changeLevel(1);
         }, null, this);
 
-        this.robot.collide(this.matras, function() {
-            this.robot.sprite.body.velocity.y = -800;
-            this.main.sound_jump.play();
-            this.matras.animations.play('jump');
-            this.continue();
-        }, null, this);
     }
 
     return Layer;

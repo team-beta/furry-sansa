@@ -8,6 +8,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     Level.prototype.loadSettings = function() {
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_dododo');
+        this.settings.drawBackground('background_factory', true);
         this.settings.setSnowflake(false);
     }
 
@@ -21,10 +22,6 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     }
 
     Level.prototype.createForegroundLayer = function() {
-        // Make a group for all platforms.
-        this.main.platformGroup = this.game.add.group();
-        this.main.platformGroup.enableBody = true;
-
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
     }

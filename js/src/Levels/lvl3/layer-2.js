@@ -57,18 +57,28 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(54*tile, 3*tile, 23*tile, tile, this.main.woodBlock);
         this.API.createPlatform(55*tile, 2*tile, 21*tile, tile, this.main.woodBlock);
 
+<<<<<<< HEAD
         // Create platforms
         this.API.createPlatform(61*tile, 18*tile, 2*tile, tile, this.main.woodBlock);
         this.API.createPlatform(62*tile, 15*tile, tile, tile, this.main.woodBlock);
         this.API.createPlatform(65*tile, 19*tile, 2*tile, tile, this.main.woodBlock);
 
 
+=======
+>>>>>>> 3939519b19e5c8003d40fc3d91ad35015e479c75
         // Add interactable blocks
-        //this.block = new iBlock(this.main);
+        this.main.manager.create(15*tile, height - 17*tile, 1, 1, "block_1");
+        this.main.manager.create(30*tile, height - 19*tile, 3, 3, "block_2");
 
-        //this.block.make("block", 30*tile, height - 19*tile, 3, 3, "block_1");
-        //this.block.make("block", 15*tile, height - 17*tile, 1, 1, "block_2");
+        // Lower two layers dirt fill up
+        this.API.createPlatform(6*tile, 27*tile, 96*tile, 2*tile, this.main.dirtBlock);
+        this.API.createPlatform(10*tile, 26*tile, 17*tile, tile, this.main.dirtBlock);
+        this.API.createPlatform(11*tile, 25*tile, 15*tile, tile, this.main.dirtBlock);
+        this.API.createPlatform(12*tile, 24*tile, 13*tile, tile, this.main.dirtBlock);
+        this.API.createPlatform(16*tile, 23*tile, 5*tile, tile, this.main.dirtBlock);
 
+
+<<<<<<< HEAD
         new Block(this.main, "block_1").create(18*tile, 20*tile, 2, 2);
         new Block(this.main, "block_2").create(52*tile, 11*tile, 4, 1);
         new Block(this.main, "block_3").create(68*tile, 20*tile, 2, 5);
@@ -76,6 +86,10 @@ define(["Game/Block"], function (Block) {
         new Block(this.main, "block_5").create(73*tile, 14*tile, 5, 1);
 
           }
+=======
+;
+    }
+>>>>>>> 3939519b19e5c8003d40fc3d91ad35015e479c75
 
     Layer.prototype.update = function() {
 
