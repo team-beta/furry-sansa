@@ -1,4 +1,4 @@
-define(['Game/Block'], function (Block) {
+define(['Game/Block'], function (Block, Task) {
     var Manager = function(main){
 
         // Quick references

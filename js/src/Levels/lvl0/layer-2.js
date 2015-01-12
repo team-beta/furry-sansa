@@ -56,12 +56,12 @@ define(["Game/Block"], function (Block) {
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
 
         // Conveyor belt
-        this.API.createTracks(15*tile, height-tile, 150)
-        this.API.createTracks(19*tile, height-tile, 150)
-        this.API.createTracks(23*tile, height-tile, 150)
-        this.API.createTracks(27*tile, height-tile, 150)
-        this.API.createTracks(31*tile, height-tile, 150)
-
+        this.API.createTracks(15*tile, height-tile, 150);
+        this.API.createTracks(19*tile, height-tile, 150);
+        this.API.createTracks(23*tile, height-tile, 150);
+        this.API.createTracks(27*tile, height-tile, 150);
+        this.API.createTracks(31*tile, height-tile, 150);
+        
         // Add interactable blocks
         this.main.manager.create(35*tile, height - 10*tile, 1, 2, "block_1");
 

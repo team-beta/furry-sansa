@@ -1,4 +1,4 @@
-define(['jquery-terminal'], function () {
+define(['jquery-terminal', 'Game/Task'], function (terminal, Task) {
   var Block = function(main, name, x, y, width, height, group){
 
     // Quick references
@@ -7,6 +7,7 @@ define(['jquery-terminal'], function () {
     this.api = this.main.api;
     this.graphics = this.main.graphics;
     this.library = main.library;
+    this.taskList = [];
 
     // Initialize variables
     this.name = name;
@@ -72,8 +73,12 @@ define(['jquery-terminal'], function () {
   }
 
   Block.prototype.move = function(x, y) {
-      this.tileSprite.body.velocity.x += x;
-      this.tileSprite.body.velocity.y += y;
+      var position = this.tileSprite.position;
+      var x = x*32 + position.x;
+      var y = y*32 + position.y;
+      this.taskList.push(new Task(this.tileSprite, x, y));
+      //this.tileSprite.body.velocity.x += x;
+      //this.tileSprite.body.velocity.y += y;
   }
 
   Block.prototype.update = function() {
@@ -134,8 +139,20 @@ define(['jquery-terminal'], function () {
         }
       }
 
+      this.updateTasks();
 
 
+
+
+
+  }
+
+  Block.prototype.updateTasks = function(){
+      this.taskList.forEach(function(task){
+          if(task.finished == false){
+            task.update();
+          }
+      });
 
   }
 
