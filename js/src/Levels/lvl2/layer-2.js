@@ -67,10 +67,14 @@ define(["Game/Block"], function (Block) {
         this.main.manager.create(8*tile, 24*tile, 2, 2, "block_1");
         this.main.manager.create(37*tile, 4*tile, 4, 4, "block_2");
 
+        this.end = this.game.add.sprite(48*tile, height-24*tile + 16, 'end_level');
+        this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
     }
 
     Layer.prototype.update = function() {
-
+        this.robot.collide(this.end, function() {
+            this.main.changeLevel(3);
+        }, null, this);
     }
 
     return Layer;
