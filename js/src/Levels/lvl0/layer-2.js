@@ -60,7 +60,7 @@ define(["Game/Block"], function (Block) {
         this.API.createTracks(23*tile, height-tile, 150);
         this.API.createTracks(27*tile, height-tile, 150);
         this.API.createTracks(31*tile, height-tile, 150);
-        
+
         // Add interactable blocks
         this.main.manager.create(35*tile, height - 10*tile, 1, 2, "block_1");
 
@@ -88,6 +88,7 @@ define(["Game/Block"], function (Block) {
         this.matras = this.API.createMattress(37*32, this.game.world.height - 2*32, function() {
             parent.continue();
         });
+        this.matras.body.velocity.x=-150;
         this.jumped = false;
     }
 
