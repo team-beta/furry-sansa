@@ -133,20 +133,15 @@ define(['Game/Object'], function (GameObject) {
                 this.sprite.body.velocity.y = -800;
                 this.highJump = false;
                 this.main.sound_jump.play();
-            } else if (this.jetPack) {
-                this.emitter.x = this.main.robot.sprite.x + 16;
-                this.emitter.y = this.main.robot.sprite.y + 40;
-                this.emitter.start(true, 500, null, 15);
-                this.main.sound_jetpack.play('', 0, 5, true, false);
-            } else {
+            }else {
                 this.main.sound_jump.play();
             }
         } else {
             this.main.sound_jetpack.stop();
         }
 
-        //Jetpack emitter
-        if(cursors.up.isDown && this.jetPack){
+        //Jetpack emitter always on in-air for realistic gravity effect
+        if(!this.sprite.body.touching.down && this.jetPack){
             this.emitter.x = this.main.robot.sprite.x + 16;
             this.emitter.y = this.main.robot.sprite.y + 40;
             this.emitter.start(true, 500, null, 15);
