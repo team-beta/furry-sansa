@@ -27,6 +27,9 @@ define([], function () {
 
         this.API.createPlatform(0, height - 16*tile, width - 16*tile, tile, this.main.metalBlock);
 
+        this.end = this.game.add.sprite(47*tile, height-4*tile, 'end_level');
+        this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
+
         // Add sprites
         this.game.add.sprite(11*tile, height - 20*tile, 'tree');
         this.game.add.sprite(5*tile, height - 20*tile, 'tree');
@@ -45,7 +48,9 @@ define([], function () {
     }
 
     Layer.prototype.update = function() {
-
+        this.robot.collide(this.end, function() {
+            this.main.changeLevel(2);
+        }, null, this);
     }
 
     return Layer;
