@@ -13,6 +13,9 @@ define([], function () {
         // Treegroups
         this.game.add.sprite(33*tile, 22*tile, 'tree_group');
 
+        // Kevin's house sprite
+        this.game.add.sprite(46.5*tile, -9*tile, 'kevin_house');
+
 
     }
 
