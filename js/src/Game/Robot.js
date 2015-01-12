@@ -136,8 +136,6 @@ define(['Game/Object'], function (GameObject) {
             }else {
                 this.main.sound_jump.play();
             }
-        } else {
-            this.main.sound_jetpack.stop();
         }
 
         //Jetpack emitter always on in-air for realistic gravity effect
@@ -146,6 +144,8 @@ define(['Game/Object'], function (GameObject) {
             this.emitter.y = this.main.robot.sprite.y + 40;
             this.emitter.start(true, 500, null, 15);
             this.main.sound_jetpack.play('', 0, 5, true, false);
+        }  else {
+            this.main.sound_jetpack.stop();
         }
 
         if (this.highJump) {
