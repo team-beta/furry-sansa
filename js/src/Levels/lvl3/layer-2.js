@@ -40,8 +40,8 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(61*tile, 24*tile, 7*tile, tile, this.main.woodBlock);
         this.API.createPlatform(61*tile, 23*tile, 2*tile, tile, this.main.woodBlock);
         this.API.createPlatform(61*tile, 22*tile, tile, tile, this.main.woodBlock);
-        this.API.createPlatform(70*tile, 24*tile, 11*tile, tile, this.main.woodBlock);
-        this.API.createPlatform(70*tile, 23*tile, tile, tile, this.main.woodBlock);
+        this.API.createPlatform(74*tile, 24*tile, 7*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(70*tile, 23*tile, tile, 2*tile, this.main.woodBlock);
 
         // Create right side of house
         this.API.createPlatform(79*tile, 11*tile, 2*tile, 13*tile, this.main.woodBlock);
@@ -57,10 +57,23 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(54*tile, 3*tile, 23*tile, tile, this.main.woodBlock);
         this.API.createPlatform(55*tile, 2*tile, 21*tile, tile, this.main.woodBlock);
 
-        // Create platforms
+        // Create platforms inside house
         this.API.createPlatform(61*tile, 18*tile, 2*tile, tile, this.main.woodBlock);
         this.API.createPlatform(62*tile, 15*tile, tile, tile, this.main.woodBlock);
         this.API.createPlatform(65*tile, 19*tile, 2*tile, tile, this.main.woodBlock);
+
+        // Create platforms outside house
+        this.API.createPlatform(27*tile, 19*tile, tile, tile, this.main.grassBlock);
+        this.API.createPlatform(28*tile, 18*tile, 4*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(32*tile, 19*tile, tile, tile, this.main.grassBlock);
+
+        this.API.createPlatform(35*tile, 16*tile, tile, tile, this.main.grassBlock);
+        this.API.createPlatform(36*tile, 15*tile, 4*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(40*tile, 16*tile, tile, tile, this.main.grassBlock);
+
+        this.API.createPlatform(43*tile, 13*tile, tile, tile, this.main.grassBlock);
+        this.API.createPlatform(44*tile, 12*tile, 4*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(48*tile, 13*tile, tile, tile, this.main.grassBlock);
 
         // Create middel part of house
         this.API.createPlatform(62*tile, 8*tile, tile, 4*tile, this.main.woodBlock);
@@ -72,6 +85,11 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(53*tile, 16*tile, 6*tile, 2*tile, this.main.woodBlock);
         this.API.createPlatform(53*tile, 18*tile, tile, 4*tile, this.main.woodBlock);
         this.API.createPlatform(52*tile, 21*tile, tile, tile, this.main.woodBlock);
+
+        // Create matras
+        this.API.createMattress(57*tile, (25*tile)-10, function(){})
+        this.API.createMattress(71*tile, 24*tile, function(){})
+
 
 
 
@@ -86,8 +104,9 @@ define(["Game/Block"], function (Block) {
         this.main.manager.create(18*tile, 20*tile, 2, 2, "block_1");
         this.main.manager.create(52*tile, 11*tile, 4, 1, "block_2");
         this.main.manager.create(68*tile, 20*tile, 2, 5, "block_3");
-        this.main.manager.create(69*tile, 12*tile, 3, 3, "block_4");
-        this.main.manager.create(73*tile, 14*tile, 5, 1, "block_5");
+        this.main.manager.create(71*tile, 23*tile, 5, 1, "block_4");
+        this.main.manager.create(69*tile, 12*tile, 3, 3, "block_5");
+        this.main.manager.create(73*tile, 14*tile, 5, 1, "block_6");
 
         this.end = this.game.add.sprite(96*tile, height-6*tile+16, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
