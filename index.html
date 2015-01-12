@@ -15,24 +15,6 @@
             <div id="term">
             </div>
         </div>
-        <script>
-        function help(subject) {
-            switch (subject) {
-                case "world":
-                    return "This is world object, the common root of all objects in the game. Every object has methods and sub-objects. For example, world.mute() is a method that applies to the world object.\n"
-                    + "world.mute() mutes the world music, while world.play() plays the world music. \n"
-                    + "The world also has sub-classes. You can manipulate two of them:\n"
-                    + "world.robot - the robot object. Use help('robot') to learn more about yourself. \n"
-                    + "world.blocks - special blocks that can be manipulated. Use help('blocks') to learn more about blocks. \n"
-                case "blocks":
-                    return "This is the blocks object. Use world.listBlocks() to get a list of all blocks that can be manipulated."
-                case "robot":
-                    return "This is you! Use world.robot.dance() to dance and world.robot.stopDancing() to stop. Later in the game, we will reveal more features."
-            }
-            return "Who's calling for help? Wait... I did not know robots had access to the program?! Well, since you are already here, I suppose you are authorized... \n"
-            + "Take this. It is the world object. Handle it with care, for it gives you the control over the entire world! Use help('world') to learn more about the world! \n"
-        }
-        </script>
         <script data-main="js/main" src="js/vendor/require.js"></script>
         <script src="js/vendor/jquery-2.1.1.min.js"></script>
     </body>
