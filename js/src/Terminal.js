@@ -39,7 +39,7 @@ define(['jquery', 'jquery-terminal'], function ($) {
 
     Terminal.prototype.handleCommand = function(command, term) {
         // Fix syntax error: Unexpected token ILLEGAL
-        command = command.replace(/[^A-Za-z 0-9 \.,\?""!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '') ;
+        command = command.replace(/[^A-Za-z 0-9 \.,\?""''!@#\$%\^&\*\(\)-_=\+;:<>\/\\\|\}\{\[\]`~]*/g, '') ;
 
             if (command !== '') {
                 try {
