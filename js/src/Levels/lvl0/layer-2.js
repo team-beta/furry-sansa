@@ -119,6 +119,10 @@ define(["Game/Block"], function (Block) {
             this.resetMattress();
         }
 
+        if (this.robot.sprite.x < 14 * 32){
+            this.robot.sprite.x = 15 * 32;
+        }
+
         this.robot.collide(this.end, function() {
             this.main.changeLevel(1);
         }, null, this);
