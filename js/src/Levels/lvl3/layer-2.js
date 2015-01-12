@@ -62,6 +62,19 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(62*tile, 15*tile, tile, tile, this.main.woodBlock);
         this.API.createPlatform(65*tile, 19*tile, 2*tile, tile, this.main.woodBlock);
 
+        // Create middel part of house
+        this.API.createPlatform(62*tile, 8*tile, tile, 4*tile, this.main.woodBlock);
+        this.API.createPlatform(56*tile, 11*tile, 6*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(55*tile, 12*tile, 3*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(54*tile, 13*tile, 3*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(53*tile, 14*tile, 3*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(52*tile, 15*tile, 4*tile, tile, this.main.woodBlock);
+        this.API.createPlatform(53*tile, 16*tile, 6*tile, 2*tile, this.main.woodBlock);
+        this.API.createPlatform(53*tile, 18*tile, tile, 4*tile, this.main.woodBlock);
+        this.API.createPlatform(52*tile, 21*tile, tile, tile, this.main.woodBlock);
+
+
+
         // Lower two layers dirt fill up
         this.API.createPlatform(6*tile, 27*tile, 96*tile, 2*tile, this.main.dirtBlock);
         this.API.createPlatform(10*tile, 26*tile, 17*tile, tile, this.main.dirtBlock);
