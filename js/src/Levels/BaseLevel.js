@@ -53,7 +53,6 @@ define(['Game/API', 'Game/BlockManager'], function(API, BlockManager) {
     }
 
     BaseLevel.prototype.help = function(subject) {
-        console.log(subject);
         switch (subject) {
             case 'world':
                 return "This is world object, the common root of all objects in the game. Every object has methods and sub-objects. For example, world.mute() is a method that applies to the world object.\n"
