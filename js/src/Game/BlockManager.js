@@ -22,6 +22,12 @@ define(['Game/Block'], function (Block, Task) {
         }else{
             this.main.library.blocks[name + '_' + this.main.library.blocks.length] = block;
         }
+
+        return block;
+    }
+
+    Manager.prototype.enableFloating = function (block) {
+        block.tileSprite.body.gravity.y = 0;
     }
 
     Manager.prototype.update = function(){

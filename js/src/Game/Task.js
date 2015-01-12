@@ -21,11 +21,20 @@ define([], function () {
         Task.prototype.update = function(){
             console.log("Velocity = " + this.velocity.x + ", Finished: " + this.finished
             + ", Dest X: " + this.dest_x + ", Dest y: " + this.dest_y + ", Curr: " + this.position.x + " : " + this.position.y);
+
+            // Check for x
             if(this.velocity.x > 0 && this.position.x >= this.dest_x){
                 this.velocity.x = 0;
             }
             if(this.velocity.x < 0 && this.position.x <= this.dest_x){
                 this.velocity.x = 0;
+            }
+            // Check for y
+            if(this.velocity.y > 0 && this.position.y >= this.dest_y){
+                this.velocity.y = 0;
+            }
+            if(this.velocity.y < 0 && this.position.y <= this.dest_y){
+                this.velocity.y = 0;
             }
             if(this.velocity.x == 0 && this.velocity.y == 0){
                 this.finished = true;

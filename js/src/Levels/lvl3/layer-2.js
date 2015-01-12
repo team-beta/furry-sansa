@@ -90,9 +90,6 @@ define(["Game/Block"], function (Block) {
         this.API.createMattress(57*tile, (25*tile)-10, function(){})
         this.API.createMattress(71*tile, 24*tile, function(){})
 
-
-
-
         // Lower two layers dirt fill up
         this.API.createPlatform(6*tile, 27*tile, 96*tile, 2*tile, this.main.dirtBlock);
         this.API.createPlatform(10*tile, 26*tile, 17*tile, tile, this.main.dirtBlock);
@@ -100,8 +97,10 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(12*tile, 24*tile, 13*tile, tile, this.main.dirtBlock);
         this.API.createPlatform(16*tile, 23*tile, 5*tile, tile, this.main.dirtBlock);
 
+        // I made this block a non-gravity block, just for testing purposes.
+        this.block_1 = this.main.manager.create(18*tile, 20*tile, 2, 2, "block_1");
+        this.main.manager.enableFloating(this.block_1);
 
-        this.main.manager.create(18*tile, 20*tile, 2, 2, "block_1");
         this.main.manager.create(52*tile, 11*tile, 4, 1, "block_2");
         this.main.manager.create(68*tile, 20*tile, 2, 5, "block_3");
         this.main.manager.create(71*tile, 23*tile, 5, 1, "block_4");
