@@ -52,6 +52,7 @@ define(['Game/Object'], function (GameObject) {
 
     Robot.prototype.jetpack = function(bool) {
         this.jetPack = bool;
+        this.sprite.body.gravity.y = bool ? 750 : 1500;
     }
 
     // Works in Chrome, but not in Firefox.
@@ -123,7 +124,7 @@ define(['Game/Object'], function (GameObject) {
         }
 
         // If the sprite is on the ground, allow to jump
-        if (((cursors.up.isDown || this.highJump) && this.sprite.body.touching.down) || (cursors.up.isDown && this.jetPack)) {
+        if (((cursors.up.isDown || this.highJump) && this.sprite.body.touching.down)) {
             this.sprite.body.velocity.y = -500;
             console.log(this.jetPack)
 
@@ -132,16 +133,19 @@ define(['Game/Object'], function (GameObject) {
                 this.sprite.body.velocity.y = -800;
                 this.highJump = false;
                 this.main.sound_jump.play();
-            } else if (this.jetPack) {
-                this.emitter.x = this.main.robot.sprite.x + 16;
-                this.emitter.y = this.main.robot.sprite.y + 40;
-                this.emitter.start(true, 500, null, 15);
-                this.main.sound_jetpack.play('', 0, 5, true, false);
-            } else {
+            }else {
                 this.main.sound_jump.play();
             }
         } else {
             this.main.sound_jetpack.stop();
+        }
+
+        //Jetpack emitter always on in-air for realistic gravity effect
+        if(!this.sprite.body.touching.down && this.jetPack){
+            this.emitter.x = this.main.robot.sprite.x + 16;
+            this.emitter.y = this.main.robot.sprite.y + 40;
+            this.emitter.start(true, 500, null, 15);
+            this.main.sound_jetpack.play('', 0, 5, true, false);
         }
 
         if (this.highJump) {
