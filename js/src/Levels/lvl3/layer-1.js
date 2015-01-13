@@ -14,8 +14,7 @@ define([], function () {
         this.game.add.sprite(33*tile, 22*tile, 'tree_group');
 
         // Kevin's house sprite
-         this.game.add.sprite(46.2*tile, -8*tile, 'kevin_house');
-
+        this.game.add.sprite(50*tile, 2*tile, 'house');
 
     }
 

@@ -52,7 +52,7 @@ define([], function () {
             this.load.image('matras', 'assets/matras.png');
             this.load.image('end_level', 'assets/tue_signpost.png');
             this.load.image('tree_group', 'assets/src/tree_group.png');
-            this.load.image('kevin_house', 'assets/src/building3_update.png');
+            this.load.image('house', 'assets/src/house.png');
 
 
 
