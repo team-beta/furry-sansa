@@ -105,7 +105,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             this.levelNum = 0;
         }
         this.loadLevel(this.levelNum);
-        
+
         $(window).keypress(function(e){
             console.log(e.which);
             if(e.which == 96){
@@ -136,6 +136,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
 
         window.help = this.level.help;
+        window.reset = this.library.reset;
     }
 
     Main.prototype.update = function() {
