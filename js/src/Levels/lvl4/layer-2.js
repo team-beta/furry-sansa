@@ -12,13 +12,6 @@ define(["Game/Block"], function (Block) {
         var height = this.game.world.height;
         var width = this.game.world.width;
 
-        // Flowers
-        this.game.add.sprite(10*tile, 25*tile, 'flower_1');
-        this.game.add.sprite(11*tile, 25*tile, 'flower_2');
-        this.game.add.sprite(12*tile, 25*tile, 'flower_1');
-        this.game.add.sprite(5*tile, 24*tile, 'flower_2');
-        this.game.add.sprite(6*tile, 24*tile, 'flower_2');
-
 
         // Create grassy ground
         this.API.createPlatform(0, 26*tile, 9*tile, tile, this.main.grassBlock);
@@ -28,8 +21,8 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(9*tile, 27*tile, 6*tile, tile, this.main.grassBlock);
 
         // Create hills
-        this.API.createPlatform(15*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
-        this.API.createPlatform(15*tile, 13*tile, 12*tile, 26*tile, this.main.dirtBlock);
+        this.API.createPlatform(15*tile, 8*tile, 12*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(15*tile, 9*tile, 12*tile, 20*tile, this.main.dirtBlock);
 
         this.API.createPlatform(47*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
         this.API.createPlatform(47*tile, 13*tile, 12*tile, 16*tile, this.main.dirtBlock);
@@ -42,7 +35,7 @@ define(["Game/Block"], function (Block) {
         this.API.createMattress(11*tile, 23*tile, function(){})
 
         //Create blocks
-        this.main.manager.create(17*tile, 3*tile, 2, 4, "block_1");
+        this.main.manager.create(17*tile, 3*tile, 2, 5, "block_1");
         this.main.manager.create(27*tile, 21*tile, 20, 2, "block_2");
 
         this.end = this.game.add.sprite(96*tile, 21*tile, 'end_level');
