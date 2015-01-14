@@ -1,10 +1,18 @@
-define(['Game/Object'], function (GameObject) {
+define(['Game/Object', 'jquery-terminal', 'jquery'], function (GameObject, terminal) {
     var Robot = function(main, x, y) {
         this._base = GameObject;
         this._base(main);
 
         this.sprite = this.game.add.sprite(x, y, 'robots');
         this.sprite.frame = 4;
+
+        this.sprite.inputEnabled = true;
+        this.sprite.hitArea = new PIXI.Rectangle(0,0, 1*32, 2*32);
+        this.sprite.input.useHandCursor = true;
+        this.sprite.events.onInputUp.add(function(){
+            document.terminal.insert('world.robot');
+            $('#term .cmd').click();
+        }, this);
 
         // add the animations
         this.sprite.animations.add('left', [0, 1, 2, 3], 10, true);

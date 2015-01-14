@@ -32,7 +32,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
       this.tileSprite.inputEnabled = true;
       this.tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
       this.tileSprite.input.useHandCursor = true;
-      this.tileSprite.events.onInputDown.add(function(){
+      this.tileSprite.events.onInputUp.add(function(){
           document.terminal.insert('world.blocks.' + this.name);
           $('#term .cmd').click();
           this.select();
