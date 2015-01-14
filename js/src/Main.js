@@ -133,9 +133,8 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
 
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
-        console.log(this.level.help)
-        window.help = this.level.help;
 
+        window.help = this.level.help;
     }
 
     Main.prototype.update = function() {
@@ -147,6 +146,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             }
         }
 
+        // this.library.update();
         this.api.update();
         this.level.update();
         this.robot.update();
