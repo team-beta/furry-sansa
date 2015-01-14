@@ -48,6 +48,9 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(47*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
         this.API.createPlatform(47*tile, 13*tile, 12*tile, 16*tile, this.main.dirtBlock);
 
+        this.API.createPlatform(79*tile, 14*tile, 12*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(79*tile, 15*tile, 12*tile, 14*tile, this.main.dirtBlock);
+
         // Create platforms
         this.API.createPlatform(10*tile, 24*tile, 5*tile, tile, this.main.woodBlock);
 
