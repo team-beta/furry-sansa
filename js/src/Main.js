@@ -105,6 +105,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             this.levelNum = 0;
         }
         this.loadLevel(this.levelNum);
+        
         $(window).keypress(function(e){
             console.log(e.which);
             if(e.which == 96){

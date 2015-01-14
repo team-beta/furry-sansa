@@ -1,4 +1,4 @@
-define(['Levels/BaseLevel', 'Levels/lvl4/layer-1', 'Levels/lvl4/layer-2', 'Game/Robot'],
+define(['Levels/BaseLevel', 'Levels/lvl99/layer-1', 'Levels/lvl99/layer-2', 'Game/Robot'],
         function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
