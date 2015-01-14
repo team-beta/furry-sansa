@@ -38,5 +38,10 @@ define([], function() {
         this.clearBlocks();
     }
 
+    Code.prototype.reset = function() {
+        var levelNum = world.main.levelNum;
+        world.main.changeLevel(levelNum)
+    }
+
     return Code;
 });
