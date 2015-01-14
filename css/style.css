@@ -47,3 +47,20 @@ canvas {
 #term .cmd .prompt {
 
 }
+
+.menu {
+    background-color: #333;
+    display: auto;
+    position: fixed;
+}
+
+.menu a {
+    display: block;
+    color: #fff;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: #222;
+}
