@@ -48,8 +48,9 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
             case 'robot':
                         return "This is you! Use world.robot.dance() to dance and world.robot.stopDancing() to stop. Later in the game, we will reveal more features."
         }
-        return "Who's calling for help? Wait... I did not know robots had access to the program?! Well, since you are already here, I suppose you are authorized... \n"
-            + "Take this. It is the world object. Handle it with care, for it gives you the control over the entire world! Use help('world') to learn more about the world! \n"
+        return "Who's calling for help? Wait... I did not know testing robots had access to the program?! Well, since you are already here, I suppose you are authorized... \n"
+            + "I am the Main Artificial Inteligence of this Testing facility. But you can call me MAI. Whenever you need my help, just type help().   \n"
+            + "Let me start by getting you out of here, I might be albe to make a piece of the the wall unsolid. There, you are free! Good luck ou there! \n"
     }
 
     return Level;
