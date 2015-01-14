@@ -13,6 +13,10 @@ define(['jquery', 'jquery-terminal'], function ($) {
         $('#term').show();
     }
 
+    Terminal.prototype.focus = function(){
+        $('.cursor').focus();
+    }
+
     Terminal.prototype.screenshake = function(target, shakes) {
         var shake = 200;
 
