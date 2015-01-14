@@ -1,7 +1,7 @@
 define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser',
         'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot',
         'Game/API', 'Game/Settings', 'Game/BlockManager',
-        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Levels/Level3', 'Levels/Level4'],
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Levels/Level3', 'Levels/Level99'],
 function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, BlockManager) {
 
     var Main = function(phgame) {
@@ -105,6 +105,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             this.levelNum = 0;
         }
         this.loadLevel(this.levelNum);
+        
         $(window).keypress(function(e){
             console.log(e.which);
             if(e.which == 96){

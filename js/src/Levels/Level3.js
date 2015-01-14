@@ -18,7 +18,7 @@ define(['Levels/BaseLevel', 'Levels/lvl3/layer-1', 'Levels/lvl3/layer-2', 'Game/
     }
 
     Level.prototype.createRobot = function() {
-        this.main.robot = new Robot(this.main, 32, 21*32);
+        this.main.robot = new Robot(this.main, 32, 24*32);
     }
 
     Level.prototype.createForegroundLayer = function() {
@@ -31,9 +31,7 @@ define(['Levels/BaseLevel', 'Levels/lvl3/layer-1', 'Levels/lvl3/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
-            return "Hey there, need some help? Did you know that you can do more than just make blocks solid and unsolid? You can make them make them move as well :D \n"
-          + "Just type .moveRight() or .moveLeft() with the amount of spaces you want the block to move between the brackets. \n"
-            + "Good luck!\n"
+            return "Let me just give you a little hint. Maybe you can move blocks in more ways than just Right or Left\n"
           }
     return Level;
 });

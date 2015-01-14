@@ -53,6 +53,8 @@ define([], function () {
             this.load.image('end_level', 'assets/tue_signpost.png');
             this.load.image('tree_group', 'assets/src/tree_group.png');
             this.load.image('house', 'assets/src/house.png');
+            this.load.image('flower_1', 'assets/src/flower_1.png');
+            this.load.image('flower_2', 'assets/src/flower_2.png');
 
 
 
