@@ -16,6 +16,12 @@ define([], function () {
         // Kevin's house sprite
         this.game.add.sprite(50*tile, 2*tile, 'house');
 
+        // Background trees
+        this.game.add.sprite(29*tile, 14*tile, 'tree_bg');
+        this.game.add.sprite(11*tile, 19*tile, 'tree_bg');
+
+
+
     }
 
     return Layer;

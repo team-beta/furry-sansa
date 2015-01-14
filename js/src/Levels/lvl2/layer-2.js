@@ -99,7 +99,7 @@ define(["Game/Block"], function (Block) {
 
         // I made this block a non-gravity block, just for testing purposes.
         this.block_1 = this.main.manager.create(18*tile, 20*tile, 2, 2, "block_1");
-        this.main.manager.enableFloating(this.block_1);
+        // this.main.manager.enableFloating(this.block_1);
 
         this.main.manager.create(52*tile, 11*tile, 4, 1, "block_2");
         this.main.manager.create(68*tile, 20*tile, 2, 5, "block_3");
@@ -109,6 +109,18 @@ define(["Game/Block"], function (Block) {
 
         this.end = this.game.add.sprite(96*tile, height-6*tile+16, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
+
+        // Flowers
+        this.game.add.sprite(7*tile, 24*tile, 'flower_1');
+        this.game.add.sprite(8*tile, 24*tile, 'flower_2');
+        this.game.add.sprite(9*tile, 24*tile, 'flower_2');
+        this.game.add.sprite(15*tile, 21*tile, 'flower_1');
+        this.game.add.sprite(25*tile, 22*tile, 'flower_2');
+
+        // Trees
+        this.game.add.sprite(27*tile, 14*tile, 'tree');
+        this.game.add.sprite(21*tile, 19*tile, 'tree');
+
     }
 
     Layer.prototype.update = function() {
