@@ -50,7 +50,7 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
         }
         return "Who's calling for help? Wait... I did not know testing robots had access to the program?! Well, since you are already here, I suppose you are authorized... \n"
             + "I am the Main Inteligence Program of this Testing facility. But you can call me MIP. Whenever you need my help, just type help().   \n"
-            + "Let me start by getting you out of here, I might be albe to make a piece of the the wall unsolid. There, you are free! Good luck ou there! \n"
+            + "Let me start by getting you out of here, I might be albe to make a piece of the the wall unsolid. There, you are free! Good luck out there! \n"
     }
 
     return Level;
