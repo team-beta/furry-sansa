@@ -24,6 +24,9 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(15*tile, 8*tile, 12*tile, tile, this.main.grassBlock);
         this.API.createPlatform(15*tile, 9*tile, 12*tile, 20*tile, this.main.dirtBlock);
 
+        this.API.createPlatform(47*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(47*tile, 13*tile, 12*tile, 16*tile, this.main.dirtBlock);
+
         // Create platforms
         this.API.createPlatform(10*tile, 24*tile, 5*tile, tile, this.main.woodBlock);
 
@@ -31,11 +34,9 @@ define(["Game/Block"], function (Block) {
         // Create matras
         this.API.createMattress(11*tile, 23*tile, function(){})
 
-
-
-
+        //Create blocks
         this.main.manager.create(17*tile, 3*tile, 2, 5, "block_1");
-
+        this.main.manager.create(27*tile, 21*tile, 20, 2, "block_2");
 
         this.end = this.game.add.sprite(96*tile, 21*tile, 'end_level');
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
