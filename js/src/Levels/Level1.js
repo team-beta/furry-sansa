@@ -9,7 +9,6 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_dododo');
         this.settings.drawBackground('background_factory', true);
-        this.settings.setSnowflake(false);
     }
 
     Level.prototype.createBackgroundLayer = function() {

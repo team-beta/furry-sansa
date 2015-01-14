@@ -9,10 +9,10 @@ define(['Levels/BaseLevel', 'Levels/lvl3/layer-1', 'Levels/lvl3/layer-2', 'Game/
         this.settings.setWorldBounds(0, 0, 3240, 920);
         this.settings.playMusic('music_dododo');
         this.settings.drawBackground('background', true);
-        this.settings.setSnowflake(true);
     }
 
     Level.prototype.createBackgroundLayer = function() {
+        this.main.api.snowflake()
         this.bgLayer = new layer1(this.main, this);
         this.bgLayer.create();
     }

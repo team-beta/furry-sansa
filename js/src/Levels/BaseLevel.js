@@ -15,7 +15,7 @@ define(['Game/API', 'Game/BlockManager'], function(API, BlockManager) {
 
         // Start the API
         this.main.api = new API(main);
-        console.log("API started")
+        // console.log("API started")
 
         // Start the BlockManager
         this.main.manager = new BlockManager(main);

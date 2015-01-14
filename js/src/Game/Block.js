@@ -45,7 +45,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
           }
 
           window.closeMenu = function() {
-              console.log("hmm?")
+            //   console.log("hmm?")
               $('.menu').html("").hide();
           }
 

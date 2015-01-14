@@ -5,7 +5,7 @@ define([], function () {
         this.position = this.sprite.body.position;
         this.dest_x = x == 0 ? this.sprite.body.position.x : x;
         this.dest_y = y == 0 ? this.sprite.body.position.y : y;
-        console.log("Dest X: " + this.dest_x + ", Dest y: " + this.dest_y + ", Curr: " + this.position.x + " : " + this.position.y);
+        // console.log("Dest X: " + this.dest_x + ", Dest y: " + this.dest_y + ", Curr: " + this.position.x + " : " + this.position.y);
         if(this.dest_x > this.sprite.position.x){
             this.sprite.body.velocity.x = 500;
         }else if(this.dest_x < this.sprite.position.x){
@@ -19,8 +19,8 @@ define([], function () {
         this.velocity = this.sprite.body.velocity;
 
         Task.prototype.update = function(){
-            console.log("Velocity = " + this.velocity.x + ", Finished: " + this.finished
-            + ", Dest X: " + this.dest_x + ", Dest y: " + this.dest_y + ", Curr: " + this.position.x + " : " + this.position.y);
+            // console.log("Velocity = " + this.velocity.x + ", Finished: " + this.finished
+            // + ", Dest X: " + this.dest_x + ", Dest y: " + this.dest_y + ", Curr: " + this.position.x + " : " + this.position.y);
 
             // Check for x
             if(this.velocity.x > 0 && this.position.x >= this.dest_x){

@@ -134,7 +134,7 @@ define(['Game/Object', 'jquery-terminal', 'jquery'], function (GameObject, termi
         // If the sprite is on the ground, allow to jump
         if (((cursors.up.isDown || this.highJump) && this.sprite.body.touching.down)) {
             this.sprite.body.velocity.y = -500;
-            console.log(this.jetPack)
+            // console.log(this.jetPack)
 
 
             if (this.highJump) {

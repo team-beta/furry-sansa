@@ -34,9 +34,6 @@ define([], function () {
         this.back_emitter;
         this.update_interval = 4 * 60;
         this.i = 0;
-        if (this.main.settings.snowflake) {
-            this.snowflake()
-        }
 
         // Tracks aka conveyor belt
         this.tracks = []

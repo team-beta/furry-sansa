@@ -13,6 +13,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     }
 
     Level.prototype.createBackgroundLayer = function() {
+        this.main.api.snowflake()
         this.bgLayer = new layer1(this.main, this);
         this.bgLayer.create();
     }
