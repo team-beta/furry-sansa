@@ -18,7 +18,7 @@ define(['Levels/BaseLevel', 'Levels/lvl4/layer-1', 'Levels/lvl4/layer-2', 'Game/
     }
 
     Level.prototype.createRobot = function() {
-        this.main.robot = new Robot(this.main, 32, 24*32);
+        this.main.robot = new Robot(this.main, 32, 22*32);
     }
 
     Level.prototype.createForegroundLayer = function() {
