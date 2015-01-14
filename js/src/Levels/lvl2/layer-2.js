@@ -64,7 +64,7 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(10*tile, 13*tile, 8*tile, tile, this.main.metalBlock);
 
         // Create matras
-        this.API.createMattress(13*tile, 25*tile, function(){})
+        this.API.createMattress(14*tile, 25*tile, function(){})
 
         // Add interactable blocks
         this.main.manager.create(18*tile, 17*tile, 2, 5, "block_1");
