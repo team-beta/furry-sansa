@@ -6,10 +6,10 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     Level.prototype = new BaseLevel();
 
     Level.prototype.loadSettings = function() {
-        this.settings.setWorldBounds(0, 0, 1620, 920);
+        this.settings.setWorldBounds(0, 0, 3240, 920);
         this.settings.playMusic('music_dododo');
-        this.settings.drawBackground('background_factory', true);
-        this.settings.setSnowflake(false);
+        this.settings.drawBackground('background', true);
+        this.settings.setSnowflake(true);
     }
 
     Level.prototype.createBackgroundLayer = function() {
@@ -18,7 +18,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     }
 
     Level.prototype.createRobot = function() {
-        this.main.robot = new Robot(this.main, 32, 24*32);
+        this.main.robot = new Robot(this.main, 32, 21*32);
     }
 
     Level.prototype.createForegroundLayer = function() {
@@ -31,8 +31,9 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
-            return "Hey there, need some help? You see those blue blocks? You can make them unsolid by clicking on the block and typing .setSolidity(false) behind it and pushing eter. \n"
-            + "To make it solid again use .setSolidity(true). Now keep going, you are almost out of here!\n"
+            return "Hey there, need some help? Did you know that you can do more than just make blocks solid and unsolid? You can make them make them move as well :D \n"
+          + "Just type .moveRight() or .moveLeft() with the amount of spaces you want the block to move between the brackets. \n"
+            + "Good luck!\n"
           }
     return Level;
 });

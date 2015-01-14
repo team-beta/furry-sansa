@@ -8,8 +8,8 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
     Level.prototype.loadSettings = function() {
         this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_dododo');
-        this.settings.drawBackground('background', true);
-        this.settings.setSnowflake(true);
+        this.settings.drawBackground('background_factory', true);
+        this.settings.setSnowflake(false);
     }
 
     Level.prototype.createBackgroundLayer = function() {
@@ -18,14 +18,10 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
     }
 
     Level.prototype.createRobot = function() {
-        this.main.robot = new Robot(this.main, 128, 0);
+        this.main.robot = new Robot(this.main, 32, 24*32);
     }
 
     Level.prototype.createForegroundLayer = function() {
-        // Make a group for all platforms.
-        this.main.platformGroup = this.game.add.group();
-        this.main.platformGroup.enableBody = true;
-
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
     }
@@ -38,6 +34,5 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
             return "Hey there, need some help? You see those blue blocks? You can make them unsolid by clicking on the block and typing .setSolidity(false) behind it and pushing eter. \n"
             + "To make it solid again use .setSolidity(true). Now keep going, you are almost out of here!\n"
           }
-
     return Level;
 });

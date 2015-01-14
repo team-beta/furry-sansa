@@ -1,4 +1,4 @@
-define(['Levels/BaseLevel', 'Levels/lvl4/layer-1', 'Levels/lvl4/layer-2', 'Game/Robot'],
+define(['Levels/BaseLevel', 'Levels/lvl99/layer-1', 'Levels/lvl99/layer-2', 'Game/Robot'],
         function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
@@ -6,7 +6,7 @@ define(['Levels/BaseLevel', 'Levels/lvl4/layer-1', 'Levels/lvl4/layer-2', 'Game/
     Level.prototype = new BaseLevel();
 
     Level.prototype.loadSettings = function() {
-        this.settings.setWorldBounds(0, 0, 3240, 920);
+        this.settings.setWorldBounds(0, 0, 1620, 920);
         this.settings.playMusic('music_dododo');
         this.settings.drawBackground('background', true);
         this.settings.setSnowflake(true);
@@ -18,10 +18,14 @@ define(['Levels/BaseLevel', 'Levels/lvl4/layer-1', 'Levels/lvl4/layer-2', 'Game/
     }
 
     Level.prototype.createRobot = function() {
-        this.main.robot = new Robot(this.main, 32, 24*32);
+        this.main.robot = new Robot(this.main, 128, 0);
     }
 
     Level.prototype.createForegroundLayer = function() {
+        // Make a group for all platforms.
+        this.main.platformGroup = this.game.add.group();
+        this.main.platformGroup.enableBody = true;
+
         this.fgLayer = new layer2(this.main)
         this.fgLayer.create();
     }
@@ -31,7 +35,9 @@ define(['Levels/BaseLevel', 'Levels/lvl4/layer-1', 'Levels/lvl4/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
-            return "Let me just give you a little hint. Maybe you can move blocks in more ways than just Right or Left\n"
+            return "Hey there, need some help? You see those blue blocks? You can make them unsolid by clicking on the block and typing .setSolidity(false) behind it and pushing eter. \n"
+            + "To make it solid again use .setSolidity(true). Now keep going, you are almost out of here!\n"
           }
+
     return Level;
 });
