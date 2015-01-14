@@ -13,24 +13,38 @@ define(["Game/Block"], function (Block) {
         var width = this.game.world.width;
 
         // Flowers
-        this.game.add.sprite(10*tile, 25*tile, 'flower_1');
-        this.game.add.sprite(11*tile, 25*tile, 'flower_2');
+        this.game.add.sprite(5*tile, 23*tile, 'flower_2');
+        this.game.add.sprite(6*tile, 23*tile, 'flower_2');
         this.game.add.sprite(12*tile, 25*tile, 'flower_1');
-        this.game.add.sprite(5*tile, 24*tile, 'flower_2');
-        this.game.add.sprite(6*tile, 24*tile, 'flower_2');
+        this.game.add.sprite(14*tile, 25*tile, 'flower_2');
+        this.game.add.sprite(16*tile, 25*tile, 'flower_1');
+
 
 
         // Create grassy ground
-        this.API.createPlatform(0, 26*tile, 9*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(0, 25*tile, 10*tile, tile, this.main.grassBlock); // moved
+        this.API.createPlatform(0, 26*tile, 10*tile, tile, this.main.dirtBlock); // moved
         this.API.createPlatform(0, 27*tile, 102*tile, 2*tile, this.main.dirtBlock);
-        this.API.createPlatform(16*tile, 24*tile, 102*tile, tile, this.main.grassBlock);
-        this.API.createPlatform(16*tile, 25*tile, 102*tile, 4*tile, this.main.dirtBlock);
-        this.API.createPlatform(9*tile, 27*tile, 6*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(27*tile, 24*tile, 97*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(19*tile, 25*tile, 102*tile, 4*tile, this.main.dirtBlock);
+        this.API.createPlatform(10*tile, 27*tile, 9*tile, tile, this.main.grassBlock);
 
-        // Create hills
+        // Path up
+        this.API.createPlatform(16*tile, 28*tile - 12*tile, 2*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(18*tile, 28*tile - 10*tile, 2*tile, tile, this.main.metalBlock);
+        this.API.createPlatform(22*tile, 28*tile - 8*tile, 2*tile, tile, this.main.metalBlock);
+        this.API.createPlatform(20*tile, 28*tile - 6*tile, 2*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(16*tile, 28*tile - 5*tile, tile, tile, this.main.grassBlock);
+
+        // Create hill
         this.API.createPlatform(15*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
-        this.API.createPlatform(15*tile, 13*tile, 12*tile, 26*tile, this.main.dirtBlock);
+        this.API.createPlatform(15*tile, 15*tile, tile, 10*tile, this.main.dirtBlock);
+        this.API.createPlatform(26*tile, 13*tile, tile, 12*tile, this.main.dirtBlock);
 
+        // Small block on the bottom-left
+        // this.API.createPlatform(15*tile, 22*tile, tile, 3*tile, this.main.dirtBlock);
+
+        // Create other hill
         this.API.createPlatform(47*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
         this.API.createPlatform(47*tile, 13*tile, 12*tile, 16*tile, this.main.dirtBlock);
 

@@ -121,6 +121,10 @@ define(["Game/Block"], function (Block) {
         this.game.add.sprite(27*tile, 14*tile, 'tree');
         this.game.add.sprite(21*tile, 19*tile, 'tree');
 
+        // Funny stuff.
+        // this.main.manager.create(47*tile, 20*tile, 1, 1, "block_2");
+        // this.API.createMattress(46*tile, 25*tile, function(){})
+
     }
 
     Layer.prototype.update = function() {

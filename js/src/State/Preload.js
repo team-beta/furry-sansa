@@ -39,6 +39,7 @@ define([], function () {
             this.load.image('metal_block_dark', 'assets/src/block_metal_full_dark.png');
             this.load.image('wood_block', 'assets/src/block_wood.png');
             this.load.image('dirt_block', 'assets/src/block_dirt.png');
+            this.load.image('dirt_block_dark', 'assets/src/block_dirt_dark.png');
             this.load.image('fullMetalBlock', 'assets/src/block_metal_full.png');
             this.load.image('crane', 'assets/src/crane.png');
             this.load.image('tree', 'assets/src/tree.png');

@@ -26,6 +26,10 @@ define([], function () {
           dancer.animations.add('dance', [0,1,2,3,4,3,2,1], 10, true);
           dancer.animations.play('dance');
         })
+
+        // Hollow hill
+        this.game.add.tileSprite(15*tile, 12*tile, 12*tile, 15*tile, "dirt_block_dark");
+        this.game.add.tileSprite(10*tile, 25*tile, 5*tile, 2*tile, "dirt_block_dark");
     }
 
     return Layer;
