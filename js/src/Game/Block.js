@@ -33,41 +33,44 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
       this.tileSprite.hitArea = new PIXI.Rectangle(0,0, width*tile, height*tile);
       this.tileSprite.input.useHandCursor = true;
       this.tileSprite.events.onInputUp.add(function(){
-          $('.menu').html("");
+          if (this.main.gui) {
+              $('.menu').html("");
 
-          var name = this.name;
+              var name = this.name;
 
-          window.choose = function(option, name) {
-              var command = $(option).html()
-            //   document.terminal.clear()
-              document.terminal.exec('world.blocks.' + name + command);
-              closeMenu();
+              window.choose = function(option, name) {
+                  var command = $(option).html()
+                //   document.terminal.clear()
+                  document.terminal.exec('world.blocks.' + name + command);
+                  closeMenu();
+              }
+
+              window.closeMenu = function() {
+                //   console.log("hmm?")
+                  $('.menu').html("").hide();
+              }
+
+              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".setSolidity(" + !this.tileSprite.solid + ")" + "</a>")
+              if (this.main.levelNum >= 1) {
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 1 + ")" + "</a>")
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 5 + ")" + "</a>")
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 10 + ")" + "</a>")
+
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveRight(" + 1 + ")" + "</a>")
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveRight(" + 5 + ")" + "</a>")
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveRight(" + 10 + ")" + "</a>")
+              }
+              if (this.main.levelNum >= 2) {
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveUp()" + "</a>")
+              }
+                  $('.menu').append("<a href='javascript:void(0)' onclick='closeMenu()'> close </a>")
+
+              $('.menu').css("left", this.game.input.x).css("top", this.game.input.y).show();
+          } else {
+              document.terminal.insert('world.blocks.' + this.name);
+              $('#term .cmd').click();
+              this.select();
           }
-
-          window.closeMenu = function() {
-            //   console.log("hmm?")
-              $('.menu').html("").hide();
-          }
-
-          $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".setSolidity(" + !this.tileSprite.solid + ")" + "</a>")
-          if (this.main.levelNum >= 1) {
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 1 + ")" + "</a>")
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 5 + ")" + "</a>")
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 10 + ")" + "</a>")
-
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveRight(" + 1 + ")" + "</a>")
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveRight(" + 5 + ")" + "</a>")
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveRight(" + 10 + ")" + "</a>")
-          }
-          if (this.main.levelNum >= 2) {
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveUp()" + "</a>")
-          }
-              $('.menu').append("<a href='javascript:void(0)' onclick='closeMenu()'> close </a>")
-
-          $('.menu').css("left", this.game.input.x).css("top", this.game.input.y).show();
-        //   document.terminal.insert('world.blocks.' + this.name);
-          $('#term .cmd').click();
-          this.select();
       }, this);
   }
 

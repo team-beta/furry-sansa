@@ -24,6 +24,13 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         // Parallax default
         this.parallax = true;
 
+        // Gui mode
+        this.gui = false;
+
+        window.gui = function(bool) {
+            world.main.gui = bool;
+        }
+
 
     }
 

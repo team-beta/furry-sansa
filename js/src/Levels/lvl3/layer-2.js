@@ -79,7 +79,7 @@ define(["Game/Block"], function (Block) {
 
     Layer.prototype.update = function() {
         this.robot.collide(this.end, function() {
-            this.main.changeLevel(4);
+            this.main.changeLevel(99);
         }, null, this);
     }
 
