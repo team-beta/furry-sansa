@@ -1,4 +1,4 @@
-define(['jquery-terminal', 'Game/Task'], function (terminal, Task) {
+define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
   var Block = function(main, name, x, y, width, height, group){
 
     // Quick references
@@ -34,6 +34,7 @@ define(['jquery-terminal', 'Game/Task'], function (terminal, Task) {
       this.tileSprite.input.useHandCursor = true;
       this.tileSprite.events.onInputDown.add(function(){
           document.terminal.insert('world.blocks.' + this.name);
+          $('#term .cmd').click();
           this.select();
       }, this);
   }

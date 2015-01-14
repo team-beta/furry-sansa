@@ -63,8 +63,11 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(9*tile, 12*tile, tile, tile, this.main.metalBlock);
         this.API.createPlatform(10*tile, 13*tile, 8*tile, tile, this.main.metalBlock);
 
+        // Create matras
+        this.API.createMattress(14*tile, 25*tile, function(){})
+
         // Add interactable blocks
-        this.main.manager.create(8*tile, 24*tile, 2, 2, "block_1");
+        this.main.manager.create(18*tile, 17*tile, 2, 5, "block_1");
         this.main.manager.create(37*tile, 4*tile, 4, 4, "block_2");
 
         this.end = this.game.add.sprite(48*tile, height-24*tile + 16, 'end_level');

@@ -23,6 +23,8 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
 
         // Parallax default
         this.parallax = true;
+
+
     }
 
     Main.prototype.mute = function() {
@@ -103,6 +105,18 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
             this.levelNum = 0;
         }
         this.loadLevel(this.levelNum);
+        $(window).keypress(function(e){
+            console.log(e.which);
+            if(e.which == 96){
+                var cursor = $('#term .cursor');
+                if(cursor.hasClass('blink')){
+                    console.log('Selecting game canvas');
+                    $('#game').click();
+                }else{
+                    $('#term .cmd').click();
+                }
+            }
+        });
     }
 
     Main.prototype.changeLevel = function(level) {
@@ -112,8 +126,6 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
     }
 
     Main.prototype.loadLevel = function(level) {
-        this.levelNum = level;
-
         // load the first level
         Level = require('Levels/Level' + level);
         // Create level
@@ -122,9 +134,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         // Follow the robot
         this.game.camera.follow(this.robot.sprite, Phaser.Camera.FOLLOW_PLATFORMER);
 
-        // window.reset = this.library.reset;
         window.help = this.level.help;
-        window.reset = this.library.reset;
     }
 
     Main.prototype.update = function() {
