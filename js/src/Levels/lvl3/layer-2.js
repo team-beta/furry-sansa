@@ -12,6 +12,13 @@ define(["Game/Block"], function (Block) {
         var height = this.game.world.height;
         var width = this.game.world.width;
 
+        // Flowers
+        this.game.add.sprite(10*tile, 25*tile, 'flower_1');
+        this.game.add.sprite(11*tile, 25*tile, 'flower_2');
+        this.game.add.sprite(12*tile, 25*tile, 'flower_1');
+        this.game.add.sprite(5*tile, 24*tile, 'flower_2');
+        this.game.add.sprite(6*tile, 24*tile, 'flower_2');
+
 
         // Create grassy ground
         this.API.createPlatform(0, 26*tile, 9*tile, tile, this.main.grassBlock);
