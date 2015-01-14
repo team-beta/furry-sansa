@@ -1,7 +1,7 @@
 define(['require', 'jquery', 'Terminal', 'Game/Code', 'Phaser',
         'State/Boot', 'State/Preload', 'State/Game', 'Game/Robot',
         'Game/API', 'Game/Settings', 'Game/BlockManager',
-        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Levels/Level3'],
+        'Levels/Level0', 'Levels/Level1', 'Levels/Level2', 'Levels/Level3', 'Levels/Level4'],
 function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Settings, BlockManager) {
 
     var Main = function(phgame) {
