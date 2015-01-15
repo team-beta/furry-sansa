@@ -50,7 +50,10 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
                   $('.menu').html("").hide();
               }
 
+              if (this.main.levelNum >= 1) {
               $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".setSolidity(" + !this.tileSprite.solid + ")" + "</a>")
+              }
+
               if (this.main.levelNum >= 2) {
                   $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 1 + ")" + "</a>")
                   $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 5 + ")" + "</a>")
