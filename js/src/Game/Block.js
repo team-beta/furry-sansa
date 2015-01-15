@@ -50,11 +50,20 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
                   $('.menu').html("").hide();
               }
 
-              if (this.main.levelNum >= 1) {
+              window.selectThing = function(name) {
+                  closeMenu();
+                  document.terminal.insert('world.blocks.' + name);
+                  $('#term .cmd').click();
+                  this.select();
+              }
+
+              $('.menu').append("<a href='javascript:void(0)' onclick='selectThing(\"" + name + "\")'>select</a>")
+
+              if (this.main.levelNum >= 2) {
               $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".setSolidity(" + !this.tileSprite.solid + ")" + "</a>")
               }
 
-              if (this.main.levelNum >= 2) {
+              if (this.main.levelNum >= 3) {
                   $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 1 + ")" + "</a>")
                   $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 5 + ")" + "</a>")
                   $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".moveLeft(" + 10 + ")" + "</a>")
