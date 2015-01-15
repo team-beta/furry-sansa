@@ -34,6 +34,7 @@ define(['Levels/BaseLevel', 'Levels/lvl3/layer-1', 'Levels/lvl3/layer-2', 'Game/
     Level.prototype.help = function(subject) {
         world.main.sound_help.play('', 0, 5, false, false);
             return "Let me just give you a little hint. Maybe you can move blocks in more ways than just Right or Left\n"
+            + "Remember, if you are stuck, you can always reset the game with reset()"
           }
     return Level;
 });

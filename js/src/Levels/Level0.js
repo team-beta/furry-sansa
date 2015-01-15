@@ -56,6 +56,7 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
             + "Whenever you need my help, just type help(). \n"
             + "Let me start by getting you out of here, I might be able to make that block blocking the exit unsolid.\n"
             + "There, you are free! Good luck out there! \n"
+            + "By the way, if you are stuck, you can always reset the game with reset()"
     }
 
     return Level;
