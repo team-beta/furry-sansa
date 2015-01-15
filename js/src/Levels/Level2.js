@@ -2,6 +2,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
         function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
+        this.main = main;
     }
     Level.prototype = new BaseLevel();
 
@@ -31,6 +32,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
+        world.main.sound_help.play('', 0, 5, false, false);
             return "Hey there, need some help? Did you know that you can do more than just make blocks solid and unsolid? You can make them make them move as well :D \n"
           + "Just type .moveRight() or .moveLeft() with the amount of spaces you want the block to move between the brackets. \n"
             + "Good luck!\n"

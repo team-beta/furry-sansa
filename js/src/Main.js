@@ -98,6 +98,8 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         this.sound_land_concrete = this.game.add.audio('sound_land_concrete')
         this.sound_land_conveyor = this.game.add.audio('sound_land_conveyor')
         this.sound_walk_conveyor = this.game.add.audio('sound_walk_conveyor')
+        this.sound_help = this.game.add.audio('sound_help');
+        this.sound_unsolid = this.game.add.audio('sound_unsolid');
 
         // Start physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);

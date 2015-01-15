@@ -2,6 +2,7 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
         function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
+        this.main = main;
     }
     Level.prototype = new BaseLevel();
 
@@ -30,6 +31,7 @@ define(['Levels/BaseLevel', 'Levels/lvl1/layer-1', 'Levels/lvl1/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
+        world.main.sound_help.play('', 0, 5, false, false);
             return "Hey there, need some help? You see those blue blocks? You can make them unsolid by clicking on the block and typing .setSolidity(false) behind it and pushing enter. \n"
             + "To make it solid again use .setSolidity(true). Now keep going, you are almost out of here!\n"
           }

@@ -2,6 +2,7 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
         function(BaseLevel, layer1, layer2, Robot) {
     var Level = function(main) {
         this.init(main);
+        this.main = main;
     }
     Level.prototype = new BaseLevel();
 
@@ -34,7 +35,10 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
-        world.blocks.block_1.setSolidity(false);
+        world.main.sound_help.play('', 0, 5, false, false);
+        setTimeout(function(){
+            world.blocks.block_1.setSolidity(false);
+        }, 2000)
         switch (subject) {
             case 'world':
                 return "This is world object, the common root of all objects in the game. Every object has methods and sub-objects. For example, world.mute() is a method that applies to the world object.\n"

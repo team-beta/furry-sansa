@@ -84,6 +84,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
   }
 
   Block.prototype.setSolidity = function(bool) {
+    this.main.sound_unsolid.play('', 0, 5, false, false);
     if(bool){
         this.tileSprite.alpha = 1;
         this.tileSprite.solid = true;
