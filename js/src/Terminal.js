@@ -1,4 +1,5 @@
-define(['jquery', 'jquery-terminal'], function ($) {
+define(['jquery', 'codemirror/lib/codemirror', 'jquery-terminal', 'codemirror/mode/javascript/javascript'],
+        function ($, CodeMirror) {
     var Terminal = function() {
         this.term = $('#term').terminal(this.handleCommand, {
             greetings: false,
@@ -11,6 +12,13 @@ define(['jquery', 'jquery-terminal'], function ($) {
 
         this.terminal = this;
         $('#term').show();
+
+        this.editor = CodeMirror($('#editor')[0], { mode: "javascript" });
+
+        $('#link-editor').click(function() {
+            $('#term').hide();
+            $('#editor').show();
+        });
     }
 
     Terminal.prototype.focus = function(){
