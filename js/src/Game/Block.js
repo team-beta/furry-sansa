@@ -55,7 +55,6 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
                   closeMenu();
                   document.terminal.insert('world.blocks.' + name);
                   $('#term .cmd').click();
-                  block.select();
               }
 
               $('.menu').append("<a href='javascript:void(0)' onclick='selectThing(\"" + name + "\")'>select</a>")
