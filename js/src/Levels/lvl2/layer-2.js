@@ -5,6 +5,12 @@ define(["Game/Block"], function (Block) {
         this.robot = main.robot;
         this.API = main.api;
         this.library = main.library;
+        this.text = ["Howdy handsome robot! I see you are programming a lot.",
+                    "If you would like to learn more and get more powerful, \n you should go to the TU/e",
+                    "They can help you develop your true power. Sounds cool, \n right?!" ]
+        this.storyStyle = { font: "40px Arial", fill: "#fff", align: "center" };
+        this.i = 0;
+        this.collided = false;
     }
 
     Layer.prototype.create = function() {
@@ -125,12 +131,32 @@ define(["Game/Block"], function (Block) {
         // this.main.manager.create(47*tile, 20*tile, 1, 1, "block_2");
         // this.API.createMattress(46*tile, 25*tile, function(){})
 
+        // NPC robot
+        this.dancer =  this.game.add.sprite(58*tile, 9*tile, 'dancer_red');
+        this.game.physics.enable(this.dancer, Phaser.Physics.ARCADE);
+        this.dancer.body.immovable = true;
     }
 
     Layer.prototype.update = function() {
+      var parent = this;
         this.robot.collide(this.end, function() {
             this.main.changeLevel(3);
         }, null, this);
+        this.robot.collide(this.dancer, function(){
+          console.log("Colliding with dancer");
+          if(this.i < this.text.length && !this.collided){
+            this.collided = true;
+            var displayText = this.game.add.text(this.game.camera.x + 3*32, this.game.camera.y + 2*32, this.text[this.i].toUpperCase(), this.storyStyle);
+            var tween = this.game.add.tween(displayText).to({alpha: 0}, 5000, Phaser.Easing.Linear.None, true);
+            tween.onComplete.add(function(){
+              this.i += 1;
+              console.log("i: " + this.i);
+              this.collided = false;
+            }, this);
+          }else if(this.i >= this.text.length){
+            this.i = 0;
+          }
+        }, null, this)
     }
 
     return Layer;
