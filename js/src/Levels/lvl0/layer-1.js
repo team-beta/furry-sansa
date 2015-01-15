@@ -17,19 +17,19 @@ define([], function () {
         this.level.room.animations.play('blinky');
 
         this.level.glitch1 = this.game.add.sprite(35*tile, height - 10*32, 'glitch');
-        this.level.glitch1.animations.add('start', [0,1,2,3], 12, true);
+        this.level.glitch1.animations.add('start', [1,0,0,0], 6, true);
         this.level.glitch1.animations.play('start');
 
         this.level.glitch2 = this.game.add.sprite(39*tile, height - 10*32, 'glitch');
-        this.level.glitch2.animations.add('start', [3,2,1,0], 12, true);
+        this.level.glitch2.animations.add('start', [0,1,0,0], 6, true);
         this.level.glitch2.animations.play('start');
 
         this.level.glitch3 = this.game.add.sprite(43*tile, height - 10*32, 'glitch');
-        this.level.glitch3.animations.add('start', [1,3,0,2], 12, true);
+        this.level.glitch3.animations.add('start', [0,0,1,0], 6, true);
         this.level.glitch3.animations.play('start');
 
         this.level.glitch4 = this.game.add.sprite(47*tile, height - 10*32, 'glitch');
-        this.level.glitch4.animations.add('start', [2,1,0,3], 12, true);
+        this.level.glitch4.animations.add('start', [0,0,0,1], 6, true);
         this.level.glitch4.animations.play('start');
 
         this.level.glitch1.alpha = 0;

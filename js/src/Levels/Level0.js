@@ -39,10 +39,10 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
         // var parent = this;
         setTimeout(function(){
             world.blocks.block_1.setSolidity(false);
-            window.levelGlitch.bgLayer.level.glitch1.alpha = 0.1;
-            window.levelGlitch.bgLayer.level.glitch2.alpha = 0.1;
-            window.levelGlitch.bgLayer.level.glitch3.alpha = 0.1;
-            window.levelGlitch.bgLayer.level.glitch4.alpha = 0.1;
+            window.levelGlitch.bgLayer.level.glitch1.alpha = 0.5;
+            window.levelGlitch.bgLayer.level.glitch2.alpha = 0.5;
+            window.levelGlitch.bgLayer.level.glitch3.alpha = 0.5;
+            window.levelGlitch.bgLayer.level.glitch4.alpha = 0.5;
         }, 2000)
         switch (subject) {
             case 'world':
