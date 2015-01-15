@@ -56,7 +56,7 @@ define([], function () {
             this.load.image('house', 'assets/src/house.png');
             this.load.image('flower_1', 'assets/src/flower_1.png');
             this.load.image('flower_2', 'assets/src/flower_2.png');
-
+            this.load.image('metaforum', 'assets/src/metaforum.png');
 
 
             this.load.image('invisible', 'assets/src/invisible.png')

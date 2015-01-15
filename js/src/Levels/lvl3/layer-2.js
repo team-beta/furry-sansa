@@ -26,7 +26,7 @@ define(["Game/Block"], function (Block) {
         this.API.createPlatform(0, 26*tile, 10*tile, tile, this.main.dirtBlock); // moved
         this.API.createPlatform(0, 27*tile, 102*tile, 2*tile, this.main.dirtBlock);
         this.API.createPlatform(27*tile, 24*tile, 97*tile, tile, this.main.grassBlock);
-        this.API.createPlatform(19*tile, 25*tile, 102*tile, 4*tile, this.main.dirtBlock);
+        this.API.createPlatform(19*tile, 25*tile, 4*tile, 4*tile, this.main.dirtBlock);
         this.API.createPlatform(10*tile, 27*tile, 9*tile, tile, this.main.grassBlock);
 
         // Path up
@@ -46,10 +46,10 @@ define(["Game/Block"], function (Block) {
 
         // Create other hill
         this.API.createPlatform(47*tile, 12*tile, 12*tile, tile, this.main.grassBlock);
-        this.API.createPlatform(47*tile, 13*tile, 12*tile, 16*tile, this.main.dirtBlock);
+        this.API.createPlatform(47*tile, 13*tile, 12*tile, 12*tile, this.main.dirtBlock);
 
-        this.API.createPlatform(79*tile, 14*tile, 12*tile, tile, this.main.grassBlock);
-        this.API.createPlatform(79*tile, 15*tile, 12*tile, 14*tile, this.main.dirtBlock);
+        this.API.createPlatform(79*tile, 14*tile, 30*tile, tile, this.main.grassBlock);
+        this.API.createPlatform(79*tile, 15*tile, 30*tile, 14*tile, this.main.dirtBlock);
 
         // Create platforms
         this.API.createPlatform(10*tile, 24*tile, 5*tile, tile, this.main.woodBlock);
@@ -73,7 +73,8 @@ define(["Game/Block"], function (Block) {
 
 
         //Level end
-        this.end = this.game.add.sprite(96*tile, 21*tile, 'end_level');
+        this.end = this.game.add.sprite(96*tile, 11*tile, 'end_level');
+        this.end.alpha=0;
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
     }
 
