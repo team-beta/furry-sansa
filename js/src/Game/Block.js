@@ -35,7 +35,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
       this.tileSprite.events.onInputUp.add(function(){
           if (this.main.gui) {
               $('.menu').html("");
-
+              var block = this;
               var name = this.name;
 
               window.choose = function(option, name) {
@@ -54,7 +54,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
                   closeMenu();
                   document.terminal.insert('world.blocks.' + name);
                   $('#term .cmd').click();
-                  this.select();
+                  block.select();
               }
 
               $('.menu').append("<a href='javascript:void(0)' onclick='selectThing(\"" + name + "\")'>select</a>")
