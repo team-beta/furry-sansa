@@ -50,6 +50,7 @@ define(['jquery', 'jquery-terminal'], function ($) {
                     var result = window.eval(command);
                     if (result !== undefined) {
                         term.echo(new String(result));
+
                     }
                 } catch(e) {
 
@@ -58,8 +59,11 @@ define(['jquery', 'jquery-terminal'], function ($) {
 
                     term.error(new String(e));
                 }
+                $('#game').click();
+                $('#game').focus();
             } else {
                 term.echo('');
+
             }
         // }
     }

@@ -60,7 +60,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
               $('.menu').append("<a href='javascript:void(0)' onclick='selectThing(\"" + name + "\")'>select</a>")
 
               if (this.main.levelNum >= 2) {
-              $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".setSolidity(" + !this.tileSprite.solid + ")" + "</a>")
+                  $('.menu').append("<a href='javascript:void(0)' onclick='choose(this, \"" + name + "\")'>" + ".setSolidity(" + !this.tileSprite.solid + ")" + "</a>")
               }
 
               if (this.main.levelNum >= 3) {
