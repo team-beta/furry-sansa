@@ -55,6 +55,8 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
                   closeMenu();
                   document.terminal.insert('world.blocks.' + name);
                   $('#term .cmd').click();
+                //   block.select();
+
               }
 
               $('.menu').append("<a href='javascript:void(0)' onclick='selectThing(\"" + name + "\")'>select</a>")
@@ -96,6 +98,7 @@ define(['jquery-terminal', 'Game/Task','jquery'], function (terminal, Task) {
   }
 
   Block.prototype.setSolidity = function(bool) {
+    this.main.sound_unsolid.play('', 0, 5, false, false);
     if(bool){
         this.tileSprite.alpha = 1;
         this.tileSprite.solid = true;
