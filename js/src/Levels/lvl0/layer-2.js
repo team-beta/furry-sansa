@@ -22,6 +22,15 @@ define(["Game/Block"], function (Block) {
             "Write 'help()' in the \n terminal below."
         ]
 
+        this.storyText = [
+            "This is Jumper...",
+            "Jumper works in a small \n dark room for a \n mattress factory.",
+            "Everyday he jumps on \n mattresses to test \n their quality.",
+            "But he feels sad. \n Is this all life has \n to offer me?",
+            "I want to cry :( \n Cry for help... \n Can you help me?",
+            "Write 'help()' in the \n terminal below."
+        ]
+
         // this.continueText = "Jump on a mattress to continue"
 
         this.storyStyle = { font: "40px Arial", fill: "#fff", align: "center" };
