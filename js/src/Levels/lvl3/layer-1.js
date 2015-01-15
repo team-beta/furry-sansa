@@ -29,7 +29,10 @@ define([], function () {
 
         // Hollow hill
         this.game.add.tileSprite(15*tile, 12*tile, 12*tile, 15*tile, "dirt_block_dark");
-        this.game.add.tileSprite(10*tile, 25*tile, 5*tile, 2*tile, "dirt_block_dark");
+        this.game.add.tileSprite(10*tile, 25*tile, 100*tile, 2*tile, "dirt_block_dark");
+
+        // Metaforum :D
+        this.game.add.sprite(90*tile, 4*tile, 'metaforum');
     }
 
     return Layer;

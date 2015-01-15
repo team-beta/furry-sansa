@@ -70,7 +70,8 @@ define(["Game/Block"], function (Block) {
         this.main.manager.create(18*tile, 17*tile, 2, 5, "block_1");
         this.main.manager.create(37*tile, 4*tile, 4, 4, "block_2");
 
-        this.end = this.game.add.sprite(48*tile, height-24*tile + 16, 'end_level');
+        this.end = this.game.add.sprite(49*tile, height-24*tile + 16, 'end_level');
+        this.end.alpha=0;
         this.game.physics.enable(this.end, Phaser.Physics.ARCADE);
     }
 
