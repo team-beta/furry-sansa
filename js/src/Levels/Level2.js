@@ -36,6 +36,7 @@ define(['Levels/BaseLevel', 'Levels/lvl2/layer-1', 'Levels/lvl2/layer-2', 'Game/
             return "Hey there, need some help? Did you know that you can do more than just make blocks solid and unsolid? You can make them make them move as well :D \n"
           + "Just type .moveRight() or .moveLeft() with the amount of spaces you want the block to move between the brackets. \n"
             + "Good luck!\n"
+            + "Remember, if you are stuck, you can always reset the game with reset()"
           }
     return Level;
 });

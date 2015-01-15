@@ -35,6 +35,7 @@ define(['Levels/BaseLevel', 'Levels/lvl99/layer-1', 'Levels/lvl99/layer-2', 'Gam
         world.main.sound_help.play('', 0, 5, false, false);
             return "Hey there, need some help? You see those blue blocks? You can make them unsolid by clicking on the block and typing .setSolidity(false) behind it and pushing eter. \n"
             + "To make it solid again use .setSolidity(true). Now keep going, you are almost out of here!\n"
+            + "Remember, if you are stuck, you can always reset the game with reset()"
           }
     return Level;
 });

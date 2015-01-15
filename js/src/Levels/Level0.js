@@ -34,7 +34,19 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
     }
 
     Level.prototype.help = function(subject) {
+
         world.blocks.block_1.setSolidity(false);
+
+        world.main.sound_help.play('', 0, 5, false, false);
+        // var parent = this;
+        setTimeout(function(){
+            world.blocks.block_1.setSolidity(false);
+            window.levelGlitch.bgLayer.level.glitch1.alpha = 0.5;
+            window.levelGlitch.bgLayer.level.glitch2.alpha = 0.5;
+            window.levelGlitch.bgLayer.level.glitch3.alpha = 0.5;
+            window.levelGlitch.bgLayer.level.glitch4.alpha = 0.5;
+        }, 2000)
+
         switch (subject) {
             case 'world':
                 return "This is world object, the common root of all objects in the game. Every object has methods and sub-objects. For example, world.mute() is a method that applies to the world object.\n"
@@ -47,9 +59,14 @@ define(['Levels/BaseLevel', 'Levels/lvl0/layer-1', 'Levels/lvl0/layer-2', 'Game/
             case 'robot':
                         return "This is you! Use world.robot.dance() to dance and world.robot.stopDancing() to stop. Later in the game, we will reveal more features."
         }
-        return "Who's calling for help? Wait... I did not know testing robots had access to the program?! Well, since you are already here, I suppose you are authorized... \n"
-            + "I am the Main Inteligence Program of this Testing facility. But you can call me MIP. Whenever you need my help, just type help().   \n"
-            + "Let me start by getting you out of here, I might be albe to make a piece of the the wall unsolid. There, you are free! Good luck out there! \n"
+
+        return "Who's calling for help? Wait... I did not know testing robots had access to the program?!\n"
+            + "I am the Main Inteligence Program of this Testing facility. But you can call me MIP.\n"
+            + "Whenever you need my help, just type help(). \n"
+            + "Let me start by getting you out of here, I might be able to make that block blocking the exit unsolid.\n"
+            + "There, you are free! Good luck out there! \n"
+            + "By the way, if you are stuck, you can always reset the game with reset()"
+
     }
 
     return Level;
