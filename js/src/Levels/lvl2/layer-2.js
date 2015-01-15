@@ -145,6 +145,7 @@ define(["Game/Block"], function (Block) {
         this.robot.collide(this.dancer, function(){
           console.log("Colliding with dancer");
           if(this.i < this.text.length && !this.collided){
+            parent.main.sound_hello.play('', 0, 5, false, false);
             this.collided = true;
             var displayText = this.game.add.text(this.game.camera.x + 3*32, this.game.camera.y + 2*32, this.text[this.i].toUpperCase(), this.storyStyle);
             var tween = this.game.add.tween(displayText).to({alpha: 0}, 5000, Phaser.Easing.Linear.None, true);

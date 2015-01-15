@@ -17,6 +17,7 @@ define([], function () {
             this.load.audio('sound_land_wood', 'sound/land_wood.ogg');
             this.load.audio('sound_land_conveyor', 'sound/land_conveyor.ogg');
             this.load.audio('sound_help', 'sound/help.ogg');
+            this.load.audio('sound_hello', 'sound/hello.ogg');
             this.load.audio('sound_unsolid', 'sound/unsolid.ogg');
 
             this.load.audio('sound_walk_dirt', 'sound/walk.ogg');
