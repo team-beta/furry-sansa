@@ -32,10 +32,12 @@ define([], function () {
         this.level.glitch4.animations.add('start', [2,1,0,3], 12, true);
         this.level.glitch4.animations.play('start');
 
-        this.level.glitch1.alpha = 0.1;
-        this.level.glitch2.alpha = 0.1;
-        this.level.glitch3.alpha = 0.1;
-        this.level.glitch4.alpha = 0.1;
+        this.level.glitch1.alpha = 0;
+        this.level.glitch2.alpha = 0;
+        this.level.glitch3.alpha = 0;
+        this.level.glitch4.alpha = 0;
+
+        window.levelGlitch = this.level;
     }
 
     return Layer;
