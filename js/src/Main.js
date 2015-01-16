@@ -120,8 +120,7 @@ function (require, $, Terminal, Code, Phaser, boot, preload, gm, Robot, API, Set
         this.loadLevel(this.levelNum);
 
         $(window).keypress(function(e){
-            console.log(e.which);
-            if(e.which == 96){
+            if(e.which == 13){
                 var cursor = $('#term .cursor');
                 if(cursor.hasClass('blink')){
                     console.log('Selecting game canvas');
