@@ -59,13 +59,13 @@ define(['jquery', 'jquery-terminal'], function ($) {
 
                     term.error(new String(e));
                 }
-                $('#game').click();
-                $('#game').focus();
+
             } else {
                 term.echo('');
 
             }
-        // }
+            $('#game').click();
+            $('#game').focus();
     }
 
     return Terminal;
